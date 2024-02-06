@@ -1,4 +1,6 @@
-<script setup>
+<!-- Vue mall kod (tas bort när vi är säkra) -->
+
+<!-- <script setup>
 import { ref } from 'vue'
 
 defineProps({
@@ -37,4 +39,9 @@ const count = ref(0)
 .read-the-docs {
   color: #888;
 }
-</style>
+</style> -->
+
+
+<template>
+
+</template>
