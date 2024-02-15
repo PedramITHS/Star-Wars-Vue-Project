@@ -1,6 +1,5 @@
 <script setup>
 import { BButton, vBTooltip } from 'bootstrap-vue-next';
-import HelloWorld from './components/HelloWorld.vue'
 
 import { ref, } from 'vue'
 
