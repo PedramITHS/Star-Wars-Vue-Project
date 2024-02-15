@@ -46,10 +46,16 @@ export default {
     background-size:auto;
 }
 
+
 </style>
 
+<!--
+class="mt-5" = margin-top + värde
+--''--"mb-5" = margin-bottom + värde
+-->
+
 <template>
-    <BContainer fluid class="mt-5 mb-5">
+    <BContainer fluid>
         <BCol class="d-flex justify-content-center col">
             <BRow v-b-tooltip.click.bottom title="hej" class="bg1">
               <h1>1st</h1>
