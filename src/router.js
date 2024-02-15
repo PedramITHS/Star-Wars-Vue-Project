@@ -1,7 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import index from './views/index.vue'
-import page2 from './views/page2.vue'
+import quiz from './views/quiz.vue'
+import top from './views/top.vue'
+import exp from './views/explore.vue'
+import contact from './views/contact.vue'
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -11,8 +14,20 @@ export default createRouter({
         path: '/'
       },
     {
-      component: page2,
-      path: '/page2'
-    }
+      component: quiz,
+      path: '/Quiz'
+    },
+    {
+      component: top,
+      path: '/Top'
+    },
+    {
+      component: exp,
+      path: '/Exp'
+    },
+    {
+      component: contact,
+      path: '/Contact'
+    },
   ]
 })
