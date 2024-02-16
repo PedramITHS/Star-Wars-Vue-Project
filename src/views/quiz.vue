@@ -12,7 +12,7 @@
 
 }
 .bg-block-two{
-    color: white;
+    color:blueviolet;
     height: 700px;
    padding-top: 150px;
    font-family: "Poppins", sans-serif;
