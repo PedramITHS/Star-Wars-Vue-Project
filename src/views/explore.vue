@@ -2,24 +2,24 @@
 
 <style>
 .bg1 {
-  background-image: linear-gradient(to left, transparent, white 90%),
+  background-image: linear-gradient(to left, transparent, white 80%),
     url("../assets/darth1.png");
   background-size: cover;
 }
 
 .bg2 {
-  background-image: linear-gradient(to right, transparent, white 90%),
+  background-image: linear-gradient(to right, transparent, white 80%),
     url("../assets/luke1.png");
   background-size: cover;
 }
 
 .bg3 {
-  background-image: linear-gradient(to left, transparent, white 90%),
+  background-image: linear-gradient(to left, transparent, white 80%),
     url("../assets/han1.png");
   background-size: cover;
 }
 .bg4 {
-  background-image: linear-gradient(to right, transparent, white 90%),
+  background-image: linear-gradient(to right, transparent, white 80%),
     linear-gradient(to right, red, blue);
   background-size: cover;
 }
