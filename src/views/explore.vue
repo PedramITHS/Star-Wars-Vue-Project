@@ -40,7 +40,7 @@
         </p>
       </BCol>
     </BRow>
-    <BRow class="bg2" cols="2" align-h="end">
+    <BRow class="bg2 text-right" cols="2" align-h="end">
       <BCol>
         <h1>2nd</h1>
         <p>
@@ -66,7 +66,7 @@
         </p>
       </BCol>
     </BRow>
-    <BRow class="bg4" cols="2" align-h="end">
+    <BRow class="bg4 font-weight-bolder" cols="2" align-h="end">
       <BCol>
         <h1>4th</h1>
         <p>
