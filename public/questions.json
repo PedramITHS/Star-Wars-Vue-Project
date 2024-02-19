@@ -1,0 +1,78 @@
+{
+  "Padawan": [
+    {
+      "question": "What is the name of Han Solo's ship?",
+      "type": "multiple",
+      "difficulty": "Padawan",
+      "correctAnswer": "Millenium Falcon",
+      "allAnswers": ["X-Wing", "Razor Crest", "Millenium Falcon"]
+    },
+    {
+      "question": "Anakin Skywalker grew up to be who?",
+      "type": "multiple",
+      "difficulty": "Padawan",
+      "correctAnswer": "Darth Vader",
+      "allAnswers": ["Darth Maul", "Darth Vader", "Count Dooku"]
+    },
+    {
+      "question": "Who are the two droids that appear in every Star Wars film?",
+      "type": "multiple",
+      "difficulty": "Padawan",
+      "correctAnswer": "R2-D2 & C-3PO",
+      "allAnswers": ["BB-8 & R2-D2", "C-3PO & BB-8", "R2-D2 & C-3PO"]
+    },
+    {
+      "question": "Who killed Han Solo?",
+      "type": "multiple",
+      "difficulty": "Padawan",
+      "correctAnswer": "Kylo Ren",
+      "allAnswers": ["Kylo Ren", "Snoke", "R2-D2"]
+    }
+  ],
+  "JediKnight": [
+    {
+      "question": "What is C-3PO?",
+      "type": "multiple",
+      "difficulty": "JediKnight",
+      "correctAnswer": "Droid",
+      "allAnswers": ["Robot", "AI", "Droid"]
+    },
+    {
+      "question": "What is Baby Yoda's real name?",
+      "type": "multiple",
+      "difficulty": "JediKnight",
+      "correctAnswer": "Grogu",
+      "allAnswers": ["Yoda Jr", "Grogu", "Rancorn"]
+    },
+    {
+      "question": "Who initiated Order 66?",
+      "type": "multiple",
+      "difficulty": "JediKnight",
+      "correctAnswer": "Darth Sidious",
+      "allAnswers": ["Darth Vader", "Obi-Wan Kenobi", "Darth Sidious"]
+    }
+  ],
+  "Grandmaster": [
+    {
+      "question": "What is Anakin Skywalker midi chlorian count?",
+      "type": "multiple",
+      "difficulty": "Grandmaster",
+      "correctAnswer": "27000",
+      "allAnswers": ["25000", "27000", "29000"]
+    },
+    {
+      "question": "Who invented the rule of two?",
+      "type": "multiple",
+      "difficulty": "Grandmaster",
+      "correctAnswer": "Darth Bane",
+      "allAnswers": ["Darth Sidious", "Darth Plagueis", "Darth Bane"]
+    },
+    {
+      "question": "Where do the rebels celebrate the fall of the Empire?",
+      "type": "multiple",
+      "difficulty": "Grandmaster",
+      "correctAnswer": "Endor",
+      "allAnswers": ["Tatooine", "Endor", "Coruscant"]
+    }
+  ]
+}
