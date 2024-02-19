@@ -2,16 +2,20 @@
 export default{
     data(){
         return{
-            characterNames: []
+            characterName: [],
+            show: false
+
         };
     },
 
-mounted(){
-        fetch("https://swapi.dev/api/people/1")
+methods:{
+    fetchCharacters(){
+        fetch("https://swapi.dev/api/people/")
         .then(response => response.json())
         .then(data => {
-            this.characterNames = data;
-        })
+            this.characterName = data.results;
+            this.show = true;
+        })}
 
 }
 
@@ -19,14 +23,34 @@ mounted(){
 
 </script>
 <template>
-    <div>
-        <h1>Show Characters</h1>
 
-        <ul>
-            <li v-for="name in characterNames" :key="name">{{ name }}</li>
-        </ul>
-
-    </div>
-
+<div class="showCharacters">
+        <b-button variant="danger" @click="fetchCharacters">Show characters</b-button>
+        <div  v-if="show" >
+            <p class="character" v-for="(character, index) in characterName" :key="index">{{ character.name }}</p>
+        </div>
+</div>
 
 </template>
+<style>
+.showCharacters{
+    background-color:#222226;
+}
+.character{
+    color: aliceblue;
+    text-align: center;
+
+   font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+.showCharacters > h1{
+    color: aliceblue;
+    text-align: center;
+   font-family: "Poppins", sans-serif;
+  font-weight: 600;
+ 
+
+}
+
+
+</style>
