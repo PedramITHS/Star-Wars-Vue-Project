@@ -29,14 +29,9 @@
   <BContainer>
     <BRow class="bg1" cols="2">
       <BCol>
-        <h1>1st</h1>
+        <h1>People & Creatures</h1>
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
+          Learn about all the people and creatures in the Star Wars universe. From humans to odd beings, the list goes on!
         </p>
       </BCol>
     </BRow>
