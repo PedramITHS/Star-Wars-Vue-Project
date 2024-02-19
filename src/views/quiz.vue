@@ -1,57 +1,68 @@
-<script>
-</script>
+<script></script>
 
 <style>
-.bg-block-one{
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
+.bg-block-one {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
 
-    background-repeat: no-repeat;
-    background-position: top;
-    height: 700px;
-
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 700px;
 }
-.bg-block-two{
-    color:blueviolet;
-    height: 700px;
-   padding-top: 150px;
-   font-family: "Poppins", sans-serif;
+.bg-block-two {
+  color: blueviolet;
+  height: 700px;
+  padding-top: 150px;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-style: normal;
-
-
 }
-.bg-block-3{
-    background-color: #0d0d0d;
-    height: 700px;
+.bg-block-3 {
+  background-color: #0d0d0d;
+  height: 700px;
 }
-
 </style>
 
 <template>
-<b-container fluid class="bv-example-row">
-  <b-row>
-    <b-col class="bg-block-one" sm="12">
-      <b-row>
-        <b-col  class="bg-block-two" cols="8" sm="6">
+  <b-container fluid class="bv-example-row">
+    <b-row>
+      <b-col class="bg-block-one" sm="12">
+        <b-row>
+          <b-col class="bg-block-two" cols="8" sm="6">
             <h1>The Force Academy Unlimited Knowledge.</h1>
-            <p>Welcome to TheForceAcademy - your ultimate destination for mastering the names of all your beloved Star Wars characters! Tired of confusing Chewbacca with Yoda? Worry no more! We offer an interactive and entertaining platform where you can explore the Star Wars universe and memorize the names of iconic heroes and villains. </p>
-            <b-button variant="danger">Danger</b-button>
-        </b-col>
-        <b-col class="bg-block-two" cols="4" sm="6"></b-col>
-      </b-row>
-    </b-col>
-  </b-row>
-</b-container>
-<b-container fluid class="bv-example-row">
-  <b-row>
-    <b-col class="bg-block-3" sm="12">
-      Level 1: sm="9"
-      <b-row>
-        <b-col class="bg-block-4" cols="8" sm="6">Level 2: cols="8" sm="6"</b-col>
-        <b-col class="bg-block-4" cols="4" sm="6">Level 2: cols="4" sm="6"</b-col>
-      </b-row>
-    </b-col>
-  </b-row>
-</b-container>
+            <p>
+              Welcome to TheForceAcademy - your ultimate destination for
+              mastering the names of all your beloved Star Wars characters!
+              Tired of confusing Chewbacca with Yoda? Worry no more! We offer an
+              interactive and entertaining platform where you can explore the
+              Star Wars universe and memorize the names of iconic heroes and
+              villains.
+            </p>
+            <h1>Choose Your Difficulty</h1>
+            <b-button variant="success">Padawan</b-button>
+            <b-button variant="outline-primary" class="m-2"
+              >Jedi Knight</b-button
+            >
+            <b-button variant="danger">Grandmaster</b-button>
+          </b-col>
+          <b-col class="bg-block-two" cols="4" sm="6"></b-col>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
+  <b-container fluid class="bv-example-row">
+    <b-row>
+      <b-col class="bg-block-3" sm="12">
+        Level 1: sm="9"
+        <b-row>
+          <b-col class="bg-block-4" cols="8" sm="6"
+            >Level 2: cols="8" sm="6"</b-col
+          >
+          <b-col class="bg-block-4" cols="4" sm="6"
+            >Level 2: cols="4" sm="6"</b-col
+          >
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>

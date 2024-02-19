@@ -1,9 +1,7 @@
-<script>
-</script>
+<script></script>
 
-<style>
-</style>
+<style scoped></style>
 
 <template>
-<h1>Sida 3</h1>
+  <h1>Leaderboard</h1>
 </template>

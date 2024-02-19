@@ -22,21 +22,21 @@ export default {
 
 .bg1 {
   background-image: url("../assets/darth1.png");
-  background-size: auto;
+  background-size: cover;
 }
 
 .bg2 {
   background-image: url("../assets/luke1.png");
-  background-size: auto;
+  background-size: cover;
 }
 
 .bg3 {
   background-image: url("../assets/han1.png");
-  background-size: auto;
+  background-size: cover;
 }
 .bg4 {
   background-image: linear-gradient(to right, red, blue);
-  background-size: auto;
+  background-size: cover;
 }
 
 /* #höjd {

@@ -1,33 +1,38 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from "vue-router";
 
-import index from './views/index.vue'
-import quiz from './views/quiz.vue'
-import top from './views/top.vue'
-import exp from './views/explore.vue'
-import contact from './views/contact.vue'
+import index from "./views/index.vue";
+import quiz from "./views/quiz.vue";
+import top from "./views/top.vue";
+import exp from "./views/explore.vue";
+import contact from "./views/contact.vue";
+import quizz from "./views/quizezz.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
-      {
-        component: index,
-        path: '/'
-      },
+    {
+      component: index,
+      path: "/",
+    },
     {
       component: quiz,
-      path: '/Quiz'
+      path: "/Quiz",
     },
     {
       component: top,
-      path: '/Top'
+      path: "/Top",
     },
     {
       component: exp,
-      path: '/Exp'
+      path: "/Exp",
     },
     {
       component: contact,
-      path: '/Contact'
+      path: "/Contact",
     },
-  ]
-})
+    {
+      component: quizz,
+      path: "/Thegame",
+    },
+  ],
+});
