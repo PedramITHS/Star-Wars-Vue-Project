@@ -31,7 +31,7 @@
       <BCol>
         <h1>People & Creatures</h1>
         <p>
-          Learn about all the people and creatures in the Star Wars universe. From humans to odd beings, the list goes on! test 123456789
+          Learn about all the people and creatures in the Star Wars universe. From humans to odd beings, the list goes on!
         </p>
       </BCol>
     </BRow>
