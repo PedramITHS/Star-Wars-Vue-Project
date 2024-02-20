@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 #desk_menu {
-  background-color: black;
+  background-color: #0D0D0D;
 }
 
 a {
@@ -45,7 +45,14 @@ a {
   opacity: 0;
 }
 
-.users {
+#logo {
+  transition: transform 0.1s ease-in-out;
+  height: 60px;
+  width: 300px;
+}
+
+#logo:hover{
+  transform: translateY(-3px);
 }
 
 /* .menuFade-leave-from,
@@ -66,7 +73,11 @@ a {
   <div class="d-flex p-4" id="desk_menu">
     <!-- <BImg @click="toggle" src="../../assets/imageedit_4_7991310453.png" rounded="circle" alt="hello ?" /> -->
 
-    <BButton size="lg" @click="toggle" variant="primary">Menu</BButton>
+    <BButton @click="toggle" style="background-color: #0D0D0D; border-color: #0D0D0D;" class="d-flex align-self-end">
+      <img id="logo" src="/assets/logo.png" alt="Logo">
+    </BButton>
+
+    <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav v-if="button">
         <BNavItem to="/">Home</BNavItem>
@@ -79,9 +90,12 @@ a {
         <BNavItem to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
+
     <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
       <img style="height: 60px; width: 60px;" src="/assets/user-icon3.webp" alt="Users">
     </router-link>
+
+    
 
     <div>
       <!-- Ljudspelaren -->
