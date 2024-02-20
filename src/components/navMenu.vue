@@ -63,6 +63,7 @@ a {
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
         <BNavItem to="Thegame">frågor</BNavItem>
+        <BNavItem to="Music">musik</BNavItem>
       </BNav>
     </Transition>
   </div>
