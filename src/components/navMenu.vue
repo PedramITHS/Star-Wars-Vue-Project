@@ -37,7 +37,7 @@ a {
 }
 
 .users{
-  
+
 }
 
 /* .menuFade-leave-from,
@@ -69,9 +69,11 @@ a {
         <BNavItem to="Thegame">frågor</BNavItem>
         <BNavItem to="Music">musik</BNavItem>
         <BNavItem to="newExplore">NewExplore</BNavItem>
-        <BNavItem class="users" to="Log In">NewExplore</BNavItem>
+        <BNavItem class="users" to="Log In">Användare</BNavItem>
 
       </BNav>
     </Transition>
   </div>
 </template>
+
+
