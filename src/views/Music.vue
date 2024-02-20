@@ -11,7 +11,7 @@
 
 <script>
 // Importera ljudfilen
-import songSrc from "/Users/jonhul0115/Documents/uppgifter/Star-Wars-Vue-Project/assets/star.mp3";
+import songSrc from "/assets/star.mp3";
 
 export default {
   data() {
