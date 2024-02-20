@@ -1,16 +1,18 @@
 <script>
+import { BNav } from "bootstrap-vue-next";
+
 export default {
   data() {
     return {
       button: false,
     };
   },
-
   methods: {
     toggle() {
       this.button = !this.button;
     },
   },
+  components: { BNav },
 };
 </script>
 
@@ -71,5 +73,11 @@ a {
         <BNavItem class="users" to="Log In">Användare</BNavItem>
       </BNav>
     </Transition>
+    <BButton
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+      class="d-flex align-self-end"
+      to="LogIn"
+      >Users</BButton
+    >
   </div>
 </template>
