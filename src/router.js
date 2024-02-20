@@ -6,7 +6,7 @@ import top from "./views/top.vue";
 import exp from "./views/explore.vue";
 import contact from "./views/contact.vue";
 import quizz from "./views/quizezz.vue";
-import newExplore from './views/newExplore.vue'
+import newExplore from "./views/newExplore.vue";
 
 
 export default createRouter({
@@ -37,9 +37,8 @@ export default createRouter({
       path: "/Thegame",
     },
   {
-
       component: newExplore,
-      path: '/newExplore'
+      path: "/newExplore"
     }
 
   ]
