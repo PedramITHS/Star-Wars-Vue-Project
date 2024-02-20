@@ -36,6 +36,10 @@ a {
   opacity: 0;
 }
 
+.users{
+  
+}
+
 /* .menuFade-leave-from,
 .menuFade-leave-to {
     opacity: 1;
@@ -65,6 +69,7 @@ a {
         <BNavItem to="Thegame">frågor</BNavItem>
         <BNavItem to="Music">musik</BNavItem>
         <BNavItem to="newExplore">NewExplore</BNavItem>
+        <BNavItem class="users" to="Log In">NewExplore</BNavItem>
 
       </BNav>
     </Transition>
