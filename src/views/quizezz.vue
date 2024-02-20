@@ -10,6 +10,7 @@ export default {
         let qs = [];
         qs = qs.concat(data.Padawan);
         this.questions = qs;
+        this.currentQuest = this.questions[0];
         console.log(this.questions);
       });
   },
@@ -23,15 +24,44 @@ export default {
         arr[i] = temp;
       }
     },
-    check() {
-      console.log(`Your current answer is:`);
+    check(choice, correctAnswer) {
+      if (!this.selected) {
+        this.selected = true;
+        if (choice === correctAnswer) {
+          this.score = this.score + 10;
+          console.log("You have choosen wisely");
+          this.chosen = "Correct !";
+          setTimeout(() => {
+            this.chosen = "";
+            this.nextQuest();
+          }, 1500);
+        } else {
+          console.log("You chose...poorly");
+          this.chosen = "Incorrect !";
+          setTimeout(() => {
+            this.chosen = "";
+            this.nextQuest();
+          }, 1500);
+        }
+      }
+    },
+    nextQuest() {
+      if (this.currentQuestIndex < this.questions.length - 1) {
+        this.currentQuestIndex++;
+        this.currentQuest = this.questions[this.currentQuestIndex];
+        this.selected = false;
+      }
     },
   },
 
   data() {
     return {
       questions: [],
+      selected: false,
+      currentQuest: null,
+      currentQuestIndex: 0,
       chosen: "",
+      score: 0,
     };
   },
 };
@@ -54,12 +84,22 @@ button {
 </style>
 
 <template>
-  <BContainer>
-    <BRow class="mt-4" v-for="q in questions" id="box">
-      <BCol class="d-flex flex-column mt-2 align-items-center">
-        <h1>{{ q.question }}</h1>
-        <button @click="check" v-for="a in q.allAnswers">{{ a }}</button>
+  <div v-if="currentQuest !== null">
+    <BContainer>
+      <h1 class="d-flex justify-content-center">
+        {{ "Current score: " + this.score }}
+      </h1>
+      <BCol id="box" class="d-flex flex-column mt-2 align-items-center">
+        <h1>{{ currentQuest.question }}</h1>
+        <button
+          v-for="a in currentQuest.allAnswers"
+          @click="check(a, currentQuest.correctAnswer)"
+          :disabled="selected"
+        >
+          {{ a }}
+        </button>
+        <h4>{{ "The answer is: " + this.chosen }}</h4>
       </BCol>
-    </BRow>
-  </BContainer>
+    </BContainer>
+  </div>
 </template>
