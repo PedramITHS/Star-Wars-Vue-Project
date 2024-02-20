@@ -63,12 +63,9 @@ a {
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
         <BNavItem to="Thegame">frågor</BNavItem>
-<<<<<<< HEAD
         <BNavItem to="Music">musik</BNavItem>
-=======
         <BNavItem to="newExplore">NewExplore</BNavItem>
 
->>>>>>> 3edf6d60c643508006efd17064e3ae2ab4f2ff09
       </BNav>
     </Transition>
   </div>
