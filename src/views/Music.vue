@@ -1,26 +1,26 @@
 <template>
-  <div>
-    <h1>Test Music Player</h1>
-    <!-- Ljudspelaren -->
-    <audio ref="audioPlayer" autoplay controls>
+  <!-- <div> -->
+  <!-- <h1>Test Music Player</h1> -->
+  <!-- Ljudspelaren -->
+  <!-- <audio ref="audioPlayer" autoplay controls>
       <source :src="songSrc" type="audio/mpeg" />
       Din webbläsare stöder inte ljudfilen.
     </audio>
-  </div>
+  </div> -->
 </template>
 
 <script>
 // Importera ljudfilen
-import songSrc from "/assets/star.mp3";
+// import songSrc from "/assets/star.mp3";
 
-export default {
-  data() {
-    return {
-      // Sökvägen till din låt
-      songSrc: songSrc,
-    };
-  },
-};
+// export default {
+//   data() {
+//     return {
+//       // Sökvägen till din låt
+//       songSrc: songSrc,
+//     };
+//   },
+// };
 </script>
 
 <style scoped>

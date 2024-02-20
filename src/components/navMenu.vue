@@ -1,19 +1,25 @@
 <script>
+
 import { BNav } from 'bootstrap-vue-next';
 import { RouterLink } from 'vue-router';
 
+import songSrc from "/assets/star.mp3";
+
+
 export default {
-    data() {
-        return {
-            button: false,
-        };
+  data() {
+    return {
+      button: false,
+      songSrc: songSrc,
+    };
+  },
+  methods: {
+    toggle() {
+      this.button = !this.button;
     },
-    methods: {
-        toggle() {
-            this.button = !this.button;
-        },
-    },
-    components: { BNav }
+  },
+
+  components: { BNav, songSrc },
 };
 </script>
 
@@ -39,8 +45,7 @@ a {
   opacity: 0;
 }
 
-.users{
-
+.users {
 }
 
 /* .menuFade-leave-from,
@@ -70,16 +75,20 @@ a {
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
         <BNavItem to="Thegame">frågor</BNavItem>
-        <BNavItem to="Music">musik</BNavItem>
+        <!-- <BNavItem to="Music">musik</BNavItem> -->
         <BNavItem to="newExplore">NewExplore</BNavItem>
       </BNav>
-
     </Transition>
     <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
       <img style="height: 60px; width: 60px;" src="/assets/user-icon3.webp" alt="Users">
     </router-link>
 
+    <div>
+      <!-- Ljudspelaren -->
+      <audio ref="audioPlayer" autoplay controls>
+        <source :src="songSrc" type="audio/mpeg" />
+        Din webbläsare stöder inte ljudfilen.
+      </audio>
+    </div>
   </div>
 </template>
-
-
