@@ -71,7 +71,7 @@ export default {
 #box {
   border: 2px solid blue;
   border-radius: 20px;
-  /* width: fit-content; */
+  width: 50%;
 }
 
 button {
@@ -89,7 +89,7 @@ button {
       <h1 class="d-flex justify-content-center">
         {{ "Current score: " + this.score }}
       </h1>
-      <BCol id="box" class="d-flex flex-column mt-2 align-items-center">
+      <BCol class="d-flex flex-column mt-2 align-items-center">
         <h1>{{ currentQuest.question }}</h1>
         <button
           v-for="a in currentQuest.allAnswers"
