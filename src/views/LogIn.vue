@@ -1,5 +1,5 @@
 <template>
-    <h1>hej</h1>
+    <h1>Create New User</h1>
     <div id="app">
     <form @submit.prevent="registerUser">
       <label style="margin-right: 5px;" for="username">Username:</label>
