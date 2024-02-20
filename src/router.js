@@ -6,7 +6,7 @@ import top from "./views/top.vue";
 import exp from "./views/explore.vue";
 import contact from "./views/contact.vue";
 import quizz from "./views/quizezz.vue";
-import Music from "./views/Music.vue";
+// import Music from "./views/Music.vue";
 import newExplore from "./views/newExplore.vue";
 import LogIn from "./views/LogIn.vue";
 
@@ -38,10 +38,10 @@ export default createRouter({
       path: "/Thegame",
     },
 
-    {
-      component: Music,
-      path: "/Music",
-    },
+    // {
+    //   component: Music,
+    //   path: "/Music",
+    // },
 
     {
       component: newExplore,
@@ -52,6 +52,5 @@ export default createRouter({
       component: LogIn,
       path: "/LogIn",
     },
-
   ],
 });
