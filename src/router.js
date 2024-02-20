@@ -8,6 +8,7 @@ import contact from "./views/contact.vue";
 import quizz from "./views/quizezz.vue";
 import Music from "./views/Music.vue";
 import newExplore from "./views/newExplore.vue";
+import LogIn from "./views/LogIn.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -46,5 +47,11 @@ export default createRouter({
       component: newExplore,
       path: "/newExplore",
     },
+
+    {
+      component: LogIn,
+      path: "/LogIn",
+    },
+
   ],
 });
