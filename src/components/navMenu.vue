@@ -1,5 +1,6 @@
 <script>
 import { BNav } from "bootstrap-vue-next";
+
 import songSrc from "/assets/star.mp3";
 
 export default {
@@ -14,6 +15,7 @@ export default {
       this.button = !this.button;
     },
   },
+
   components: { BNav, songSrc },
 };
 </script>
@@ -82,7 +84,6 @@ a {
     >
 
     <div>
-      <!-- <h1>Test Music Player</h1> -->
       <!-- Ljudspelaren -->
       <audio ref="audioPlayer" autoplay controls>
         <source :src="songSrc" type="audio/mpeg" />
