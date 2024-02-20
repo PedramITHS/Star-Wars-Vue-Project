@@ -1,5 +1,6 @@
 <script>
 import { BNav } from 'bootstrap-vue-next';
+import { RouterLink } from 'vue-router';
 
 export default {
     data() {
@@ -74,7 +75,10 @@ a {
       </BNav>
 
     </Transition>
-    <BButton style="margin-left: auto; margin-bottom: auto; margin-top: auto;" class="d-flex align-self-end" to="LogIn">Users</BButton>
+    <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
+      <img style="height: 60px; width: 60px;" src="/assets/user-icon3.webp" alt="Users">
+    </router-link>
+
   </div>
 </template>
 
