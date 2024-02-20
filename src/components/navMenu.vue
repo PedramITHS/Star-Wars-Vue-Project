@@ -62,7 +62,7 @@ a {
         <BNavItem to="Quiz">Quiz</BNavItem>
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
-        <BNavItem to="newUser">User</BNavItem>
+        <BNavItem to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
   </div>

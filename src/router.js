@@ -5,7 +5,7 @@ import quiz from './views/quiz.vue'
 import top from './views/top.vue'
 import exp from './views/explore.vue'
 import contact from './views/contact.vue'
-import newUser from './views/newUser.vue'
+import newExplore from './views/newExplore.vue'
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -31,8 +31,8 @@ export default createRouter({
       path: '/Contact'
     },
     {
-      component: newUser,
-      path: '/newUser'
+      component: newExplore,
+      path: '/newExplore'
     }
 
   ]
