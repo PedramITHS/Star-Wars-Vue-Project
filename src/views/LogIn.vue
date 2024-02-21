@@ -1,4 +1,5 @@
 <template>
+    <div id="background">
     <h1>Create New User</h1>
     <div id="app">
       <form @submit.prevent="registerUser">
@@ -11,11 +12,20 @@
         <button id="register" type="submit">Register</button>
       </form>
     </div>
+    </div>
   </template>
   
   <style scoped>
+
   #app {
     align-items: center;
+    border-radius: 0.4em;
+  }
+
+  #background{
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
+    url("assets/user-background.jpeg");
+    background-size: cover;
   }
   
   #register {
@@ -23,10 +33,10 @@
     padding: 0.35em 1.2em;
     border: 0.1em solid black;
     margin: 0 0.3em 0.3em 0;
-    border-radius: 0.12em;
+    border-radius: 0.3em;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'StarJedi', sans-serif;
     font-weight: 300;
     color: black;
     text-align: center;
@@ -36,6 +46,19 @@
   #register:hover {
     color: #000000;
     background-color: white;
+  }
+
+  @font-face {
+  font-family: 'StarJedi';
+  src: url('./assets/star_jedi.woff2') format('woff2'),
+       url('./assets/star_jedi.woff') format('woff');
+  }
+
+
+  h1{
+    font-family: 'StarJedi', sans-serif;
+    padding: 15px;
+    text-align: center;
   }
   </style>
   
