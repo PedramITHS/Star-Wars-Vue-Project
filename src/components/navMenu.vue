@@ -95,7 +95,7 @@ a {
         <BNavItem to="Quiz">Quiz</BNavItem>
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
-        <BNavItem to="Thegame">frågor</BNavItem>
+        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
         <BNavItem to="newExplore">NewExplore</BNavItem>
       </BNav>
@@ -104,8 +104,6 @@ a {
     <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users">
     </router-link>
-
-    
 
     <div>
       <!-- Ljudspelaren -->

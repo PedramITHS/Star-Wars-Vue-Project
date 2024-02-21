@@ -1,4 +1,24 @@
-<script></script>
+<script>
+import questions from "./quizezz.vue";
+
+export default {
+  components: {
+    questions,
+  },
+
+  data() {
+    return {
+      hidden: false,
+    };
+  },
+
+  methods: {
+    gameStart() {
+      this.hidden = !this.hidden;
+    },
+  },
+};
+</script>
 
 <style>
 .bg-block-one {
@@ -24,7 +44,7 @@
 </style>
 
 <template>
-  <b-container fluid class="bv-example-row">
+  <b-container fluid="xl">
     <b-row>
       <b-col class="bg-block-one" sm="12">
         <b-row>
@@ -39,18 +59,23 @@
               villains.
             </p>
             <h1>Choose Your Difficulty</h1>
-            <b-button variant="success">Padawan</b-button>
-            <b-button variant="outline-primary" class="m-2"
+            <b-button id="Padawan" @click="gameStart" variant="success"
+              >Padawan</b-button
+            >
+            <b-button id="JediKnight" variant="outline-primary" class="m-2"
               >Jedi Knight</b-button
             >
-            <b-button variant="danger">Grandmaster</b-button>
+            <b-button id="Grandmaster" variant="danger">Grandmaster</b-button>
           </b-col>
           <b-col class="bg-block-two" cols="4" sm="6"></b-col>
         </b-row>
       </b-col>
     </b-row>
   </b-container>
-  <b-container fluid class="bv-example-row">
+
+  <questions v-if="hidden" />
+
+  <!-- <b-container fluid class="bv-example-row">
     <b-row>
       <b-col class="bg-block-3" sm="12">
         Level 1: sm="9"
@@ -64,5 +89,5 @@
         </b-row>
       </b-col>
     </b-row>
-  </b-container>
+  </b-container> -->
 </template>
