@@ -71,7 +71,7 @@ a {
         <BNavItem to="Quiz">Quiz</BNavItem>
         <BNavItem to="Top">Leaderboard</BNavItem>
         <BNavItem to="Contact">Contact</BNavItem>
-        <BNavItem to="Thegame">frågor</BNavItem>
+        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
         <BNavItem to="newExplore">NewExplore</BNavItem>
       </BNav>

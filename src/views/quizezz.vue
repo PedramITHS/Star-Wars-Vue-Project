@@ -71,25 +71,33 @@ export default {
 #box {
   border: 2px solid blue;
   border-radius: 20px;
-  width: 50%;
 }
 
 button {
+  height: 50px;
+  margin: 10px;
   width: 200px;
   border-radius: 20px;
 }
 
-#contain {
+@media screen and (max-width: 390px) {
+  button {
+    width: 150px;
+    color: brown;
+  }
 }
 </style>
 
 <template>
   <div v-if="currentQuest !== null">
     <BContainer>
-      <h1 class="d-flex justify-content-center">
+      <h1 class="mt-3 d-flex justify-content-center">
         {{ "Current score: " + this.score }}
       </h1>
-      <BCol class="d-flex flex-column mt-2 align-items-center">
+      <BCol
+        id="box"
+        class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
+      >
         <h1>{{ currentQuest.question }}</h1>
         <button
           v-for="a in currentQuest.allAnswers"
