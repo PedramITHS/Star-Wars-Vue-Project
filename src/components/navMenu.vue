@@ -55,6 +55,16 @@ a {
   transform: translateY(-3px);
 }
 
+#user-logo{
+  height: 60px;
+  width: 60px;
+  transition: transform 0.1s ease-in-out;
+}
+
+#user-logo:hover{
+  transform: translateY(-3px);
+}
+
 /* .menuFade-leave-from,
 .menuFade-leave-to {
     opacity: 1;
@@ -92,7 +102,7 @@ a {
     </Transition>
 
     <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
-      <img style="height: 60px; width: 60px;" src="/assets/user-icon3.webp" alt="Users">
+      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users">
     </router-link>
 
     
