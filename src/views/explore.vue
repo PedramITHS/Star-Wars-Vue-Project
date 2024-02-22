@@ -26,12 +26,13 @@
 </style>
 
 <template>
-  <BContainer>
+  <BContainer fluid>
     <BRow class="bg1" cols="2">
       <BCol>
         <h1>People & Creatures</h1>
         <p>
-          Learn about all the people and creatures in the Star Wars universe. From humans to odd beings, the list goes on!
+          Learn about all the people and creatures in the Star Wars universe.
+          From humans to odd beings, the list goes on!
         </p>
       </BCol>
     </BRow>

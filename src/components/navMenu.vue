@@ -9,11 +9,24 @@ export default {
     return {
       button: false,
       songSrc: songSrc,
+      isPlaying: true, // musiken spelas öppning sida
+      playerVisible: false, //spelaren icke synlig
     };
   },
   methods: {
     toggle() {
       this.button = !this.button;
+    },
+    pauseAudio() {
+      console.log("pauseAudio method called");
+      this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
+      this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
+    },
+    // showPlayer() {
+    //   this.playerVisible = true;
+    // },
+    hidePlayer() {
+      this.playerVisible = false;
     },
   },
 
@@ -22,13 +35,22 @@ export default {
 </script>
 
 <style scoped>
+
+
+.navbar-dark .navbar-nav .nav-link{
+      color:red!important
+    }
+
 #desk_menu {
   background-color: #0d0d0d;
+
+
 }
 
 .navitem {
   font-family: Blanka, sans-serif;
   color: white;
+
 }
 
 a {
@@ -116,11 +138,28 @@ a {
     </router-link>
 
     <div>
+<div>
+        <!-- <img
+          src="/assets/Speaker.png"
+          style="align-self: auto"
+          
+        /> -->
+
+        <!-- Ljudspelaren -->
+
+        <audio ref="audioPlayer" autoplay controls>
+          <source :src="songSrc" type="audio/mpeg" />
+          Din webbläsare stöder inte ljudfilen.
+        </audio>
+      </div>
+
       <!-- Ljudspelaren -->
       <!-- <audio ref="audioPlayer" autoplay controls>
         <source :src="songSrc" type="audio/mpeg" />
         Din webbläsare stöder inte ljudfilen.
       </audio> -->
+
     </div>
   </div>
 </template>
+

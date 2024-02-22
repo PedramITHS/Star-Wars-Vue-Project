@@ -108,10 +108,11 @@ export default {
                                 <p class="my-4">{{ "Height: " + character.height + " cm"}}</p>
                                 <p class="my-4">{{ "Hair color: " + character.hair_color}}</p>
                                 <p class="my-4">{{ "Gender: " + character.gender}}</p>
-
                             </b-modal>
                         </div>
-                    </b-card></b-col></b-row>
+                    </b-card>
+                </b-col>
+            </b-row>
         </div>
         <!-- Visa planeter -->
         <div>

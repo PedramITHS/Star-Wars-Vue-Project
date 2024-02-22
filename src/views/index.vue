@@ -23,6 +23,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: top;
   height: 700px;
+  color: #ffff;
 }
 .bg-block-two {
   height: 700px;

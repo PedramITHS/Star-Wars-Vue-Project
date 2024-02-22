@@ -4,11 +4,11 @@ export default {
     fetch("/questions.json")
       .then((resp) => resp.json())
       .then((data) => {
-        data.Padawan.forEach((question) => {
+        data[this.chosenDiffi].forEach((question) => {
           this.shuffle(question.allAnswers);
         });
         let qs = [];
-        qs = qs.concat(data.Padawan);
+        qs = qs.concat(data[this.chosenDiffi]);
         this.questions = qs;
         this.currentQuest = this.questions[0];
         console.log(this.questions);
@@ -54,6 +54,10 @@ export default {
     },
   },
 
+  props: {
+    chosenDiffi: String
+  },
+
   data() {
     return {
       questions: [],
@@ -68,10 +72,13 @@ export default {
 </script>
 
 <style scoped>
+
 #box {
   border: 2px solid blue;
   border-radius: 20px;
 }
+
+
 
 button {
   height: 50px;
@@ -103,6 +110,7 @@ button {
       <BCol
         id="box"
         class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
+        style=""
       >
         <h1>{{ currentQuest.question }}</h1>
         <button
