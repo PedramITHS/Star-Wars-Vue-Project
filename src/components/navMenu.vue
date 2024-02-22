@@ -1,10 +1,8 @@
 <script>
-
-import { BNav } from 'bootstrap-vue-next';
-import { RouterLink } from 'vue-router';
+import { BNav } from "bootstrap-vue-next";
+import { RouterLink } from "vue-router";
 
 import songSrc from "/assets/star.mp3";
-
 
 export default {
   data() {
@@ -25,7 +23,12 @@ export default {
 
 <style scoped>
 #desk_menu {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
+}
+
+.navitem {
+  font-family: Blanka, sans-serif;
+  color: white;
 }
 
 a {
@@ -51,17 +54,17 @@ a {
   width: 300px;
 }
 
-#logo:hover{
+#logo:hover {
   transform: translateY(-3px);
 }
 
-#user-logo{
+#user-logo {
   height: 60px;
   width: 60px;
   transition: transform 0.1s ease-in-out;
 }
 
-#user-logo:hover{
+#user-logo:hover {
   transform: translateY(-3px);
 }
 
@@ -83,26 +86,34 @@ a {
   <div class="d-flex p-4" id="desk_menu">
     <!-- <BImg @click="toggle" src="../../assets/imageedit_4_7991310453.png" rounded="circle" alt="hello ?" /> -->
 
-    <BButton @click="toggle" style="background-color: #0D0D0D; border-color: #0D0D0D;" class="d-flex align-self-end">
-      <img id="logo" src="/assets/logo.png" alt="Logo">
+    <BButton
+      @click="toggle"
+      style="background-color: #0d0d0d; border-color: #0d0d0d"
+      class="d-flex align-self-end"
+    >
+      <img id="logo" src="/assets/logo.png" alt="Logo" />
     </BButton>
 
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav v-if="button">
-        <BNavItem to="/">Home</BNavItem>
-        <BNavItem to="Exp">Explore</BNavItem>
-        <BNavItem to="Quiz">Quiz</BNavItem>
-        <BNavItem to="Top">Leaderboard</BNavItem>
-        <BNavItem to="Contact">Contact</BNavItem>
+        <BNavItem class="navitem" to="/">Home</BNavItem>
+        <BNavItem class="navitem" to="Exp">Explore</BNavItem>
+        <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
+        <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
+        <BNavItem class="navitem" to="Contact">Contact</BNavItem>
         <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
-        <BNavItem to="newExplore">NewExplore</BNavItem>
+        <BNavItem class="navitem" to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
 
-    <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
-      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users">
+    <router-link
+      to="/LogIn"
+      class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+    >
+      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
     <div>
