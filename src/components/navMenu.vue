@@ -37,14 +37,14 @@ export default {
 <style scoped>
 #desk_menu {
   background-color: #0d0d0d;
-<<<<<<< HEAD
-=======
+
+
 }
 
 .navitem {
   font-family: Blanka, sans-serif;
   color: white;
->>>>>>> 9ca6b0f0a3e3da9787530ee0dc1f13c608dbb97f
+
 }
 
 a {
