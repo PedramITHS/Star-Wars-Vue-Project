@@ -30,7 +30,7 @@ export default {
   height: 700px;
 }
 .bg-block-two {
-  color:#ffff;
+  color: #ffff;
   height: 700px;
 
   padding-top: 150px;
@@ -45,11 +45,11 @@ export default {
 </style>
 
 <template>
-  <b-container fluid="xl">
+  <b-container fluid>
     <b-row>
       <b-col class="bg-block-one" sm="12">
         <b-row>
-          <b-col class="bg-block-two" cols="8" sm="6">
+          <b-col class="bg-block-two" cols="8" sm="5">
             <h1>The Force Academy Unlimited Knowledge.</h1>
             <p>
               Welcome to TheForceAcademy - your ultimate destination for
