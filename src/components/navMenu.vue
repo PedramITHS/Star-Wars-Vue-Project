@@ -37,20 +37,15 @@ export default {
 <style scoped>
 
 
-.navbar-dark .navbar-nav .nav-link{
-      color:red!important
-    }
 
 #desk_menu {
   background-color: #0d0d0d;
 
 
 }
-
 .navitem {
   font-family: Blanka, sans-serif;
-  color: white;
-
+  color: rgb(0, 250, 21) !important;
 }
 
 a {
@@ -118,14 +113,14 @@ a {
 
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
-      <BNav v-if="button">
-        <BNavItem class="navitem" to="/">Home</BNavItem>
-        <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
-        <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
-        <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
-        <BNavItem class="navitem" to="Contact">Contact</BNavItem>
-        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
-        <!-- <BNavItem to="Music">musik</BNavItem> -->
+      <BNav type="dark" v-if="button">
+          <BNavItem class="navitem" to="/">Home</BNavItem>
+          <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
+          <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
+          <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
+          <BNavItem class="navitem" to="Contact">Contact</BNavItem>
+          <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
+          <!-- <BNavItem to="Music">musik</BNavItem> -->
       </BNav>
     </Transition>
 
@@ -142,7 +137,7 @@ a {
         <!-- <img
           src="/assets/Speaker.png"
           style="align-self: auto"
-          
+
         /> -->
 
         <!-- Ljudspelaren -->
@@ -162,4 +157,3 @@ a {
     </div>
   </div>
 </template>
-

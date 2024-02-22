@@ -34,17 +34,18 @@ export default {
           setTimeout(() => {
             this.chosen = "";
             this.nextQuest();
-          }, 1500);
+          }, 1900);
         } else {
           console.log("You chose...poorly");
           this.chosen = "Incorrect !";
           setTimeout(() => {
             this.chosen = "";
             this.nextQuest();
-          }, 1500);
+          }, 1900);
         }
       }
     },
+
     nextQuest() {
       if (this.currentQuestIndex < this.questions.length - 1) {
         this.currentQuestIndex++;
@@ -66,6 +67,7 @@ export default {
       currentQuestIndex: 0,
       chosen: "",
       score: 0,
+      timer: 90
     };
   },
 };
@@ -76,13 +78,14 @@ export default {
 #box {
   border: 2px solid blue;
   border-radius: 20px;
+  width: 100px;
+  margin-bottom: 3000px;
+  text-align: center;
 }
 
-
-
 button {
-  height: 50px;
-  margin: 10px;
+  height: 30px;
+  margin: 4px;
   width: 200px;
   border-radius: 20px;
 }
@@ -112,7 +115,7 @@ button {
         class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
         style=""
       >
-        <h1>{{ currentQuest.question }}</h1>
+        <h2>{{ currentQuest.question }}</h2>
         <button
           v-for="a in currentQuest.allAnswers"
           @click="check(a, currentQuest.correctAnswer)"
