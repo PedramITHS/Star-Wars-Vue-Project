@@ -1,125 +1,59 @@
 <script>
-import { vBTooltip } from "bootstrap-vue-next";
 
-export default {
-  directives: {
-    vBTooltip,
-  },
-
-  data() {
-    return {};
-  },
-  methods: {},
-};
 </script>
 
-<style scoped>
-* {
-  color: white;
-  /* font-size: large;
-    font-weight: 600; */
+<style>
+
+.bg-block-one {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
+    url("assets/darth.jpeg");
+
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 700px;
+}
+.bg-block-two {
+
+  height: 700px;
+  padding-top: 150px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.bg-block-3 {
+  background-color: #0d0d0d;
+  height: 700px;
+}
+.stage2{
+  background-color: #0d0d0d;
+  height: 400vh;
 }
 
-.bg1 {
-  background-image: url("../assets/darth1.png");
-  background-size: cover;
-}
-
-.bg2 {
-  background-image: url("../assets/luke1.png");
-  background-size: cover;
-}
-
-.bg3 {
-  background-image: url("../assets/han1.png");
-  background-size: cover;
-}
-.bg4 {
-  background-image: linear-gradient(to right, red, blue);
-  background-size: cover;
-}
-
-/* #höjd {
-    height: 500px;
-    width: auto;
-} */
 </style>
 
-<!--
-class="mt-5" = margin-top + värde
---''--"mb-5" = margin-bottom + värde
--->
+
 
 <template>
-  <BContainer fluid>
-    <BCol class="d-flex justify-content-center col">
-      <BRow v-b-tooltip.click.bottom title="hej" class="bg1">
-        <h1>1st</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </BRow>
-    </BCol>
-    <BCol class="d-flex justify-content-center col">
-      <BRow class="bg2">
-        <h1>2nd</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </BRow>
+  <b-container fluid>
+    <b-row>
+      <b-col class="bg-block-one" sm="12">
+        <b-row>
+          <b-col class="bg-block-two" cols="8" sm="5" >
+            <h1>The Force Academy Unlimited Knowledge.</h1>
+            <p>
+              Welcome to TheForceAcademy - your ultimate destination for
+              mastering the names of all your beloved Star Wars characters!
+              Tired of confusing Chewbacca with Yoda? Worry no more!
+            </p>
+            <b-button style="background-color: #8C1111; border: #8C1111;" size="lg">Take me to the Quiz</b-button>
+          </b-col>
+          <b-col class="bg-block" cols="4" sm="6"></b-col>
+        </b-row>
+      </b-col>
+    </b-row>
+  </b-container>
+  <div class="stage2">
 
-      <BRow class="bg3">
-        <h1>3rd</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </BRow>
-    </BCol>
+  </div>
 
-    <BCol class="d-flex justify-content-center col">
-      <BRow class="bg3">
-        <h1>4th</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </BRow>
-    </BCol>
-
-    <BCol
-      id="höjd"
-      class="d-flex justify-content-center col align-items-stretch"
-    >
-      <BRow class="bg4">
-        <h1>5th</h1>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-      </BRow>
-    </BCol>
-  </BContainer>
 </template>
