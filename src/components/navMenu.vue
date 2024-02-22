@@ -98,13 +98,12 @@ a {
     <Transition name="menuFade">
       <BNav v-if="button">
         <BNavItem class="navitem" to="/">Home</BNavItem>
-        <BNavItem class="navitem" to="Exp">Explore</BNavItem>
+        <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
         <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
         <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
         <BNavItem class="navitem" to="Contact">Contact</BNavItem>
         <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
-        <BNavItem class="navitem" to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
 
