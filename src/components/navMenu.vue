@@ -132,7 +132,7 @@ a {
     </router-link>
 
     <div>
-      <div>
+<div>
         <!-- <img
           src="/assets/Speaker.png"
           style="align-self: auto"
@@ -146,6 +146,13 @@ a {
           Din webbläsare stöder inte ljudfilen.
         </audio>
       </div>
+
+      <!-- Ljudspelaren -->
+      <!-- <audio ref="audioPlayer" autoplay controls>
+        <source :src="songSrc" type="audio/mpeg" />
+        Din webbläsare stöder inte ljudfilen.
+      </audio> -->
+
     </div>
   </div>
 </template>
