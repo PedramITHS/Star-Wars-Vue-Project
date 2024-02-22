@@ -1,21 +1,32 @@
 <script>
-
-import { BNav } from 'bootstrap-vue-next';
-import { RouterLink } from 'vue-router';
+import { BNav } from "bootstrap-vue-next";
+import { RouterLink } from "vue-router";
 
 import songSrc from "/assets/star.mp3";
-
 
 export default {
   data() {
     return {
       button: false,
       songSrc: songSrc,
+      isPlaying: true, // musiken spelas öppning sida
+      playerVisible: false, //spelaren icke synlig
     };
   },
   methods: {
     toggle() {
       this.button = !this.button;
+    },
+    pauseAudio() {
+      console.log("pauseAudio method called");
+      this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
+      this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
+    },
+    // showPlayer() {
+    //   this.playerVisible = true;
+    // },
+    hidePlayer() {
+      this.playerVisible = false;
     },
   },
 
@@ -25,7 +36,7 @@ export default {
 
 <style scoped>
 #desk_menu {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
 
 a {
@@ -51,17 +62,17 @@ a {
   width: 300px;
 }
 
-#logo:hover{
+#logo:hover {
   transform: translateY(-3px);
 }
 
-#user-logo{
+#user-logo {
   height: 60px;
   width: 60px;
   transition: transform 0.1s ease-in-out;
 }
 
-#user-logo:hover{
+#user-logo:hover {
   transform: translateY(-3px);
 }
 
@@ -83,8 +94,12 @@ a {
   <div class="d-flex p-4" id="desk_menu">
     <!-- <BImg @click="toggle" src="../../assets/imageedit_4_7991310453.png" rounded="circle" alt="hello ?" /> -->
 
-    <BButton @click="toggle" style="background-color: #0D0D0D; border-color: #0D0D0D;" class="d-flex align-self-end">
-      <img id="logo" src="/assets/logo.png" alt="Logo">
+    <BButton
+      @click="toggle"
+      style="background-color: #0d0d0d; border-color: #0d0d0d"
+      class="d-flex align-self-end"
+    >
+      <img id="logo" src="/assets/logo.png" alt="Logo" />
     </BButton>
 
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
@@ -101,16 +116,30 @@ a {
       </BNav>
     </Transition>
 
-    <router-link to="/LogIn" class="d-flex align-self-end" style="margin-left: auto; margin-bottom: auto; margin-top: auto;">
-      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users">
+    <router-link
+      to="/LogIn"
+      class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+    >
+      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
     <div>
-      <!-- Ljudspelaren -->
-      <audio ref="audioPlayer" autoplay controls>
-        <source :src="songSrc" type="audio/mpeg" />
-        Din webbläsare stöder inte ljudfilen.
-      </audio>
+      <div>
+        <!-- <img
+          src="/assets/Speaker.png"
+          style="align-self: auto"
+          
+        /> -->
+
+        <!-- Ljudspelaren -->
+
+        <audio ref="audioPlayer" autoplay controls>
+          <source :src="songSrc" type="audio/mpeg" />
+          Din webbläsare stöder inte ljudfilen.
+        </audio>
+      </div>
     </div>
   </div>
 </template>
+
