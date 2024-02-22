@@ -93,12 +93,18 @@ button {
     color: brown;
   }
 }
+
+@font-face {
+  font-family: "Blanka";
+  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
+    format("opentype");
+}
 </style>
 
 <template>
   <div v-if="currentQuest !== null">
     <BContainer>
-      <h1 class="mt-3 d-flex justify-content-center">
+      <h1 class="text mt-3 d-flex justify-content-center">
         {{ "Current score: " + this.score }}
       </h1>
       <BCol

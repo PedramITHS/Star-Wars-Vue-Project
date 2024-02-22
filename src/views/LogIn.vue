@@ -92,7 +92,7 @@
 
 <style scoped>
 #background {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(13, 13, 13, 0.2)),
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(13, 13, 13, 0.1)),
     url("assets/user-background.jpg");
   background-size: cover;
 }
@@ -205,7 +205,7 @@ h6 span {
   background-repeat: no-repeat;
   background-size: 300%;
   position: absolute;
-  border-radius: 6px;
+  border-radius: 40px;
   left: 0;
   top: 0;
   -webkit-transform-style: preserve-3d;

@@ -111,14 +111,13 @@ a {
         <BNavItem to="Contact">Contact</BNavItem>
 =======
         <BNavItem class="navitem" to="/">Home</BNavItem>
-        <BNavItem class="navitem" to="Exp">Explore</BNavItem>
+        <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
         <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
         <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
         <BNavItem class="navitem" to="Contact">Contact</BNavItem>
 >>>>>>> 9ca6b0f0a3e3da9787530ee0dc1f13c608dbb97f
         <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
-        <BNavItem class="navitem" to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
 
