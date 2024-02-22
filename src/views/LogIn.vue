@@ -9,7 +9,7 @@
               class="section pb-5 pt-5 pt-sm-2 text-center"
             >
               <h6 style="font-size: 24px; color: white" class="mb-0 pb-3">
-                <span>Log In </span><span>Sign Up</span>
+                <span>Log In</span><span>Sign Up</span>
               </h6>
               <input
                 class="checkbox"

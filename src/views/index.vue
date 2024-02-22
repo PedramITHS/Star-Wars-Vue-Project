@@ -36,8 +36,25 @@ h1 {
   height: 700px;
 }
 .stage2 {
-  background-color: #0d0d0d;
-  height: 400vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(20, 20, 20)),
+    url("assets/home-background-2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  width: 100%;
+}
+
+.bg-block-three {
+  height: 700px;
+  padding-top: 150px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  padding: 10px;
+  color: white;
+  margin: auto;
+  padding-top: 150px;
 }
 </style>
 
@@ -62,5 +79,22 @@ h1 {
       </b-col>
     </b-row>
   </b-container>
-  <div class="stage2"></div>
+
+  <div class="stage2">
+    <b-col class="bg-block-three" cols="8" sm="5">
+      <h1>About Us</h1>
+      <p>
+        Four frontend students unite their skills to construct an immersive Star
+        Wars website. Armed with HTML, CSS, and JavaScript proficiency, they
+        sculpt a digital masterpiece. Their collaborative efforts yield a
+        visually stunning platform that transports users into the heart of the
+        Star Wars galaxy. Through meticulous design and innovative
+        functionalities, they deliver an engaging experience that resonates with
+        fans far and wide. Their passion for frontend development fuels their
+        endeavor, resulting in a website that captures the essence of the iconic
+        saga.
+      </p>
+      <b-button to="Contact" id="quiz-button" size="lg">More About Us</b-button>
+    </b-col>
+  </div>
 </template>
