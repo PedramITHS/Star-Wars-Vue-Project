@@ -8,8 +8,7 @@ export default {
             planets: [],
             starships: [],
             species: [],
-
-
+            modals: {}
         };
     },
 
@@ -133,15 +132,16 @@ export default {
         <!-- Visa starships -->
         <div>
             <b-row v-if="show === 'starships'">
+
                 <b-col v-for="(starship, index) in starships" :key="index" lg="3" mb="4" sm="6" class="mb-4">
                     <b-card title="Starships" tag="article" style="max-width: 20rem;" class="mb-2">
                         <b-card-text>
                             <p>{{ starship.name }}</p>
                         </b-card-text>
                         <div>
-                            <b-button v-b-modal.modal-1>Launch demo modal</b-button>
-                            <b-modal id="modal-1" title="BootstrapVue">
-                                <p class="my-4">Hello from modal!</p>
+                            <b-button @click="modals[starship.name] = !modals[starship.name]">Launch demo modal</b-button>
+                            <b-modal v-model="modals[starship.name]" title="BootstrapVue">
+                                <p class="my-4">{{ starship.name }}</p>
                             </b-modal>
                         </div>
                     </b-card></b-col></b-row>

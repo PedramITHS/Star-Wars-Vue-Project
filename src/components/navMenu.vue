@@ -37,6 +37,14 @@ export default {
 <style scoped>
 #desk_menu {
   background-color: #0d0d0d;
+<<<<<<< HEAD
+=======
+}
+
+.navitem {
+  font-family: Blanka, sans-serif;
+  color: white;
+>>>>>>> 9ca6b0f0a3e3da9787530ee0dc1f13c608dbb97f
 }
 
 a {
@@ -105,14 +113,14 @@ a {
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav v-if="button">
-        <BNavItem to="/">Home</BNavItem>
-        <BNavItem to="Exp">Explore</BNavItem>
-        <BNavItem to="Quiz">Quiz</BNavItem>
-        <BNavItem to="Top">Leaderboard</BNavItem>
-        <BNavItem to="Contact">Contact</BNavItem>
+        <BNavItem class="navitem" to="/">Home</BNavItem>
+        <BNavItem class="navitem" to="Exp">Explore</BNavItem>
+        <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
+        <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
+        <BNavItem class="navitem" to="Contact">Contact</BNavItem>
         <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
         <!-- <BNavItem to="Music">musik</BNavItem> -->
-        <BNavItem to="newExplore">NewExplore</BNavItem>
+        <BNavItem class="navitem" to="newExplore">NewExplore</BNavItem>
       </BNav>
     </Transition>
 

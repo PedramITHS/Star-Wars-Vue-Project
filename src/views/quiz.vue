@@ -30,8 +30,9 @@ export default {
   height: 700px;
 }
 .bg-block-two {
-  color: blueviolet;
+  color:#ffff;
   height: 700px;
+
   padding-top: 150px;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
