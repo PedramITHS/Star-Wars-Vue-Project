@@ -9,18 +9,21 @@ export default {
   data() {
     return {
       hidden: false,
+      chosenDiffi: '',
     };
   },
 
   methods: {
-    gameStart() {
+    gameStart(diffi) {
+      this.chosenDiffi = diffi,
+      // console.log(this.chosenDiffi)
       this.hidden = !this.hidden;
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .bg-block-one {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
@@ -41,10 +44,24 @@ export default {
   background-color: #0d0d0d;
   height: 700px;
 }
+
+#box {
+  border: 2px solid rgb(21, 255, 0);
+  border-radius: 20px;
+}
+#box2 {
+  border: 2px solid rgb(0, 17, 255);
+  border-radius: 20px;
+}
+#box3 {
+  border: 2px solid rgb(255, 0, 0);
+  border-radius: 20px;
+}
+
 </style>
 
 <template>
-  <b-container fluid="xl">
+  <b-container fluid>
     <b-row>
       <b-col class="bg-block-one" sm="12">
         <b-row>
@@ -59,13 +76,13 @@ export default {
               villains.
             </p>
             <h1>Choose Your Difficulty</h1>
-            <b-button id="Padawan" @click="gameStart" variant="success"
+            <b-button id="Padawan" @click="gameStart('Padawan')" variant="success"
               >Padawan</b-button
             >
-            <b-button id="JediKnight" variant="outline-primary" class="m-2"
-              >Jedi Knight</b-button
+            <b-button :id="box" id="JediKnight" @click="gameStart('JediKnight')" variant="outline-primary" class="m-2"
+            >Jedi Knight</b-button
             >
-            <b-button id="Grandmaster" variant="danger">Grandmaster</b-button>
+            <b-button id="Grandmaster" @click="gameStart('Grandmaster')" variant="danger">Grandmaster</b-button>
           </b-col>
           <b-col class="bg-block-two" cols="4" sm="6"></b-col>
         </b-row>
@@ -73,7 +90,7 @@ export default {
     </b-row>
   </b-container>
 
-  <questions v-if="hidden" />
+  <questions v-if="hidden" :chosenDiffi="chosenDiffi"/>
 
   <!-- <b-container fluid class="bv-example-row">
     <b-row>

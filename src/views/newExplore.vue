@@ -107,12 +107,14 @@ export default {
                             <b-modal id="modal-1" title="BootstrapVue">
                                 <b-row>
                                     <b-col>
-                                        <p class="my-4"></p>
+                                        <p v-for="height in character" class="my-4">{{ height.mass }}</p>
                                     </b-col>
                                 </b-row>
                             </b-modal>
                         </div>
-                    </b-card></b-col></b-row>
+                    </b-card>
+                </b-col>
+            </b-row>
         </div>
         <!-- Visa planeter -->
         <div>

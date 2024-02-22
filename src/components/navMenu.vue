@@ -24,6 +24,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+.navbar-dark .navbar-nav .nav-link{
+      color:red!important
+    }
+
 #desk_menu {
   background-color: #0D0D0D;
 }
@@ -90,7 +96,7 @@ a {
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav v-if="button">
-        <BNavItem to="/">Home</BNavItem>
+        <BNavItem  to="/">Home</BNavItem>
         <BNavItem to="Exp">Explore</BNavItem>
         <BNavItem to="Quiz">Quiz</BNavItem>
         <BNavItem to="Top">Leaderboard</BNavItem>
