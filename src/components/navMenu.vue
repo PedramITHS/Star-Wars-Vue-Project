@@ -117,10 +117,10 @@ a {
 
     <div>
       <!-- Ljudspelaren -->
-      <audio ref="audioPlayer" autoplay controls>
+      <!-- <audio ref="audioPlayer" autoplay controls>
         <source :src="songSrc" type="audio/mpeg" />
         Din webbläsare stöder inte ljudfilen.
-      </audio>
+      </audio> -->
     </div>
   </div>
 </template>
