@@ -40,7 +40,12 @@
       "type": "multiple",
       "difficulty": "Padawan",
       "correctAnswer": "Darth Vader",
-      "allAnswers": ["Grand Moff Tarkin", "Jabba the Hutt", "Emperor Palpatine", "Darth Vader"]
+      "allAnswers": [
+        "Grand Moff Tarkin",
+        "Jabba the Hutt",
+        "Emperor Palpatine",
+        "Darth Vader"
+      ]
     },
     {
       "question": "What is the nickname given to the Millennium Falcon's co-pilot",
@@ -50,18 +55,18 @@
       "allAnswers": ["R2-D2", "Chewie", "C-3PO", "BB-8"]
     },
     {
-      "question": "Which planet is destroyed by the Death Star in the original Star Wars film?",
+      "question": "What is the name of the iconic short green creature?",
       "type": "multiple",
       "difficulty": "Padawan",
-      "correctAnswer": "Alderaan",
-      "allAnswers": ["Naboo", "Endor", "Alderaan", "Jakku"]
+      "correctAnswer": "Yoda",
+      "allAnswers": ["Jar-Jar Binks", "Yoda", "R2-D2", "Chewbacca"]
     },
     {
-      "question": "Who is the leader of the Rebel Alliance in the original Star Wars trilogy?",
+      "question": "Who wears the iconic white helmets?",
       "type": "multiple",
       "difficulty": "Padawan",
-      "correctAnswer": "Princess Leia",
-      "allAnswers": ["Luke Skywalker", "Han Solo", "Princess Leia", "Mon Mothma"]
+      "correctAnswer": "Stormtroopers",
+      "allAnswers": ["Ewoks", "Gungans", "Droids", "Stormtroopes"]
     },
     {
       "question": "Who killed Han Solo?",
@@ -91,14 +96,24 @@
       "type": "multiple",
       "difficulty": "JediKnight",
       "correctAnswer": "Palpatine",
-      "allAnswers": ["Bail Organa", "Palpatine", "Sheev Palpatine", "Jar Jar Binks"]
+      "allAnswers": [
+        "Bail Organa",
+        "Palpatine",
+        "Sheev Palpatine",
+        "Jar Jar Binks"
+      ]
     },
     {
-      "question": "Which character says the iconic line: 'I find your lack of faith disturbing' ?",
+      "question": "Which character says the iconic line: 'I find your lack of faith disturbing'?",
       "type": "multiple",
       "difficulty": "JediKnight",
       "correctAnswer": "Darth Vader",
-      "allAnswers": ["Emperor Palpatine", "Grand Moff Tarkin", "Darth Maul", "Darth Vader"]
+      "allAnswers": [
+        "Emperor Palpatine",
+        "Grand Moff Tarkin",
+        "Darth Maul",
+        "Darth Vader"
+      ]
     },
     {
       "question": "What is the name of the crime syndicate led by Jabba the Hutt?",
@@ -126,14 +141,24 @@
       "type": "multiple",
       "difficulty": "JediKnight",
       "correctAnswer": "Darth Maul",
-      "allAnswers": ["Qui-Gon Jinn", "Obi-Wan Kenobi", "Count Dooku", "Darth Maul"]
+      "allAnswers": [
+        "Qui-Gon Jinn",
+        "Obi-Wan Kenobi",
+        "Count Dooku",
+        "Darth Maul"
+      ]
     },
     {
       "question": "What is the name of the Rebel Alliance's base on the ice planet Hoth?",
       "type": "multiple",
       "difficulty": "JediKnight",
       "correctAnswer": "Echo Base",
-      "allAnswers": ["Base Alpha", "Rebel Outpost 417", "Echo Base", "Blue Squadron Base"]
+      "allAnswers": [
+        "Base Alpha",
+        "Rebel Outpost 417",
+        "Echo Base",
+        "Blue Squadron Base"
+      ]
     },
     {
       "question": "Who initiated Order 66?",
@@ -159,11 +184,11 @@
       "allAnswers": ["Darth Sidious", "Darth Plagueis", "Darth Bane"]
     },
     {
-      "question": "Who is the author of the 'Jedi Path: A Manual for Students of the Force'?",
+      "question": "What is the name of the Mandalorian's ship?",
       "type": "multiple",
       "difficulty": "Grandmaster",
-      "correctAnswer": "Luke Skywalker",
-      "allAnswers": ["Obi-Wan Kenobi", "Yoda", "Luke Skywalker", "Qui-Gon Jinn"]
+      "correctAnswer": "Razor Crest",
+      "allAnswers": ["Millenium Falcon", "Razor Crest", "Death Star", "B-Wing"]
     },
     {
       "question": "Who was the first character to speak in the original 1977 'Star War' film?",
@@ -177,35 +202,50 @@
       "type": "multiple",
       "difficulty": "Grandmaster",
       "correctAnswer": "Lando Calrissian",
-      "allAnswers": ["Lando Calrissian", "Chewbacca", "Qui-Gon Jinn", "Wedge Antilles"]
+      "allAnswers": [
+        "Lando Calrissian",
+        "Chewbacca",
+        "Qui-Gon Jinn",
+        "Wedge Antilles"
+      ]
     },
     {
-      "question": "What is the name of the ancient Sith species that ruled the planet Korriban?",
+      "question": "What is Finn's Stormtrooper number?",
       "type": "multiple",
       "difficulty": "Grandmaster",
-      "correctAnswer": "",
-      "allAnswers": ["Twi'lek", "Zabrak", "Rakata", "Sith Pureblood"]
+      "correctAnswer": "FN-2187",
+      "allAnswers": ["FN-2187", "NF-5271", "FN-3147", "NF-7"]
     },
     {
       "question": "Who was responsible for killing the Jedi Younglings in 'Star Wars: Episode III - Revenge of the Sith'?",
       "type": "multiple",
       "difficulty": "Grandmaster",
       "correctAnswer": "Anakin Skywalker",
-      "allAnswers": ["Darth Vader", "Count Dooku", "General Grievous", "Anakin Skywalker"]
+      "allAnswers": [
+        "Darth Vader",
+        "Count Dooku",
+        "General Grievous",
+        "Anakin Skywalker"
+      ]
     },
     {
-      "question": "Which character is known as the 'Chosen One' destined to bring balance to the Force?",
+      "question": "Who is Anakins rival in the pod race from Episode I?",
       "type": "multiple",
       "difficulty": "Grandmaster",
-      "correctAnswer": "Anakin Skywalker",
-      "allAnswers": ["Luke Skywalker", "Anakin Skywalker", "Rey", "Kylo Ren"]
+      "correctAnswer": "Sebulba",
+      "allAnswers": ["Cad Bane", "Watto", "Sebulba", "Jabba the Hutt"]
     },
     {
       "question": "What is the name of the deadly disease that affects the Clones in the Clone Wars series?",
       "type": "multiple",
       "difficulty": "Grandmaster",
       "correctAnswer": "Clone Syndrome",
-      "allAnswers": ["Clone Syndrome", "Kaminoan Fever", "Clone Sickness", "Clone Trooper Degeneration"]
+      "allAnswers": [
+        "Clone Syndrome",
+        "Kaminoan Fever",
+        "Clone Sickness",
+        "Clone Trooper Degeneration"
+      ]
     },
     {
       "question": "Where do the rebels celebrate the fall of the Empire?",
