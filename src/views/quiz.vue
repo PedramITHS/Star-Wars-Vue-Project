@@ -94,6 +94,7 @@ export default {
       <h1 v-if="hidden" class="text mt-3 d-flex justify-content-center">
         {{ this.timer  + ' seconds remaining'}}
       </h1>
+      <!-- <BButton variant="danger" @click="gameStart" class="text mt-3 d-flex justify-content-center align-self-center" v-if="hidden">Quit Game</BButton> -->
       <h1 class="text mt-3 d-flex justify-content-center" v-if="this.timer === 0">{{ this.gameOver }}</h1>
       <questions class="" v-if="hidden" :chosenDiffi="chosenDiffi"/>
     </b-col>
