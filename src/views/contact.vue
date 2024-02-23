@@ -5,13 +5,13 @@
   >
     <h1 class="contact-header mt-0 mb-3">Contact:</h1>
     <b-container id="main" fluid class="gradient-background">
-      <b-row class="justify-content-center">
+      <!-- <b-row class="justify-content-center">
         <b-col cols="12" md="6">
           <b-button @click="sendEmail" variant="primary" class="mb-3"
             >Send Email</b-button
           >
         </b-col>
-      </b-row>
+      </b-row> -->
       <b-row class="justify-content-center">
         <b-col cols="12" md="6">
           <div class="mt-3" id="inputs">
