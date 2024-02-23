@@ -96,18 +96,17 @@ export default {
             <!-- Visa karaktärer -->
             <b-row v-if="show === 'characters'">
                 <b-col v-for="(character, index) in characters" :key="index" lg="3" mb="4" sm="6" class="mb-4">
-                    <b-card title="Character" tag="article"
-                        style="max-width: 20rem;" class="mb-2">
+                    <b-card title="Character" tag="article" style="max-width: 20rem;" class="mb-2">
                         <b-card-text>
                             <p>{{ character.name }}</p>
                         </b-card-text>
                         <div>
-                            <b-button @click="modals[character.name] = !modals[character.name]">Launch demo modal</b-button>
+                            <b-button @click="modals[character.name] = !modals[character.name]">Learn More</b-button>
                             <b-modal v-model="modals[character.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ character.name }}</h5>
-                                <p class="my-4">{{ "Height: " + character.height + " cm"}}</p>
-                                <p class="my-4">{{ "Hair color: " + character.hair_color}}</p>
-                                <p class="my-4">{{ "Gender: " + character.gender}}</p>
+                                <p class="my-4">{{ "Height: " + character.height + " cm" }}</p>
+                                <p class="my-4">{{ "Hair color: " + character.hair_color }}</p>
+                                <p class="my-4">{{ "Gender: " + character.gender }}</p>
 
                             </b-modal>
                         </div>
@@ -122,11 +121,11 @@ export default {
                             <p>{{ planet.name }}</p>
                         </b-card-text>
                         <div>
-                            <b-button @click="modals[planet.name] = !modals[planet.name]">Launch demo modal</b-button>
+                            <b-button @click="modals[planet.name] = !modals[planet.name]">Learn More</b-button>
                             <b-modal v-model="modals[planet.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ planet.name }}</h5>
-                                <p class="my-4">{{ "Population: " + planet.population}}</p>
-                                <p class="my-4">{{ "Terrain: " + planet.terrain}}</p>
+                                <p class="my-4">{{ "Population: " + planet.population }}</p>
+                                <p class="my-4">{{ "Terrain: " + planet.terrain }}</p>
 
                             </b-modal>
                         </div>
@@ -142,11 +141,11 @@ export default {
                             <p>{{ starship.name }}</p>
                         </b-card-text>
                         <div>
-                            <b-button @click="modals[starship.name] = !modals[starship.name]">Launch demo modal</b-button>
+                            <b-button @click="modals[starship.name] = !modals[starship.name]">Learn More</b-button>
                             <b-modal v-model="modals[starship.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ starship.name }}</h5>
-                                <p class="my-4">{{ starship.length}}</p>
-                                <p class="my-4">{{ "crew: " + starship.crew}}</p>
+                                <p class="my-4">{{ "Length: " + starship.length }}</p>
+                                <p class="my-4">{{ "Crew: " + starship.crew }}</p>
 
                             </b-modal>
                         </div>
@@ -161,11 +160,11 @@ export default {
                             <p>{{ species.name }}</p>
                         </b-card-text>
                         <div>
-                            <b-button @click="modals[species.name] = !modals[species.name]">Launch demo modal</b-button>
+                            <b-button @click="modals[species.name] = !modals[species.name]">Learn More</b-button>
                             <b-modal v-model="modals[species.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ species.name }}</h5>
-                                <p class="my-4">{{ "Hair colors: " + species.hair_colors}}</p>
-                                <p class="my-4">{{ "Lifespan: " + species.average_lifespan + " years"}}</p>
+                                <p class="my-4">{{ "Hair colors: " + species.hair_colors }}</p>
+                                <p class="my-4">{{ "Lifespan: " + species.average_lifespan + " years" }}</p>
 
                             </b-modal>
                         </div>
@@ -181,11 +180,11 @@ export default {
                             <p>{{ film.title }}</p>
                         </b-card-text>
                         <div>
-                            <b-button @click="modals[film.name] = !modals[film.name]">Launch demo modal</b-button>
+                            <b-button @click="modals[film.name] = !modals[film.name]">Learn More</b-button>
                             <b-modal v-model="modals[film.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ film.name }}</h5>
-                                <p class="my-4">{{ "Episode: " + film.episode_id}}</p>
-                                <p class="my-4">{{ "Release date: " + film.release_date}}</p>
+                                <p class="my-4">{{ "Episode: " + film.episode_id }}</p>
+                                <p class="my-4">{{ "Release date: " + film.release_date }}</p>
 
                             </b-modal>
                         </div>
