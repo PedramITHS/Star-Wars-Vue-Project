@@ -55,7 +55,8 @@ h1 {
   padding: 10px;
   color: white;
   margin: auto;
-  padding-top: 150px;
+  padding-top: 100px;
+  text-align: center;
 }
 </style>
 
