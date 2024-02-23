@@ -12,7 +12,8 @@ export default {
       runOnce: false,
       interval: null,
       chosenDiffi: '',
-      timer: 120
+      timer: 120,
+      gameOver: "Times up !"
     };
   },
 
@@ -32,6 +33,7 @@ export default {
           --this.timer;
         } else {
           clearInterval(this.interval);
+          this.hidden = !this.hidden
         }
       }, 1000);
       }
@@ -89,7 +91,10 @@ export default {
             <b-button id="Grandmaster" @click="gameStart('Grandmaster')" variant="danger">Grandmaster</b-button>
     </b-col>
     <b-col>
-      <h1 v-if="hidden" class="text mt-3 d-flex justify-content-center">{{ this.timer  + ' seconds remaining'}}</h1>
+      <h1 v-if="hidden" class="text mt-3 d-flex justify-content-center">
+        {{ this.timer  + ' seconds remaining'}}
+      </h1>
+      <h1 class="text mt-3 d-flex justify-content-center" v-if="this.timer === 0">{{ this.gameOver }}</h1>
       <questions class="" v-if="hidden" :chosenDiffi="chosenDiffi"/>
     </b-col>
   </b-row>
