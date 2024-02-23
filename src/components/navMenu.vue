@@ -2,14 +2,14 @@
 import { BNav } from "bootstrap-vue-next";
 import { RouterLink } from "vue-router";
 
-import songSrc from "/assets/star.mp3";
+import songSrc from "/assets/Star Wars Cantina Band 1 2.mp3";
 
 export default {
   data() {
     return {
       button: false,
       songSrc: songSrc,
-      isPlaying: true, // musiken spelas öppning sida
+      isPlaying: false, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
     };
   },
@@ -17,31 +17,41 @@ export default {
     toggle() {
       this.button = !this.button;
     },
-    pauseAudio() {
-      console.log("pauseAudio method called");
-      this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
-      this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
-    },
+    // pauseAudio() {
+    //   console.log("pauseAudio method called");
+    //   this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
+    //   this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
+    // },
     // showPlayer() {
     //   this.playerVisible = true;
     // },
+
+    toggleAudio() {
+      const audioPlayer = this.$refs.audioPlayer;
+      if (this.isPlaying) {
+        audioPlayer.pause();
+      } else {
+        audioPlayer.play();
+      }
+      this.isPlaying = !this.isPlaying;
+    },
+
     hidePlayer() {
       this.playerVisible = false;
     },
   },
 
   components: { BNav, songSrc },
+  mounted() {
+    const audioPlayer = this.$refs.audioPlayer;
+    audioPlayer.play();
+  },
 };
 </script>
 
 <style scoped>
-
-
-
 #desk_menu {
   background-color: #0d0d0d;
-
-
 }
 .navitem {
   font-family: Blanka, sans-serif;
@@ -114,13 +124,13 @@ a {
     <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav type="dark" v-if="button">
-          <BNavItem class="navitem" to="/">Home</BNavItem>
-          <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
-          <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
-          <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
-          <BNavItem class="navitem" to="Contact">Contact</BNavItem>
-          <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
-          <!-- <BNavItem to="Music">musik</BNavItem> -->
+        <BNavItem class="navitem" to="/">Home</BNavItem>
+        <BNavItem class="navitem" to="newExplore">Explore</BNavItem>
+        <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
+        <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
+        <BNavItem class="navitem" to="Contact">Contact</BNavItem>
+        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
+        <!-- <BNavItem to="Music">musik</BNavItem> -->
       </BNav>
     </Transition>
 
@@ -133,27 +143,33 @@ a {
     </router-link>
 
     <div>
-<div>
-        <!-- <img
-          src="/assets/Speaker.png"
-          style="align-self: auto"
-
-        /> -->
-
-        <!-- Ljudspelaren -->
-
-        <audio ref="audioPlayer" autoplay controls>
-          <source :src="songSrc" type="audio/mpeg" />
-          Din webbläsare stöder inte ljudfilen.
-        </audio>
-      </div>
+      <img
+        v-if="!isPlaying"
+        @click="toggleAudio"
+        src="/assets/can_play.jpg"
+        style="border-radius: 50%; height: 60px; width: 60px"
+        alt="Play Button"
+      />
+      <img
+        v-else
+        @click="toggleAudio"
+        src="/assets/cantina_pic.png"
+        style="height: 50px"
+        alt="Pause Button"
+      />
+      <audio ref="audioPlayer" loop autoplay>
+        <source
+          src="/assets/Star Wars Cantina Band 1 2.mp3"
+          type="audio/mpeg"
+        />
+        Din webbläsare stöder inte ljudfilen.
+      </audio>
 
       <!-- Ljudspelaren -->
       <!-- <audio ref="audioPlayer" autoplay controls>
         <source :src="songSrc" type="audio/mpeg" />
         Din webbläsare stöder inte ljudfilen.
       </audio> -->
-
     </div>
   </div>
 </template>
