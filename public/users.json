@@ -1,0 +1,64 @@
+{
+    "Users": [
+      {
+        "placement": "1st",
+        "name": "Beba Fott",
+        "imageURL": "assets/avatars/av1.png",
+        "score": 5600
+      },
+      {
+        "placement": "2nd",
+        "name": "Tharin",
+        "imageURL": "assets/avatars/av2.png",
+        "score": 3400
+      },
+      {
+        "placement": "3rd",
+        "name": "Voidwalker",
+        "imageURL": "assets/avatars/av3.png",
+        "score": 3000
+      },
+      {
+        "placement": "4th",
+        "name": "Zorik Vex",
+        "imageURL": "assets/avatars/av4.png",
+        "score": 2900
+      },
+      {
+        "placement": "5th",
+        "name": "Korin Orion",
+        "imageURL": "assets/avatars/av5.png",
+        "score": 2500
+      },
+      {
+        "placement": "6th",
+        "name": "Thorne Ravos",
+        "imageURL": "assets/avatars/av6.png",
+        "score": 2200
+      },
+      {
+        "placement": "7th",
+        "name": " Lira Kael",
+        "imageURL": "assets/avatars/av7.png",
+        "score": 2100
+      },
+      {
+        "placement": "8th",
+        "name": "Rexus",
+        "imageURL": "assets/avatars/av8.png",
+        "score": 1750
+      },
+      {
+        "placement": "9th",
+        "name": "Elara Kylo",
+        "imageURL": "assets/avatars/av9.png",
+        "score": 1260
+      },
+      {
+        "placement": "10th",
+        "name": "Jaxx Vardos",
+        "imageURL": "assets/avatars/av10.png",
+        "score": 940
+      }
+    ]
+  }
