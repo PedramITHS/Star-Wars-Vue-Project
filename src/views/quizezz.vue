@@ -4,11 +4,11 @@ export default {
     fetch("/questions.json")
       .then((resp) => resp.json())
       .then((data) => {
-        data.Padawan.forEach((question) => {
+        data[this.chosenDiffi].forEach((question) => {
           this.shuffle(question.allAnswers);
         });
         let qs = [];
-        qs = qs.concat(data.Padawan);
+        qs = qs.concat(data[this.chosenDiffi]);
         this.questions = qs;
         this.currentQuest = this.questions[0];
         console.log(this.questions);
@@ -34,17 +34,18 @@ export default {
           setTimeout(() => {
             this.chosen = "";
             this.nextQuest();
-          }, 1500);
+          }, 1900);
         } else {
           console.log("You chose...poorly");
           this.chosen = "Incorrect !";
           setTimeout(() => {
             this.chosen = "";
             this.nextQuest();
-          }, 1500);
+          }, 1900);
         }
       }
     },
+
     nextQuest() {
       if (this.currentQuestIndex < this.questions.length - 1) {
         this.currentQuestIndex++;
@@ -52,6 +53,10 @@ export default {
         this.selected = false;
       }
     },
+  },
+
+  props: {
+    chosenDiffi: String
   },
 
   data() {
@@ -62,20 +67,25 @@ export default {
       currentQuestIndex: 0,
       chosen: "",
       score: 0,
+      timer: 90
     };
   },
 };
 </script>
 
 <style scoped>
+
 #box {
   border: 2px solid blue;
   border-radius: 20px;
+  width: 100px;
+  margin-bottom: 3000px;
+  text-align: center;
 }
 
 button {
-  height: 50px;
-  margin: 10px;
+  height: 30px;
+  margin: 4px;
   width: 200px;
   border-radius: 20px;
 }
@@ -103,8 +113,9 @@ button {
       <BCol
         id="box"
         class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
+        style=""
       >
-        <h1>{{ currentQuest.question }}</h1>
+        <h2>{{ currentQuest.question }}</h2>
         <button
           v-for="a in currentQuest.allAnswers"
           @click="check(a, currentQuest.correctAnswer)"
