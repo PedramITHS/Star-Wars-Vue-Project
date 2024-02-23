@@ -95,6 +95,16 @@ a {
   transform: translateY(-3px);
 }
 
+#music-player {
+  margin-top: auto;
+  margin-bottom: auto;
+  transition: transform 0.1s ease-in-out;
+}
+
+#music-player:hover {
+  transform: translateY(-3px);
+}
+
 /* .menuFade-leave-from,
 .menuFade-leave-to {
     opacity: 1;
@@ -142,7 +152,7 @@ a {
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
-    <div>
+    <div id="music-player">
       <img
         v-if="!isPlaying"
         @click="toggleAudio"
