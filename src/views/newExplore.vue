@@ -104,16 +104,14 @@ export default {
                             <b-button @click="modals[character.name] = !modals[character.name]">Learn More</b-button>
                             <b-modal v-model="modals[character.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ character.name }}</h5>
-<<<<<<< HEAD
+
                                 <p class="my-4">{{ "Height: " + character.height + " cm" }}</p>
                                 <p class="my-4">{{ "Hair color: " + character.hair_color }}</p>
                                 <p class="my-4">{{ "Gender: " + character.gender }}</p>
 
-=======
-                                <p class="my-4">{{ "Height: " + character.height + " cm"}}</p>
-                                <p class="my-4">{{ "Hair color: " + character.hair_color}}</p>
-                                <p class="my-4">{{ "Gender: " + character.gender}}</p>
->>>>>>> 1285ed22835b541369abd6ed23bc449176be6b22
+
+
+
                             </b-modal>
                         </div>
                     </b-card>
