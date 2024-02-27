@@ -77,7 +77,14 @@ export default {
   <div v-if="currentQuest !== null">
     <BContainer>
       <h1 class="text mt-3 d-flex justify-content-center">
-        {{ "Current score: " + this.score }}
+        {{
+          "Current score: " +
+          this.score +
+          " | " +
+          (this.currentQuestIndex + 1) +
+          "/" +
+          this.questions.length
+        }}
       </h1>
       <BCol
         id="box"

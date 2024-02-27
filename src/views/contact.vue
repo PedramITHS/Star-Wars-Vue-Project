@@ -22,7 +22,7 @@
                               type="email"
                               v-model="senderEmail"
                               class="form-style"
-                              placeholder="Your Email"
+                              placeholder="Email"
                               id="sender-email"
                               autocomplete="off"
                             />
@@ -30,10 +30,10 @@
                           </div>
                           <div class="form-group mt-2">
                             <input
-                              type="password"
+                              type="subject"
                               v-model="senderPassword"
                               class="form-style"
-                              placeholder="Your Email Password"
+                              placeholder="Topic"
                               id="sender-password"
                               autocomplete="off"
                             />
@@ -48,9 +48,13 @@
                             ></textarea>
                             <i class="input-icon uil uil-lock-alt"></i>
                           </div>
-                          <a href="#" class="btn mt-4" @click="sendEmail"
+                          <a
+                            href="#"
+                            class="btn mt-4"
+                            @click.prevent="sendEmail"
                             >Send</a
                           >
+                          <!-- @click.prevent används för att inte skicka tillbaka användaren till första sidan när man klickar ok utan man stannar på contact sidan. -->
                         </div>
                       </div>
                     </div>
@@ -70,6 +74,41 @@
 </template>
 
 <script>
+//En simulation av att man skickar ett mail samt bekräftelse eller felmeddelande
+export default {
+  data() {
+    return {
+      senderEmail: "",
+      senderPassword: "",
+      message: "",
+    };
+  },
+  methods: {
+    sendEmail() {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (
+        this.senderEmail &&
+        this.senderPassword &&
+        this.message &&
+        emailPattern.test(this.senderEmail)
+      ) {
+        alert("Your E-mail has been sent\n\n" + this.message);
+        //Alert ruta som kommer upp när man skickat samt ett meddelande om vad man skickade
+        this.senderEmail = "";
+        this.senderPassword = "";
+        this.message = "";
+      } else {
+        if (!this.senderEmail.match(emailPattern)) {
+          alert("Please enter a valid email address");
+        } else {
+          alert("Please fill in all fields");
+        }
+        //Här varnas det om man försöker skicka utan att ha fyllt i alla fält eller en ogiltig mailadress
+      }
+    },
+  },
+};
 // import nodemailer from "nodemailer";
 
 // export default {
@@ -134,6 +173,27 @@
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+}
+
+.form-group input::placeholder {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-group textarea::placeholder {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-style {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-group textarea,
+.form-group input[type="text"] {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
 .contact-header {
