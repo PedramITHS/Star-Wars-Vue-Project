@@ -56,7 +56,7 @@ export default {
   },
 
   props: {
-    chosenDiffi: String
+    chosenDiffi: String,
   },
 
   data() {
@@ -67,42 +67,11 @@ export default {
       currentQuestIndex: 0,
       chosen: "",
       score: 0,
-      timer: 90
+      timer: 90,
     };
   },
 };
 </script>
-
-<style scoped>
-
-#box {
-  border: 2px solid blue;
-  border-radius: 20px;
-  width: 100px;
-  margin-bottom: 3000px;
-  text-align: center;
-}
-
-button {
-  height: 30px;
-  margin: 4px;
-  width: 200px;
-  border-radius: 20px;
-}
-
-@media screen and (max-width: 390px) {
-  button {
-    width: 150px;
-    color: brown;
-  }
-}
-
-@font-face {
-  font-family: "Blanka";
-  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
-    format("opentype");
-}
-</style>
 
 <template>
   <div v-if="currentQuest !== null">
@@ -120,11 +89,56 @@ button {
           v-for="a in currentQuest.allAnswers"
           @click="check(a, currentQuest.correctAnswer)"
           :disabled="selected"
+          :class="{
+            'btn-correct': selected && a === currentQuest.correctAnswer,
+            'btn-incorrect': selected && a !== currentQuest.correctAnswer,
+          }"
+          class="btn-answer"
         >
           {{ a }}
         </button>
-        <h4>{{ "The answer is: " + this.chosen }}</h4>
+        <h4>{{ "Your answer: " + this.chosen }}</h4>
+        <h4 v-if="selected">
+          {{ "Correct answer: " + currentQuest.correctAnswer }}
+        </h4>
       </BCol>
     </BContainer>
   </div>
 </template>
+
+<style scoped>
+#box {
+  border: 2px solid blue;
+  border-radius: 20px;
+  width: 100px;
+  margin-bottom: 3000px;
+  text-align: center;
+}
+
+button {
+  height: 30px;
+  margin: 4px;
+  width: 200px;
+  border-radius: 20px;
+  color: black;
+}
+
+.btn-correct {
+  background-color: green;
+}
+
+.btn-incorrect {
+  background-color: red;
+}
+
+.btn-answer:disabled {
+  color: black;
+}
+
+@media screen and (max-width: 390px) {
+  button {
+    width: 150px;
+    color: brown;
+  }
+}
+</style>
