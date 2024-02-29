@@ -124,7 +124,7 @@ export default {
   border: 2px solid black;
   border-radius: 20px;
   width: 400px !important;
-  height: 350px;
+  height: 400px;
   margin-bottom: 3000px;
   text-align: center;
   background-color: #151313;
