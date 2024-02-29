@@ -8,23 +8,39 @@ export default {
 
   data() {
     return {
+      bgColor: "",
       hidden: false,
       runOnce: false,
       interval: null,
       chosenDiffi: "",
+      BGcolor: "",
       timer: 120,
       gameOver: "Times up !",
+      myKey: 0,
       audio: null,
       musicPlaying: false,
     };
   },
 
   methods: {
-    gameStart(diffi) {
+
+    // Starta quiz efter vald svårighetgrad, "timer" är förinställd på 120, ska starta om till samma siffra vid ändring av svårighetsgrad, visa och dölj frågor med "hidden", men detta är inte en så bra lösninga med att man måste klicka två gånger för att visa frågorna.
+
+    // refactor(?) krävs.
+
+    // "diffi" är vår parameter, en sträng som ändras vi knapp tryck efter vald svårighetsgrad. Variabeln "chosenDiffi" värde blir strängen som valt vid knapptryck. Och denna är sedan tillgänglig som en prop till en annan komponent (quizezz) som i sin tur ändrar värdet och placeras dynamiskt med [] inuti en fetch.
+
+    gameStart(diffi, color) {
       this.timer = 120;
-      (this.chosenDiffi = diffi), (this.hidden = !this.hidden);
+      this.chosenDiffi = diffi,
+      this.bgColor = color,
+      console.log(this.bgColor),
+      (this.hidden = true);
+      this.myKey += 1;
       this.countdown();
     },
+
+    // Våran nedräknings funktion. "runOnce" är false så "!runOnce" blir true, "interval" blir en setInterval. så länge timern är större än 0, fortsätt räkna ned. När den når noll, dölj frågorna (får ändra på detta). Jag tror det är här problemet uppstår, runOnce förblir 'true' vilket leder till att nedräkningen inte startar om på nytt när det väl har nått 0.
 
     countdown() {
       if (!this.runOnce) {
@@ -37,8 +53,13 @@ export default {
               // lägg till musik när det är 30 kvar
               this.playCountDownMusic();
             }
-          } else {
+          }
+
+          // clearInterval för att rensa nedräkningen, hade tidigare ett problem där nedräkningen fortsatte utan att ta hänsyn till att nya frågor från ett annat svårighetsgrad kanske väljs.
+
+          else {
             clearInterval(this.interval);
+            this.runOnce = false;
             this.hidden = !this.hidden;
             this.stopMusic();
           }
@@ -102,39 +123,58 @@ export default {
           memorize the names of iconic heroes and villains.
         </p>
         <h1>Choose Your Difficulty</h1>
-        <b-button id="Padawan" @click="gameStart('Padawan')" variant="success"
-          >Padawan</b-button
+
+        <b-button
+        id="Padawan"
+         @click="gameStart('Padawan', 'green')"
+         variant="outline-success"
+        >Padawan</b-button
         >
         <b-button
           :id="box"
           id="JediKnight"
-          @click="gameStart('JediKnight')"
-          variant="outline-primary"
+          @click="gameStart('JediKnight', 'blue')"
+          variant="outline-info"
           class="m-2"
           >Jedi Knight</b-button
         >
         <b-button
           id="Grandmaster"
-          @click="gameStart('Grandmaster')"
-          variant="danger"
+          @click="gameStart('Grandmaster', 'red')"
+          variant="outline-danger"
           >Grandmaster</b-button
+        >
+        <b-button
+          id="Grandmaster"
+          @click="this.hidden = false"
+          variant="outline-warning"
+          class="m-2"
+          >Quit game</b-button
         >
       </b-col>
       <b-col>
         <h1 v-if="hidden" class="text mt-3 d-flex justify-content-center">
           {{ this.timer + " seconds remaining" }}
         </h1>
-        <!-- <BButton variant="danger" @click="gameStart" class="text mt-3 d-flex justify-content-center align-self-center" v-if="hidden">Quit Game</BButton> -->
         <h1
           class="text mt-3 d-flex justify-content-center"
           v-if="this.timer === 0"
         >
           {{ this.gameOver }}
         </h1>
-        <questions class="" v-if="hidden" :chosenDiffi="chosenDiffi" />
+
+        <!-- En lösning till att "ladda om" komponenten utan att behöva dölja och visa den med två klick på samma knapp för att byta ut frågorna som dyker per svårighetsgrad. Med ett så kallat "key changing technique". -->
+
+        <questions class="" v-if="hidden" :chosenDiffi="chosenDiffi"  :bgColor="bgColor" :key="myKey"/>
       </b-col>
     </b-row>
   </b-container>
+
+
+
+<!-- Tidigare bootstrap rows och columns, min ögon hade lite för svårt att tyda vart något började och slutade, bestämde då att korta ned det till en row och en column, omslutna av ett b-container. -->
+
+
 
   <!-- <b-container class="d-flex flex-align-row" fluid>
     <b-row>
@@ -184,4 +224,6 @@ export default {
       </b-col>
     </b-row>
   </b-container> -->
+
+
 </template>
