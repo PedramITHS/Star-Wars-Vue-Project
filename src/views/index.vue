@@ -193,7 +193,7 @@ h1 {
 
   <div class="stage3">
     <b-col class="bg-block-three" cols="8" sm="5">
-      <h1 style="margin-top: 250px">About Us</h1>
+      <h1 style="margin-top: 200px">About Us</h1>
       <p>
         Four frontend students unite their skills to construct an immersive Star
         Wars website. Armed with HTML, CSS, and JavaScript proficiency, they
