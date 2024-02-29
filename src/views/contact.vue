@@ -3,8 +3,10 @@
     id="page"
     class="bg-black d-flex flex-column align-items-center justify-content-center"
   >
-    <h1 class="contact-header mt-0 mb-3">Contact:</h1>
     <b-container id="main" fluid class="gradient-background">
+      <h1 style="text-align: center" class="contact-header mt-0 mb-3">
+        Contact:
+      </h1>
       <div style="font-family: Blanka, sans-serif" class="section">
         <div class="container">
           <div class="row full-height justify-content-center">
@@ -168,7 +170,7 @@ export default {
 <style scoped>
 .gradient-background {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("assets/contact.jpeg");
+    url("assets/background-contact.jpeg");
   color: white;
   min-height: 100vh;
   background-size: cover;
@@ -220,9 +222,11 @@ p {
   font-size: 14px;
   line-height: 1.7;
 }
+
 h4 {
   font-weight: 600;
 }
+
 h6 span {
   padding: 0 20px;
   text-transform: uppercase;

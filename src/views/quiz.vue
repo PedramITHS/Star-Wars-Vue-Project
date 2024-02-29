@@ -1,11 +1,11 @@
 <script>
 import questions from "./quizezz.vue";
-
+// import * as Tone from "tone";
 export default {
   components: {
     questions,
   },
-
+  computed() {},
   data() {
     return {
       bgColor: "",
@@ -19,6 +19,8 @@ export default {
       myKey: 0,
       audio: null,
       musicPlaying: false,
+      music2Playing: false,
+      // musicTimer: 120
     };
   },
 
@@ -43,21 +45,42 @@ export default {
     // Våran nedräknings funktion. "runOnce" är false så "!runOnce" blir true, "interval" blir en setInterval. så länge timern är större än 0, fortsätt räkna ned. När den når noll, dölj frågorna (får ändra på detta). Jag tror det är här problemet uppstår, runOnce förblir 'true' vilket leder till att nedräkningen inte startar om på nytt när det väl har nått 0.
 
     countdown() {
+      console.log(this.timer);
       if (!this.runOnce) {
         this.runOnce = true;
         this.interval = setInterval(() => {
           if (this.timer > 0) {
             --this.timer;
 
-            if (this.timer <= 30) {
-              // lägg till musik när det är 30 kvar
+            // this.timer === 118
+            //   ? this.playCountDownMusic()
+            //   : this.timer === 100 && this.timer > 0
+            //     ? this.playCountDownMusic20()
+            //     : null;
+            if (this.timer <= 30 && this.timer > 20) {
+              // console.log(musicPlaying);
+              console.log("spela vanlig musik");
+              console.log(`kolla om  > 100 ${this.timer}`);
+              // lägg till musik när det är 100 kvar
               this.playCountDownMusic();
             }
-          }
-
-          // clearInterval för att rensa nedräkningen, hade tidigare ett problem där nedräkningen fortsatte utan att ta hänsyn till att nya frågor från ett annat svårighetsgrad kanske väljs.
-
-          else {
+            if (this.timer <= 20 && this.musicPlaying) {
+              this.stopMusic();
+              console.log("musiken är pausad");
+              this.musicPlaying = false;
+              // this.music2Playing = true;
+            }
+            if (this.timer <= 20 && this.audio.playbackRate !== 1.5) {
+              console.log("play20");
+              this.playCountDownMusic20();
+            }
+            // && !this.musicStarted) {
+            //   console.log(`if  <= 100 ${this.timer}`);
+            //   this.stopMusic();
+            //   console.log("musiken stoppas");
+            //   this.playCountDownMusic20();
+            // }
+          } else {
             clearInterval(this.interval);
             this.runOnce = false;
             this.hidden = !this.hidden;
@@ -70,8 +93,32 @@ export default {
     playCountDownMusic() {
       if (!this.musicPlaying) {
         this.audio = new Audio("/assets/countdown.mp3");
+        this.audio.playbackRate = 1.0;
         this.audio.play();
         this.musicPlaying = true;
+        console.log("Musiken spelas");
+        console.log(this.timer);
+      }
+    },
+    playCountDownMusic20() {
+      console.log("starta 20");
+      if (!this.musicPlaying && this.timer < 20) {
+        // if (this.audio) {
+        //   this.audio.pause();
+        // }
+
+        this.audio = new Audio("/assets/countdown.mp3");
+        this.audio.playbackRate = 1.5;
+        this.audio.play();
+        this.music2Playing = true;
+        console.log("Musiken spelas snabbare");
+
+        // const player = new Tone.Player("/assets/countdown.mp3").toDestination();
+        // player.set({ playbackRate: 1.5 });
+        // player.playbackRate = 1.5;
+        // player.start();
+
+        // this.audio.play((playbackspeed = 1.5));
       }
     },
 
@@ -80,6 +127,7 @@ export default {
         this.audio.pause();
         this.audio.currentTime = 0;
         this.musicPlaying = false;
+        console.log("Musiken pausas");
       }
     },
   },
@@ -88,7 +136,7 @@ export default {
 
 <style scoped>
 .bg-block-one {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
 
   background-repeat: no-repeat;
