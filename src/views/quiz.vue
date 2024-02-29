@@ -119,7 +119,7 @@ export default {
 
 <style scoped>
 .bg-block-one {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
 
   background-repeat: no-repeat;

@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.16.5",
+    "nodemailer": "^6.9.10",
     "pinia": "^2.1.7",
     "tone": "^14.7.77",
     "vue": "^3.3.11",

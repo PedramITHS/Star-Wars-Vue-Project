@@ -3,120 +3,467 @@
     id="page"
     class="bg-black d-flex flex-column align-items-center justify-content-center"
   >
-    <h1 class="contact-header mt-0 mb-3">Contact:</h1>
     <b-container id="main" fluid class="gradient-background">
-      <!-- <b-row class="justify-content-center">
-        <b-col cols="12" md="6">
-          <b-button @click="sendEmail" variant="primary" class="mb-3"
-            >Send Email</b-button
-          >
-        </b-col>
-      </b-row> -->
-      <b-row class="justify-content-center">
-        <b-col cols="12" md="6">
-          <div class="mt-3" id="inputs">
-            <b-form-input
-              v-model="name"
-              placeholder="Name"
-              autocomplete="off"
-              class="custom-input mb-3"
-            />
-            <b-form-input
-              type="email"
-              v-model="email"
-              placeholder="Email"
-              autocomplete="off"
-              class="custom-input mb-3"
-            />
-            <b-form-textarea
-              v-model="message"
-              placeholder="Message"
-              autocomplete="off"
-              rows="4"
-              class="custom-input mb-3"
-            ></b-form-textarea>
+      <h1 style="text-align: center" class="contact-header mt-0 mb-3">
+        Contact:
+      </h1>
+      <div style="font-family: Blanka, sans-serif" class="section">
+        <div class="container">
+          <div class="row full-height justify-content-center">
+            <div class="col-12 text-center align-self-center py-5">
+              <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                <label for="reg-log"></label>
+                <div class="card-3d-wrap mx-auto">
+                  <div class="card-3d-wrapper">
+                    <div class="card-front">
+                      <div class="center-wrap">
+                        <div class="section text-center">
+                          <h4 style="color: white" class="mb-4 pb-3">Email</h4>
+                          <div class="form-group">
+                            <input
+                              type="email"
+                              v-model="senderEmail"
+                              class="form-style"
+                              placeholder="Email"
+                              id="sender-email"
+                              autocomplete="off"
+                            />
+                            <i class="input-icon uil uil-at"></i>
+                          </div>
+                          <div class="form-group mt-2">
+                            <input
+                              type="subject"
+                              v-model="senderPassword"
+                              class="form-style"
+                              placeholder="Topic"
+                              id="sender-password"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <div class="form-group mt-2">
+                            <textarea
+                              v-model="message"
+                              class="form-style"
+                              placeholder="Message"
+                              id="message"
+                              autocomplete="off"
+                            ></textarea>
+                            <i class="input-icon uil uil-lock-alt"></i>
+                          </div>
+                          <a
+                            href="#"
+                            class="btn mt-4"
+                            @click.prevent="sendEmail"
+                            >Send</a
+                          >
+                          <!-- @click.prevent används för att inte skicka tillbaka användaren till första sidan när man klickar ok utan man stannar på contact sidan. -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </b-col>
-      </b-row>
-      <b-row class="justify-content-center">
-        <b-col cols="12" md="6" class="text-center">
-          <b-button @click="sendEmail" variant="primary" class="mb-3"
-            >Send Email</b-button
-          >
-        </b-col>
-      </b-row>
+        </div>
+      </div>
+      <h1 style="text-align: center">Creators:</h1>
+      <p style="text-align: center; font-size: 25px">
+        Oliver Käll, Elly Olivebring, Pedram Hejazi Kenari, Jonas Hultberg
+      </p>
     </b-container>
   </div>
 </template>
 
 <script>
+//En simulation av att man skickar ett mail samt bekräftelse eller felmeddelande
 export default {
   data() {
     return {
-      name: "",
-      email: "",
+      senderEmail: "",
+      senderPassword: "",
+      message: "",
     };
   },
   methods: {
     sendEmail() {
-      // Här kan du implementera logiken för att skicka e-post
-      // Använd `this.name` och `this.email` för att få användarinputen
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (
+        this.senderEmail &&
+        this.senderPassword &&
+        this.message &&
+        emailPattern.test(this.senderEmail)
+      ) {
+        alert("Your E-mail has been sent\n\n" + this.message);
+        //Alert ruta som kommer upp när man skickat samt ett meddelande om vad man skickade
+        this.senderEmail = "";
+        this.senderPassword = "";
+        this.message = "";
+      } else {
+        if (!this.senderEmail.match(emailPattern)) {
+          alert("Please enter a valid email address");
+        } else {
+          alert("Please fill in all fields");
+        }
+        //Här varnas det om man försöker skicka utan att ha fyllt i alla fält eller en ogiltig mailadress
+      }
     },
   },
 };
+// import nodemailer from "nodemailer";
+
+// export default {
+//   data() {
+//     return {
+//       senderEmail: "",
+//       senderPassword: "",
+//       message: "",
+//     };
+//   },
+//   methods: {
+//     sendEmail() {
+//       let transporter = nodemailer.createTransport({
+//         service: "gmail",
+//         auth: {
+//           user: this.senderEmail,
+//           pass: this.senderPassword,
+//         },
+//       });
+
+//       let mailOptions = {
+//         from: this.senderEmail,
+//         to: "oliver.kall2001@gmail.com",
+//         subject: "New message from contact page",
+//         text: this.message,
+//       };
+
+//       transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           console.log("Email sent: " + info.response);
+//           this.senderEmail = "";
+//           this.senderPassword = "";
+//           this.message = "";
+//         }
+//       });
+//     },
+//   },
+// };
+// export default {
+//   data() {
+//     return {
+//       name: "",
+//       email: "",
+//     };
+//   },
+//   methods: {
+//     sendEmail() {
+//       // Här kan du implementera logiken för att skicka e-post
+//       // Använd `this.name` och `this.email` för att få användarinputen
+//     },
+//   },
+// };
 </script>
 
 <style scoped>
 .gradient-background {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
-    url("assets/contact.jpeg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("assets/background-contact.jpeg");
   color: white;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
 }
 
+.form-group input::placeholder {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-group textarea::placeholder {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-style {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.form-group textarea,
+.form-group input[type="text"] {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
 .contact-header {
   color: white;
 }
 
-.custom-input {
-  border: 1px solid red; /* Ändra färgen på gränsen för input-fältet */
-  border-radius: 10px; /* Lägg till en rundad kant på input-fältet */
-  padding: 10px; /* Lägg till padding för att göra fälten längre */
-  margin-bottom: 10px; /* Lägg till ett mellanrum mellan input-fälten */
-}
-
-.custom-button {
-  background-color: red; /* Ändra bakgrundsfärgen på knappen */
-  border-color: red; /* Ändra färgen på knappens kant */
-  border-radius: 5px; /* Lägg till en rundad kant på knappen */
-}
-
-.bg-black {
-  background-color: black;
+@font-face {
+  font-family: "Blanka";
+  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
+    format("opentype");
 }
 
 body {
   font-weight: 300;
   font-size: 15px;
   line-height: 1.7;
-  color: #ffffff;
-  /* background-image: url("assets/contact.jpeg"); */
-  /* background-color: #1f2029; */
+  color: #c4c3ca;
+  background-color: #1f2029;
   overflow-x: hidden;
 }
-h1 {
-  color: blue;
+
+p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-h2 {
+h4 {
+  font-weight: 600;
+}
+
+h6 span {
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.section {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.full-height {
+  min-height: 0vh;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
+  position: relative;
+  display: block;
   text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #2e67f8;
 }
-#inputs {
-  background-color: rgb(140, 17, 17);
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  background-color: #2e67f8;
+  font-family: "unicons";
+  content: "\eb4f";
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
 }
-#page {
-  background-color: transparent;
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 400px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 60px;
+}
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 600ms ease-out;
+}
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  background-color: #151313;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  position: absolute;
+  border-radius: 40px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+.center-wrap {
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+.form-group {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+}
+.form-style:focus,
+.form-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+}
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: left;
+  color: #285bd2;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.form-group input:-ms-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input::-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:-moz-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input::-webkit-input-placeholder {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus:-ms-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus::-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus:-moz-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.form-group input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.btn {
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #2e67f8;
+  color: white;
+  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 0.5);
+}
+.btn:active,
+.btn:focus {
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 10px 10px 50px 0 rgba(16, 39, 112, 0.5);
+}
+.btn:hover {
+  background-color: #eb212e;
+  color: black;
+  box-shadow: 10px 10px 50px 0 rgba(235, 33, 46, 0.5);
 }
 </style>
