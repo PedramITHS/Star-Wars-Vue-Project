@@ -1,12 +1,10 @@
 <script>
 import questions from "./quizezz.vue";
-// import results from "../components/results.vue";
 
 // import * as Tone from "tone";
 export default {
   components: {
     questions,
-    // results,
   },
 
   computed() {},
