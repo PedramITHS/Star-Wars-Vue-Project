@@ -102,6 +102,12 @@ h1 {
   padding-left: 50px;
   padding-right: 50px;
 }
+
+@media screen and (max-width: 450px) {
+  .stage3 {
+    width: 0;
+  }
+}
 </style>
 
 <template>
@@ -144,7 +150,7 @@ h1 {
             margin-right: 30px;
           "
         >
-          <sup style="position: absolute; top: -0.5em; left: 0; font-size: 24px"
+          <sup style="position: absolute; top: -0.5em; left: 0; font-size: 23px"
             >12 000+</sup
           >
           Active Users
@@ -162,7 +168,7 @@ h1 {
               position: absolute;
               top: -0.5em;
               left: 0;
-              font-size: 24px;
+              font-size: 23px;
               margin-left: 50px;
             "
             >97%</sup
@@ -170,7 +176,7 @@ h1 {
           Learning Satisfaction
         </p>
         <p style="color: white; display: inline-block; position: relative">
-          <sup style="position: absolute; top: -0.5em; left: 0; font-size: 24px"
+          <sup style="position: absolute; top: -0.5em; left: 0; font-size: 23px"
             >130+</sup
           >
           Countries

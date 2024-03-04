@@ -1,19 +1,15 @@
 <script>
-// import { upperFirst } from 'bootstrap-vue-next/dist/src/utils';
-
 export default {
+  // created, en livscyckel metod. först när ett vue komponent har initialiseras.
+  // Promise/Async/Await kanske vore en bättre lösninsg, men har blivit allt för van vid fetch api.
 
-// created, en livscyckel metod. först när ett vue komponent har initialiseras.
-// Promise/Async/Await kanske vore en bättre lösninsg, men har blivit allt för van vid fetch api.
-
-// den fetchar ett json fil, objekt med frågor. Varje property, en array med objekt med tio olika frågor var.
+  // den fetchar ett json fil, objekt med frågor. Varje property, en array med objekt med tio olika frågor var.
 
   created() {
     fetch("/questions.json")
       .then((resp) => resp.json())
       .then((data) => {
-
-      // kalla på ett objekts värde dynamiskt med [], i detta fall en prop som den förväntar sig, denna prop ändras beroende på vad för knapp som trycks från ett annat vue komponent.
+        // kalla på ett objekts värde dynamiskt med [], i detta fall en prop som den förväntar sig, denna prop ändras beroende på vad för knapp som trycks från ett annat vue komponent.
 
         let questions = data[this.chosenDiffi];
 
@@ -38,8 +34,21 @@ export default {
       });
   },
 
-  methods: {
+  // I created() har vi inte access till DOM element ännu,
+  // den får däremot tillgång till vue instanser (data, methods, computed etc..)
+  // Då kan det vara bra att fetch:a API data med. Det är först när vi når mounted() vi
+  // får tillgång till element som vi kan manipulera.
 
+  mounted() {
+    // localStorage förvara allt i strängar,
+    // eftersom det är en siffra vi vill ha tillbaka,
+    // då kallar vi på "parseInt"
+
+    const returnScore = localStorage.getItem("score");
+    this.score = parseInt(returnScore);
+  },
+
+  methods: {
     // Fisher-Yates shuffle, array blandare. Parametern är då i detta fall en array.
 
     shuffle(arr) {
@@ -61,6 +70,7 @@ export default {
         this.selected = true;
         if (choice === correctAnswer) {
           this.score = this.score + 10;
+          localStorage.setItem("score", this.score.toString());
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
           setTimeout(() => {
@@ -70,7 +80,6 @@ export default {
         }
 
         // Hoppa till nästa fråga med nextQuest funktionen (mer om detta nedan)
-
         else {
           console.log("You chose...poorly");
           this.chosen = "Incorrect!";
@@ -91,9 +100,14 @@ export default {
         this.currentQuestIndex++;
         this.currentQuest = this.questions[this.currentQuestIndex];
         this.selected = false;
-        console.log(bgColor)
+        console.log(bgColor);
       }
     },
+  },
+
+  clearScore() {
+    this.score = 0;
+    localStorage.setItem("score", this.score.toString());
   },
 
   // Prop:en i fråga, den förväntar sig en sträng, denna stränga ändras mellan tre olika värden, i och med att det är en objekt, vi kallar på dess värde dynamiskt med [].
@@ -120,7 +134,10 @@ export default {
 <template>
   <div v-if="currentQuest !== null">
     <BContainer>
-      <h1 class="text mt-3 d-flex justify-content-center">
+      <h1
+        style="text-align: center"
+        class="text mt-3 d-flex justify-content-center"
+      >
         {{
           "Current score: " +
           this.score +
@@ -133,8 +150,8 @@ export default {
       <BCol
         id="box"
         class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
-        :style="{ border: '5px outset ' + this.bgColor }">
-
+        :style="{ border: '5px outset ' + this.bgColor }"
+      >
         <div id="content">
           <h4>{{ currentQuest.question }}</h4>
           <button
@@ -198,10 +215,26 @@ button {
   color: black;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 450px) {
+  #box {
+    box-sizing: content-box;
+    border-radius: 20px;
+    width: 300px !important;
+    height: 330px;
+    text-align: center;
+    background-color: #151313;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
+
   button {
-    width: 150px;
-    color: brown;
+    height: 30px;
+    margin: 4px;
+    width: 200px;
+    border-radius: 20px;
+    color: black;
   }
 }
 </style>

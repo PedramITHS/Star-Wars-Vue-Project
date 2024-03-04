@@ -59,6 +59,12 @@ footer {
   color: antiquewhite;
   text-align: center;
 }
+
+@media screen and (max-width: 450px) {
+  footer {
+    font-size: 15px;
+  }
+}
 </style>
 
 <template>
