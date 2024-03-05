@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="page"
-    class="bg-black d-flex flex-column align-items-center justify-content-center"
-  >
+  <div id="page" class="bg-black flex-column align-items-center">
     <b-container id="main" fluid class="gradient-background">
       <h1 style="text-align: center" class="contact-header mt-0 mb-3">
         Contact Us:
