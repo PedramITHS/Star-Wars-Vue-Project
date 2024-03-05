@@ -46,6 +46,10 @@ export default {
 
     const returnScore = localStorage.getItem("score");
     this.score = parseInt(returnScore);
+    if (this.score === NaN) {
+      this.score = 0;
+    }
+    console.log(this.score);
   },
 
   methods: {

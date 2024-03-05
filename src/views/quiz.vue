@@ -33,7 +33,9 @@ export default {
   mounted() {
     const returnScore = localStorage.getItem("score");
     this.score = parseInt(returnScore);
-    console.log(this.score);
+    if (this.score === NaN) {
+      this.score = 0;
+    }
   },
 
   methods: {
@@ -220,7 +222,6 @@ export default {
           v-if="this.hidden"
           :chosenDiffi="chosenDiffi"
           :bgColor="bgColor"
-          :score="score"
           :key="myKey"
         />
 

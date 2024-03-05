@@ -164,41 +164,25 @@ a {
   <!-- Offcanvas navbar, dyker enbart vid < 450px skärmbredd eller mindre. -->
 
   <div id="canvas_menu" style="background-color: #0d0d0d">
-    <BButton style="background-color: #0d0d0d; border: none" @click="displayCanvas">
-      <img id="canvas_logo" @click="rotating()" :class="{ canvas_logo_clicked: rotate }" class="p-1"
-        src="/assets/logo1.png" alt="logo" title="Menu" />
+    <BButton
+      style="background-color: #0d0d0d; border: none"
+      @click="displayCanvas"
+    >
+      <img
+        id="canvas_logo"
+        @click="rotating()"
+        :class="{ canvas_logo_clicked: rotate }"
+        class="p-1"
+        src="/assets/logo1.png"
+        alt="logo"
+        title="Menu"
+      />
     </BButton>
-    <BOffcanvas @hide="unRotate()" title="Menu" style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
-      v-model="offCanvas" variant="dark">
-      <BNavItem @click="
-        this.offCanvas = false;
-      this.rotate = false;
-      " class="navitem" to="/">Home</BNavItem>
-      <BNavItem @click="
-        this.offCanvas = false;
-      this.rotate = false;
-      " class="navitem" to="newExplore">Explore</BNavItem>
-      <BNavItem @click="
-        this.offCanvas = false;
-      this.rotate = false;
-      " class="navitem" to="Quiz">Quiz</BNavItem>
-      <BNavItem @click="
-        this.offCanvas = false;
-      this.rotate = false;
-      " class="navitem" to="Top">Leaderboard</BNavItem>
-      <BNavItem @click="
-        this.offCanvas = false;
-      this.rotate = false;
-      " class="navitem" to="Contact">Contact</BNavItem>
+
     <BOffcanvas
       @hide="unRotate()"
       title="Menu"
-      style="
-        width: 200px;
-        margin-top: 90px;
-        height: auto;
-        background-color: #0d0d0d;
-      "
+      style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
       v-model="offCanvas"
       variant="dark"
     >
@@ -249,17 +233,34 @@ a {
       >
     </BOffcanvas>
 
-    <router-link to="/LogIn" class="d-flex align-self-end"
-      style="margin-left: auto; margin-bottom: auto; margin-top: auto">
+    <router-link
+      to="/LogIn"
+      class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+    >
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
     <div id="music-player">
-      <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"
-        style="border-radius: 50%; height: 60px; width: 60px" alt="Play Button" />
-      <img v-else @click="toggleAudio" src="/assets/cantina_pic.png" style="height: 50px" alt="Pause Button" />
+      <img
+        v-if="!isPlaying"
+        @click="toggleAudio"
+        src="/assets/can_play.jpg"
+        style="border-radius: 50%; height: 60px; width: 60px"
+        alt="Play Button"
+      />
+      <img
+        v-else
+        @click="toggleAudio"
+        src="/assets/cantina_pic.png"
+        style="height: 50px"
+        alt="Pause Button"
+      />
       <audio ref="audioPlayer" loop autoplay>
-        <source src="/assets/Star Wars Cantina Band 1 2.mp3" type="audio/mpeg" />
+        <source
+          src="/assets/Star Wars Cantina Band 1 2.mp3"
+          type="audio/mpeg"
+        />
         Din webbläsare stöder inte ljudfilen.
       </audio>
     </div>
@@ -268,7 +269,11 @@ a {
   <!-- Vanling navbar, dyker upp vid skärmbredd > 450px -->
 
   <div id="desk_menu">
-    <BButton @click="toggle" style="background-color: #0d0d0d; border-color: #0d0d0d" class="d-flex align-self-end">
+    <BButton
+      @click="toggle"
+      style="background-color: #0d0d0d; border-color: #0d0d0d"
+      class="d-flex align-self-end"
+    >
       <img id="logo" src="/assets/logo.png" alt="Logo" />
     </BButton>
 
@@ -282,17 +287,34 @@ a {
       </BNav>
     </Transition>
 
-    <router-link to="/LogIn" class="d-flex align-self-end"
-      style="margin-left: auto; margin-bottom: auto; margin-top: auto">
+    <router-link
+      to="/LogIn"
+      class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+    >
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
     <div id="music-player">
-      <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"
-        style="border-radius: 50%; height: 60px; width: 60px" alt="Play Button" />
-      <img v-else @click="toggleAudio" src="/assets/cantina_pic.png" style="height: 50px" alt="Pause Button" />
+      <img
+        v-if="!isPlaying"
+        @click="toggleAudio"
+        src="/assets/can_play.jpg"
+        style="border-radius: 50%; height: 60px; width: 60px"
+        alt="Play Button"
+      />
+      <img
+        v-else
+        @click="toggleAudio"
+        src="/assets/cantina_pic.png"
+        style="height: 50px"
+        alt="Pause Button"
+      />
       <audio ref="audioPlayer" loop autoplay>
-        <source src="/assets/Star Wars Cantina Band 1 2.mp3" type="audio/mpeg" />
+        <source
+          src="/assets/Star Wars Cantina Band 1 2.mp3"
+          type="audio/mpeg"
+        />
         Din webbläsare stöder inte ljudfilen.
       </audio>
 
