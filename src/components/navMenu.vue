@@ -139,8 +139,7 @@ a {
         <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
         <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
         <BNavItem class="navitem" to="Contact">Contact</BNavItem>
-        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
-        <!-- <BNavItem to="Music">musik</BNavItem> -->
+       
       </BNav>
     </Transition>
 
