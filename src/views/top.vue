@@ -63,7 +63,7 @@ img {
           <h3>{{ user.placement }}</h3>
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <img :src="user.imageURL" alt="">
+          <img src="/assets/user-icon3.webp" alt="icon">
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
           <h4>{{ user.name }}</h4>
