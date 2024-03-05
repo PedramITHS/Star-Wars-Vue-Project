@@ -184,7 +184,7 @@ export default {
 #box {
   /* border: 2px solid black; */
   border-radius: 20px;
-  width: 400px !important;
+  width: 380px !important;
   height: 400px;
   margin-bottom: 3000px;
   text-align: center;

@@ -65,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+.offcanvas-header {
+  color: green !important;
+}
+
 #desk_menu {
   background-color: #0d0d0d;
   display: flex;
@@ -172,7 +176,12 @@ a {
     <BOffcanvas
       @hide="unRotate()"
       title="Menu"
-      style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
+      style="
+        width: 200px;
+        margin-top: 90px;
+        height: auto;
+        background-color: #0d0d0d;
+      "
       v-model="offCanvas"
       variant="dark"
     >

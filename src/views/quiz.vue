@@ -22,11 +22,18 @@ export default {
       timer: 1200,
       gameOver: "Times up !",
       myKey: 0,
+      score: 0,
       audio: null,
       musicPlaying: false,
       music2Playing: false,
       // musicTimer: 120
     };
+  },
+
+  mounted() {
+    const returnScore = localStorage.getItem("score");
+    this.score = parseInt(returnScore);
+    console.log(this.score);
   },
 
   methods: {
@@ -42,10 +49,6 @@ export default {
       this.myKey += 1;
       this.cancel = false;
       this.countdown();
-    },
-
-    clearScore() {
-      this.$emit("clear-score");
     },
 
     quit() {
@@ -164,42 +167,35 @@ export default {
         </p>
         <h1>Choose Your Difficulty</h1>
 
-        <b-button
-          id="Padawan"
-          @click="
-            gameStart('Padawan', 'green');
-            clearScore();
-          "
-          variant="outline-success"
-          >Padawan</b-button
-        >
-        <b-button
-          :id="box"
-          id="JediKnight"
-          @click="
-            gameStart('JediKnight', 'blue');
-            clearScore();
-          "
-          variant="outline-info"
-          class="m-2"
-          >Jedi Knight</b-button
-        >
-        <b-button
-          id="Grandmaster"
-          @click="
-            gameStart('Grandmaster', 'red');
-            clearScore();
-          "
-          variant="outline-danger"
-          >Grandmaster</b-button
-        >
-        <b-button
-          @click="quit()"
-          variant="outline-warning"
-          class="m-2"
-          :disabled="cancel"
-          >Quit game</b-button
-        >
+        <div class="difficulty">
+          <b-button
+            id="Padawan"
+            @click="gameStart('Padawan', 'green')"
+            variant="outline-success"
+            >Padawan</b-button
+          >
+          <b-button
+            :id="box"
+            id="JediKnight"
+            @click="gameStart('JediKnight', 'blue')"
+            variant="outline-info"
+            class="m-2"
+            >Jedi Knight</b-button
+          >
+          <b-button
+            id="Grandmaster"
+            @click="gameStart('Grandmaster', 'red')"
+            variant="outline-danger"
+            >Grandmaster</b-button
+          >
+          <b-button
+            @click="quit()"
+            variant="outline-warning"
+            class="m-2"
+            :disabled="cancel"
+            >Quit game</b-button
+          >
+        </div>
       </b-col>
 
       <b-col>
@@ -235,7 +231,10 @@ export default {
           >
             <h1>{{ this.result }}</h1>
             <div id="content">
-              <h1>Final score:</h1>
+              <h1>
+                Final score: <br />
+                {{ this.score }}
+              </h1>
             </div>
           </BCol>
         </BContainer>
@@ -247,6 +246,10 @@ export default {
 </template>
 
 <style scoped>
+.difficulty {
+  text-align: center;
+}
+
 .bg-block-one {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
