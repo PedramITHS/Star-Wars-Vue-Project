@@ -11,7 +11,7 @@ export default {
       rotate: false,
       offCanvas: false,
       songSrc: songSrc,
-      isPlaying: false, // musiken spelas öppning sida
+      isPlaying: true, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
       firstLoad: true, // Flagga för att hålla reda på om sidan laddades första gången
     };
