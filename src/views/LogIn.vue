@@ -19,8 +19,8 @@ export default {
       if (choose === 'register') {
         this.accounts = JSON.parse(localStorage.getItem('accounts'))
         console.log(this.accounts)
-git 
-        this.accounts.push({ username: this.username, password: this.password, name: this.username })
+
+        this.accounts.push({ username: this.username, password: this.password})
         console.log(this.accounts)
         localStorage.setItem('accounts', JSON.stringify(this.accounts));
         localStorage.getItem('accounts')
