@@ -5,7 +5,7 @@
   >
     <b-container id="main" fluid class="gradient-background">
       <h1 style="text-align: center" class="contact-header mt-0 mb-3">
-        Contact:
+        Contact Us:
       </h1>
       <div style="font-family: Blanka, sans-serif" class="section">
         <div class="container">
