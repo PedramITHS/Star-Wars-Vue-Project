@@ -21,10 +21,11 @@
                           <h4 style="color: white" class="mb-4 pb-3">Email</h4>
                           <div class="form-group">
                             <input
-                              type="email"
-                              v-model="senderEmail"
+                              type="text"
+                              name="name"
+                              v-model="name"
                               class="form-style"
-                              placeholder="Email"
+                              placeholder="Name"
                               id="sender-email"
                               autocomplete="off"
                             />
@@ -32,16 +33,19 @@
                           </div>
                           <div class="form-group mt-2">
                             <input
-                              type="subject"
-                              v-model="senderPassword"
+                              name="email"
+                              type="email"
+                              v-model="email"
                               class="form-style"
-                              placeholder="Topic"
+                              placeholder="E-mail"
                               id="sender-password"
                               autocomplete="off"
                             />
                           </div>
                           <div class="form-group mt-2">
                             <textarea
+                              type="text"
+                              name="message"
                               v-model="message"
                               class="form-style"
                               placeholder="Message"
@@ -76,95 +80,64 @@
 </template>
 
 <script>
-//En simulation av att man skickar ett mail samt bekräftelse eller felmeddelande
+import emailjs from "emailjs-com";
+
 export default {
+  name: "ContactUs",
   data() {
     return {
-      senderEmail: "",
-      senderPassword: "",
+      name: "",
+      email: "",
       message: "",
     };
   },
   methods: {
-    sendEmail() {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (
-        this.senderEmail &&
-        this.senderPassword &&
-        this.message &&
-        emailPattern.test(this.senderEmail)
-      ) {
-        alert("Your E-mail has been sent\n\n" + this.message);
-        //Alert ruta som kommer upp när man skickat samt ett meddelande om vad man skickade
-        this.senderEmail = "";
-        this.senderPassword = "";
-        this.message = "";
-      } else {
-        if (!this.senderEmail.match(emailPattern)) {
-          alert("Please enter a valid email address");
-        } else {
-          alert("Please fill in all fields");
-        }
-        //Här varnas det om man försöker skicka utan att ha fyllt i alla fält eller en ogiltig mailadress
+    sendEmail(e) {
+      //Kontrollerar så det är i rätt email format
+      if (!this.isValidEmail(this.email)) {
+        alert("Please enter a valid E-mail address.");
+        return;
       }
+
+      // Kontrollerar om alla fält är ifyllda
+      if (!this.name || !this.email || !this.message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      try {
+        console.log(this.name, this.email, this.message);
+        emailjs
+          .send(
+            "service_g5vtt9n",
+            "template_76ncdsj",
+            {
+              name: this.name,
+              email: this.email,
+              message: this.message,
+            },
+            "JEMOJH_JYUPKffVMc"
+          )
+          .then(() => {
+            alert("Your E-mail has been sent\n\n" + this.message);
+            this.name = "";
+            this.email = "";
+            this.message = "";
+          })
+          .catch((error) => {
+            console.log({ error });
+            alert("Failed to send E-mail. Please try again later.");
+          });
+      } catch (error) {
+        console.log({ error });
+      }
+    },
+    isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
     },
   },
 };
-// import nodemailer from "nodemailer";
-
-// export default {
-//   data() {
-//     return {
-//       senderEmail: "",
-//       senderPassword: "",
-//       message: "",
-//     };
-//   },
-//   methods: {
-//     sendEmail() {
-//       let transporter = nodemailer.createTransport({
-//         service: "gmail",
-//         auth: {
-//           user: this.senderEmail,
-//           pass: this.senderPassword,
-//         },
-//       });
-
-//       let mailOptions = {
-//         from: this.senderEmail,
-//         to: "oliver.kall2001@gmail.com",
-//         subject: "New message from contact page",
-//         text: this.message,
-//       };
-
-//       transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           console.log("Email sent: " + info.response);
-//           this.senderEmail = "";
-//           this.senderPassword = "";
-//           this.message = "";
-//         }
-//       });
-//     },
-//   },
-// };
-// export default {
-//   data() {
-//     return {
-//       name: "",
-//       email: "",
-//     };
-//   },
-//   methods: {
-//     sendEmail() {
-//       // Här kan du implementera logiken för att skicka e-post
-//       // Använd `this.name` och `this.email` för att få användarinputen
-//     },
-//   },
-// };
 </script>
 
 <style scoped>
