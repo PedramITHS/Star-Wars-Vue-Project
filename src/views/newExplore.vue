@@ -19,6 +19,7 @@ export default {
         .then((data) => {
           this.show = "characters";
           this.characters = data.results;
+          //Visar karaktärer
         });
     },
     fetchPlanets() {
@@ -27,6 +28,7 @@ export default {
         .then((data) => {
           this.show = "planets";
           this.planets = data.results;
+          //Visar planeter
         });
     },
     fetchStarships() {
@@ -35,6 +37,7 @@ export default {
         .then((data) => {
           this.show = "starships";
           this.starships = data.results;
+          // Visar rymdskepp
         });
     },
     fetchSpecies() {
@@ -43,6 +46,7 @@ export default {
         .then((data) => {
           this.show = "species";
           this.species = data.results;
+          //Visar arter
         });
     },
     fetchFilms() {
@@ -51,6 +55,7 @@ export default {
         .then((data) => {
           this.show = "films";
           this.films = data.results;
+          //Visar filmer
         });
     },
   },

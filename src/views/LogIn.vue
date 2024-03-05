@@ -1,22 +1,64 @@
+<script>
+
+export default {
+  data() {
+    return {
+
+      accounts: [],
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    buttonUser(choose) {
+
+      if (!this.username.trim() || !this.password.trim()) {
+        alert('Username and password are required')
+        return;
+      }
+      if (choose === 'register') {
+        this.accounts = JSON.parse(localStorage.getItem('accounts'))
+        console.log(this.accounts)
+git 
+        this.accounts.push({ username: this.username, password: this.password, name: this.username })
+        console.log(this.accounts)
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+        localStorage.getItem('accounts')
+        console.log(JSON.parse(localStorage.getItem('accounts')))
+
+
+        alert('success')
+        // Detta ser till att man kan registrera sig
+      } else if (choose === 'login') {
+        const storedPassword = localStorage.getItem(this.username);
+
+        if (storedPassword === this.password) {
+          alert('Welcome: ' + this.username)
+          // detta tar fram det man sparade när man registerar sig och kollar om det är samma samt gör en alert om det stämmer.
+        } else {
+          alert('Login fail')
+          // om det inte stämmer
+        }
+      }
+      this.username = '';
+      this.password = '';
+    }
+  }
+
+}
+</script>
+
 <template>
   <div id="background">
     <div style="font-family: Blanka, sans-serif" class="section">
       <div class="container">
         <div class="row full-height justify-content-center">
           <div class="col-12 text-center align-self-center py-5">
-            <div
-              style="margin-bottom: 100px"
-              class="section pb-5 pt-5 pt-sm-2 text-center"
-            >
+            <div style="margin-bottom: 100px" class="section pb-5 pt-5 pt-sm-2 text-center">
               <h6 style="font-size: 24px; color: white" class="mb-0 pb-3">
                 <span>Log In</span><span>Sign Up</span>
               </h6>
-              <input
-                class="checkbox"
-                type="checkbox"
-                id="reg-log"
-                name="reg-log"
-              />
+              <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
               <label for="reg-log"></label>
               <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
@@ -25,28 +67,16 @@
                       <div class="section text-center">
                         <h4 style="color: white" class="mb-4 pb-3">Log In</h4>
                         <div class="form-group">
-                          <input
-                            type="username"
-                            name="username"
-                            class="form-style"
-                            placeholder="Username"
-                            id="logemail"
-                            autocomplete="off"
-                          />
+                          <input type="username" name="username" class="form-style" placeholder="Username" id="logemail"
+                            v-model="username" autocomplete="off" />
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Password"
-                            id="logpass"
-                            autocomplete="off"
-                          />
+                          <input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass"
+                            v-model="password" autocomplete="off" />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="#" class="btn mt-4">submit</a>
+                        <button class="btn mt-4" @click="buttonUser('login')">Log In</button> <!--Logga in-->
                       </div>
                     </div>
                   </div>
@@ -55,28 +85,16 @@
                       <div class="section text-center">
                         <h4 style="color: white" class="mb-4 pb-3">Sign Up</h4>
                         <div class="form-group mt-2">
-                          <input
-                            type="username"
-                            name="username"
-                            class="form-style"
-                            placeholder="Username"
-                            id="logemail"
-                            autocomplete="off"
-                          />
+                          <input type="username" name="username" class="form-style" placeholder="Username" id="logemail"
+                            v-model="username" autocomplete="off" />
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Password"
-                            id="logpass"
-                            autocomplete="off"
-                          />
+                          <input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass"
+                            autocomplete="off" v-model="password" />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <a href="#" class="btn mt-4">submit</a>
+                        <button class="btn mt-4" @click="buttonUser('register')">Sign Up</button> <!--Sign in-->
                       </div>
                     </div>
                   </div>
@@ -99,8 +117,7 @@
 
 @font-face {
   font-family: "Blanka";
-  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
-    format("opentype");
+  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf") format("opentype");
 }
 
 body {
@@ -117,30 +134,35 @@ p {
   font-size: 14px;
   line-height: 1.7;
 }
+
 h4 {
   font-weight: 600;
 }
+
 h6 span {
   padding: 0 20px;
   text-transform: uppercase;
   font-weight: 700;
 }
+
 .section {
   position: relative;
   width: 100%;
   display: block;
 }
+
 .full-height {
   min-height: 100vh;
 }
+
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
   position: absolute;
   left: -9999px;
 }
 
-.checkbox:checked + label,
-.checkbox:not(:checked) + label {
+.checkbox:checked+label,
+.checkbox:not(:checked)+label {
   position: relative;
   display: block;
   text-align: center;
@@ -152,8 +174,9 @@ h6 span {
   cursor: pointer;
   background-color: #2e67f8;
 }
-.checkbox:checked + label:before,
-.checkbox:not(:checked) + label:before {
+
+.checkbox:checked+label:before,
+.checkbox:not(:checked)+label:before {
   position: absolute;
   display: block;
   width: 36px;
@@ -171,7 +194,8 @@ h6 span {
   font-size: 24px;
   transition: all 0.5s ease;
 }
-.checkbox:checked + label:before {
+
+.checkbox:checked+label:before {
   transform: translateX(44px) rotate(-270deg);
 }
 
@@ -185,6 +209,7 @@ h6 span {
   perspective: 800px;
   margin-top: 60px;
 }
+
 .card-3d-wrapper {
   width: 100%;
   height: 100%;
@@ -195,6 +220,7 @@ h6 span {
   transform-style: preserve-3d;
   transition: all 600ms ease-out;
 }
+
 .card-front,
 .card-back {
   width: 100%;
@@ -215,12 +241,15 @@ h6 span {
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
 .card-back {
   transform: rotateY(180deg);
 }
-.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+
+.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
   transform: rotateY(180deg);
 }
+
 .center-wrap {
   position: absolute;
   width: 100%;
@@ -238,6 +267,7 @@ h6 span {
   margin: 0;
   padding: 0;
 }
+
 .form-style {
   padding: 13px 20px;
   padding-left: 55px;
@@ -256,12 +286,14 @@ h6 span {
   transition: all 200ms linear;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
 }
+
 .form-style:focus,
 .form-style:active {
   border: none;
   outline: none;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
 }
+
 .input-icon {
   position: absolute;
   top: 0;
@@ -281,39 +313,46 @@ h6 span {
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input::-moz-placeholder {
   color: #c4c3ca;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input:-moz-placeholder {
   color: #c4c3ca;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input::-webkit-input-placeholder {
   color: #c4c3ca;
   opacity: 0.7;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input:focus:-ms-input-placeholder {
   opacity: 0;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input:focus::-moz-placeholder {
   opacity: 0;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input:focus:-moz-placeholder {
   opacity: 0;
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
+
 .form-group input:focus::-webkit-input-placeholder {
   opacity: 0;
   -webkit-transition: all 200ms linear;
@@ -348,38 +387,17 @@ h6 span {
   color: white;
   box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 0.5);
 }
+
 .btn:active,
 .btn:focus {
   background-color: #102770;
   color: #ffeba7;
   box-shadow: 10px 10px 50px 0 rgba(16, 39, 112, 0.5);
 }
+
 .btn:hover {
   background-color: #eb212e;
   color: black;
   box-shadow: 10px 10px 50px 0 rgba(235, 33, 46, 0.5);
 }
 </style>
-
-<script>
-// new Vue({
-//       el: '#app',
-//       data: {
-//         username: '',
-//         password: ''
-//       },
-//       methods: {
-//         registerUser() {
-//           localStorage.setItem('user', JSON.stringify({
-//             username: this.username,
-//             password: this.password
-//           }));
-
-//           this.username = '';
-//           this.password = '';
-
-//           alert('Användare registrerad!');
-//         }
-//       }
-//     });
-</script>
