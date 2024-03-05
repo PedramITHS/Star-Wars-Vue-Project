@@ -8,6 +8,8 @@ export default {
   data() {
     return {
       button: false,
+      rotate: false,
+      offCanvas: false,
       songSrc: songSrc,
       isPlaying: false, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
@@ -17,6 +19,19 @@ export default {
     toggle() {
       this.button = !this.button;
     },
+
+    displayCanvas() {
+      this.offCanvas = !this.offCanvas;
+    },
+
+    rotating() {
+      this.rotate = !this.rotate;
+    },
+
+    unRotate() {
+      this.rotate = false;
+    },
+
     // pauseAudio() {
     //   console.log("pauseAudio method called");
     //   this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
@@ -52,10 +67,27 @@ export default {
 <style scoped>
 #desk_menu {
   background-color: #0d0d0d;
+  display: flex;
 }
+
+#canvas_menu {
+  background-color: #0d0d0d;
+  display: flex;
+}
+
+#canvas_logo {
+  width: 70px;
+  height: 80px;
+  transition: transform 0.3s;
+}
+
+.canvas_logo_clicked {
+  transform: rotate(90deg);
+}
+
 .navitem {
   font-family: Blanka, sans-serif;
-  color: rgb(0, 250, 21) !important;
+  color: rgb(0, 79, 250) !important;
 }
 
 a {
@@ -66,6 +98,7 @@ a {
 .menuFade-enter-active {
   transition: opacity 0.7s ease;
 }
+
 .menuFade-leave-active {
   transition: opacity 0.7s ease;
 }
@@ -110,28 +143,74 @@ a {
     opacity: 1;
 } */
 
-/* @media screen and (max-width: 480px) {
+@media screen and (max-width: 450px) {
+  #desk_menu {
+    display: none;
+  }
+}
 
-    #desk_menu {
-        display: none;
-    }
-
-} */
+@media screen and (min-width: 450px) {
+  #canvas_menu {
+    display: none;
+  }
+}
 </style>
 
 <template>
-  <div class="d-flex p-4" id="desk_menu">
-    <!-- <BImg @click="toggle" src="../../assets/imageedit_4_7991310453.png" rounded="circle" alt="hello ?" /> -->
+  <!-- Offcanvas navbar, dyker enbart vid < 450px skärmbredd eller mindre. -->
 
-    <BButton
-      @click="toggle"
-      style="background-color: #0d0d0d; border-color: #0d0d0d"
-      class="d-flex align-self-end"
-    >
+  <div id="canvas_menu" style="background-color: #0d0d0d">
+    <BButton style="background-color: #0d0d0d; border: none" @click="displayCanvas">
+      <img id="canvas_logo" @click="rotating()" :class="{ canvas_logo_clicked: rotate }" class="p-1"
+        src="/assets/logo1.png" alt="logo" title="Menu" />
+    </BButton>
+    <BOffcanvas @hide="unRotate()" title="Menu" style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
+      v-model="offCanvas" variant="dark">
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="/">Home</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="newExplore">Explore</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Quiz">Quiz</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Top">Leaderboard</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Contact">Contact</BNavItem>
+    </BOffcanvas>
+
+    <router-link to="/LogIn" class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto">
+      <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
+    </router-link>
+
+    <div id="music-player">
+      <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"
+        style="border-radius: 50%; height: 60px; width: 60px" alt="Play Button" />
+      <img v-else @click="toggleAudio" src="/assets/cantina_pic.png" style="height: 50px" alt="Pause Button" />
+      <audio ref="audioPlayer" loop autoplay>
+        <source src="/assets/Star Wars Cantina Band 1 2.mp3" type="audio/mpeg" />
+        Din webbläsare stöder inte ljudfilen.
+      </audio>
+    </div>
+  </div>
+
+  <!-- Vanling navbar, dyker upp vid skärmbredd > 450px -->
+
+  <div id="desk_menu">
+    <BButton @click="toggle" style="background-color: #0d0d0d; border-color: #0d0d0d" class="d-flex align-self-end">
       <img id="logo" src="/assets/logo.png" alt="Logo" />
     </BButton>
 
-    <!-- <BButton size="lg" @click="toggle" variant="primary">Menu</BButton> -->
     <Transition name="menuFade">
       <BNav type="dark" v-if="button">
         <BNavItem class="navitem" to="/">Home</BNavItem>
@@ -139,39 +218,20 @@ a {
         <BNavItem class="navitem" to="Quiz">Quiz</BNavItem>
         <BNavItem class="navitem" to="Top">Leaderboard</BNavItem>
         <BNavItem class="navitem" to="Contact">Contact</BNavItem>
-        <!-- <BNavItem to="Thegame">frågor</BNavItem> -->
-        <!-- <BNavItem to="Music">musik</BNavItem> -->
       </BNav>
     </Transition>
 
-    <router-link
-      to="/LogIn"
-      class="d-flex align-self-end"
-      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
-    >
+    <router-link to="/LogIn" class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto">
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
     <div id="music-player">
-      <img
-        v-if="!isPlaying"
-        @click="toggleAudio"
-        src="/assets/can_play.jpg"
-        style="border-radius: 50%; height: 60px; width: 60px"
-        alt="Play Button"
-      />
-      <img
-        v-else
-        @click="toggleAudio"
-        src="/assets/cantina_pic.png"
-        style="height: 50px"
-        alt="Pause Button"
-      />
+      <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"
+        style="border-radius: 50%; height: 60px; width: 60px" alt="Play Button" />
+      <img v-else @click="toggleAudio" src="/assets/cantina_pic.png" style="height: 50px" alt="Pause Button" />
       <audio ref="audioPlayer" loop autoplay>
-        <source
-          src="/assets/Star Wars Cantina Band 1 2.mp3"
-          type="audio/mpeg"
-        />
+        <source src="/assets/Star Wars Cantina Band 1 2.mp3" type="audio/mpeg" />
         Din webbläsare stöder inte ljudfilen.
       </audio>
 

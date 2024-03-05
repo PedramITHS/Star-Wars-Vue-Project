@@ -19,6 +19,7 @@ export default {
                 .then(data => {
                     this.show = 'characters';
                     this.characters = data.results;
+                    //Visar karaktärer
 
                 })
         }, fetchPlanets() {
@@ -27,6 +28,7 @@ export default {
                 .then(data => {
                     this.show = 'planets';
                     this.planets = data.results;
+                    //Visar planeter
 
                 })
         },
@@ -36,6 +38,7 @@ export default {
                 .then(data => {
                     this.show = 'starships';
                     this.starships = data.results;
+                    // Visar rymdskepp
 
                 })
         },
@@ -45,6 +48,7 @@ export default {
                 .then(data => {
                     this.show = 'species';
                     this.species = data.results;
+                    //Visar arter
 
                 })
         },
@@ -54,6 +58,7 @@ export default {
                 .then(data => {
                     this.show = 'films';
                     this.films = data.results;
+                    //Visar filmer
 
                 })
         }
@@ -101,16 +106,13 @@ export default {
                             <p>{{ character.name }}</p>
                         </b-card-text>
                         <div>
+                            <!-- Modal -->
                             <b-button @click="modals[character.name] = !modals[character.name]">Learn More</b-button>
                             <b-modal v-model="modals[character.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ character.name }}</h5>
-
                                 <p class="my-4">{{ "Height: " + character.height + " cm" }}</p>
                                 <p class="my-4">{{ "Hair color: " + character.hair_color }}</p>
                                 <p class="my-4">{{ "Gender: " + character.gender }}</p>
-
-
-
 
                             </b-modal>
                         </div>
@@ -127,6 +129,7 @@ export default {
                             <p>{{ planet.name }}</p>
                         </b-card-text>
                         <div>
+                            <!-- Modal -->
                             <b-button @click="modals[planet.name] = !modals[planet.name]">Learn More</b-button>
                             <b-modal v-model="modals[planet.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ planet.name }}</h5>
@@ -147,6 +150,7 @@ export default {
                             <p>{{ starship.name }}</p>
                         </b-card-text>
                         <div>
+                            <!-- Modal -->
                             <b-button @click="modals[starship.name] = !modals[starship.name]">Learn More</b-button>
                             <b-modal v-model="modals[starship.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ starship.name }}</h5>
@@ -166,6 +170,7 @@ export default {
                             <p>{{ species.name }}</p>
                         </b-card-text>
                         <div>
+                            <!-- Modal -->
                             <b-button @click="modals[species.name] = !modals[species.name]">Learn More</b-button>
                             <b-modal v-model="modals[species.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ species.name }}</h5>
@@ -186,6 +191,7 @@ export default {
                             <p>{{ film.title }}</p>
                         </b-card-text>
                         <div>
+                            <!-- Modal -->
                             <b-button @click="modals[film.name] = !modals[film.name]">Learn More</b-button>
                             <b-modal v-model="modals[film.name]" title="BootstrapVue">
                                 <h5 class="my-4">{{ film.name }}</h5>
