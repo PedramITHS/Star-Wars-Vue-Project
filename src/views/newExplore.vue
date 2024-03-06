@@ -63,8 +63,8 @@ export default {
 </script>
 
 <template>
-  <BContainer class="showItems">
-    <b-button-group id="mobDisp">
+  <BContainer class="showItems" id="mobDisp">
+    <b-button-group>
       <b-dropdown center text="Choose your category">
         <b-dropdown-item @click="fetchCharacters">
           Show characters
@@ -81,46 +81,11 @@ export default {
         <b-dropdown-item @click="fetchFilms"> Show Films </b-dropdown-item>
       </b-dropdown>
     </b-button-group>
+  </BContainer>
 
-    <div class="d-flex justify-content-center" style="width:">
-      <b-button-group id="deskDisp">
-        <!-- Knapp för att visa karaktärer -->
+  <!--  -->
 
-        <b-button
-          size="lg"
-          @click="fetchCharacters"
-          style="background-color: #222226"
-        >
-          Show characters</b-button
-        >
-        <!-- Knapp för att visa planeter -->
-
-        <b-button
-          size="lg"
-          @click="fetchPlanets"
-          style="background-color: #222226"
-          >Show Planets
-        </b-button>
-
-        <!-- Knapp för att visa starships -->
-        <b-button
-          size="lg"
-          @click="fetchStarships"
-          style="background-color: #222226"
-          >Show Starships
-        </b-button>
-
-        <!-- Knapp för att visa arter -->
-        <b-button
-          size="lg"
-          @click="fetchSpecies"
-          style="background-color: #222226"
-          >Show Species
-        </b-button>
-
-        <!-- Knapp för att visa filmer -->
-        <b-button
-  <div class="showItems">
+  <div class="showItems" id="deskDisp">
     <div class="d-flex justify-content-center">
       <b-button-group>
         <!-- Knapp för att visa karaktärer -->
@@ -374,8 +339,19 @@ export default {
 }
 
 #mobDisp {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+}
+
+.x-btn:active,
+.x-btn:focus {
+  background-color: white;
+  color: white;
+  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
+}
+.x-btn:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
 }
 
 @media screen and (max-width: 520px) {
@@ -388,16 +364,5 @@ export default {
   #mobDisp {
     display: none;
   }
-}
-.x-btn:active,
-.x-btn:focus {
-  background-color: white;
-  color: white;
-  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
-}
-.x-btn:hover {
-  background-color: white;
-  color: black;
-  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
 }
 </style>
