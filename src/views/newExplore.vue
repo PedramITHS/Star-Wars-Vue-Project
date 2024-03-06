@@ -373,6 +373,17 @@ export default {
   #deskDisp {
     display: none;
   }
+  .allCards {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .card-body {
+    width: 300px;
+  }
 }
 
 @media screen and (min-width: 520px) {

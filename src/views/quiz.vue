@@ -172,12 +172,16 @@ export default {
 
         <div class="difficulty">
           <b-button
+            v-b-tooltip.hover
+            title="10 points for each question"
             id="Padawan"
             @click="gameStart('Padawan', 'green')"
             variant="outline-success"
             >Padawan</b-button
           >
           <b-button
+            v-b-tooltip.hover
+            title="20 points for each question"
             :id="box"
             id="JediKnight"
             @click="gameStart('JediKnight', 'blue')"
@@ -186,6 +190,8 @@ export default {
             >Jedi Knight</b-button
           >
           <b-button
+            v-b-tooltip.hover
+            title="30 points for each question"
             id="Grandmaster"
             @click="gameStart('Grandmaster', 'red')"
             variant="outline-danger"
