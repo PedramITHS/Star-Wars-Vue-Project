@@ -12,7 +12,6 @@
   top: 20px;
   left: -210px;
   width: 300px;
-  height: 700px;
   z-index: 2;
   overflow: hidden;
 }
@@ -28,6 +27,13 @@ h1 {
 }
 
 #quiz-button {
+  background-color: #8c1111;
+  border: #8c1111;
+}
+
+#expButton {
+  margin-top: 20px;
+  font-family: Blanka;
   background-color: #8c1111;
   border: #8c1111;
 }
@@ -60,11 +66,10 @@ h1 {
 }
 
 #side-block {
+  right: 8%;
   position: absolute;
-  top: 600px;
-  left: 300px;
+  top: 590px;
   background-color: #222226;
-  margin-left: 600px;
   height: 400px;
   border-radius: 10px;
 }
@@ -75,12 +80,15 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 700px;
-  width: 100%;
+
+  div {
+    @media (max-width: 425px) {
+      width: 100%;
+    }
+  }
 }
 
 .bg-block-three {
-  height: 700px;
   padding-top: 150px;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -104,8 +112,35 @@ h1 {
 }
 
 @media screen and (max-width: 450px) {
-  .stage3 {
-    width: 0;
+  .stage2 {
+    transform: scale(0.6);
+    margin-left: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  /* #side-p {
+    color: white;
+    font-size: 22px;
+    width: 500px;
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  #side-block {
+    top: -150px;
+    left: 10px;
+    background-color: #222226;
+    height: 450px;
+    width: 450px;
+    border-radius: 10px;
+  } */
+
+  #expButton {
+    margin-top: 10px;
+    background-color: #8c1111;
+    border: #8c1111;
   }
 }
 </style>
@@ -187,13 +222,7 @@ h1 {
         <img src="/assets/side-pic.jpeg" alt="" />
       </div>
 
-      <b-button
-        style="margin-top: 50px; width: 150px; font-family: Blanka"
-        to="newExplore"
-        id="quiz-button"
-        size="lg"
-        >Explore!</b-button
-      >
+      <b-button to="newExplore" id="expButton" size="lg">Explore!</b-button>
     </div>
   </div>
 

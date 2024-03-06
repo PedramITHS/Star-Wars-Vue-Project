@@ -11,16 +11,18 @@ export default {
       rotate: false,
       offCanvas: false,
       songSrc: songSrc,
-      isPlaying: false, // musiken spelas öppning sida
+      isPlaying: true, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
-      accounts: ''
+      accounts: '',
+      firstLoad: true, // Flagga för att hålla reda på om sidan laddades första gången
+
     };
   },
   created() {
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-  this.accounts = loggedInUser ? loggedInUser.username : '';
-  console.log(this.accounts);
-},
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    this.accounts = loggedInUser ? loggedInUser.username : '';
+    console.log(this.accounts);
+  },
   methods: {
     toggle() {
       this.button = !this.button;
@@ -38,23 +40,15 @@ export default {
       this.rotate = false;
     },
 
-    // pauseAudio() {
-    //   console.log("pauseAudio method called");
-    //   this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
-    //   this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
-    // },
-    // showPlayer() {
-    //   this.playerVisible = true;
-    // },
-
     toggleAudio() {
       const audioPlayer = this.$refs.audioPlayer;
-      if (this.isPlaying) {
-        audioPlayer.pause();
+      if (audioPlayer.paused) {
+        audioPlayer.play(); // Om ljudet är pausat, spela upp det
+        this.isPlaying = true; // Uppdatera isPlaying-flaggan
       } else {
-        audioPlayer.play();
+        audioPlayer.pause(); // Annars pausa ljudet
+        this.isPlaying = false; // Uppdatera isPlaying-flaggan
       }
-      this.isPlaying = !this.isPlaying;
     },
 
     hidePlayer() {
@@ -65,12 +59,19 @@ export default {
   components: { BNav, songSrc },
   mounted() {
     const audioPlayer = this.$refs.audioPlayer;
-    audioPlayer.play();
+    if (this.firstLoad) {
+      audioPlayer.play(); // Spela upp ljudet vid sidans inladdning för första gången
+      this.firstLoad = false; // Uppdatera flaggan för att förhindra automatisk uppspelning igen
+    }
   },
 };
 </script>
 
 <style scoped>
+.offcanvas-header {
+  color: green !important;
+}
+
 #desk_menu {
   background-color: #0d0d0d;
   display: flex;
@@ -149,13 +150,13 @@ a {
     opacity: 1;
 } */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 729px) {
   #desk_menu {
     display: none;
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 728px) {
   #canvas_menu {
     display: none;
   }
@@ -170,6 +171,7 @@ a {
       <img id="canvas_logo" @click="rotating()" :class="{ canvas_logo_clicked: rotate }" class="p-1"
         src="/assets/logo1.png" alt="logo" title="Menu" />
     </BButton>
+
     <BOffcanvas @hide="unRotate()" title="Menu" style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
       v-model="offCanvas" variant="dark">
       <BNavItem @click="
@@ -197,7 +199,35 @@ a {
 
 
     <router-link to="/LogIn" class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"></router-link>
+
+    <BOffcanvas @hide="unRotate()" title="Menu" style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
+      v-model="offCanvas" variant="dark">
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="/">Home</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="newExplore">Explore</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Quiz">Quiz</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Top">Leaderboard</BNavItem>
+      <BNavItem @click="
+        this.offCanvas = false;
+      this.rotate = false;
+      " class="navitem" to="Contact">Contact</BNavItem>
+    </BOffcanvas>
+
+    <router-link to="/LogIn" class="d-flex align-self-end"
       style="margin-left: auto; margin-bottom: auto; margin-top: auto">
+
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
 
@@ -233,7 +263,9 @@ a {
       style="margin-left: auto; margin-bottom: auto; margin-top: auto">
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
-<h4 style="color: white; font-family: Blanka, sans-serif; font-size: medium; margin-top: 25px; margin-left: 10px; margin-right: 10px;">{{accounts}}</h4>
+    <h4
+      style="color: white; font-family: Blanka, sans-serif; font-size: medium; margin-top: 25px; margin-left: 10px; margin-right: 10px;">
+      {{ accounts }}</h4>
 
     <div id="music-player">
       <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"

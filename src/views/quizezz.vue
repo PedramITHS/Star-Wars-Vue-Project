@@ -27,6 +27,19 @@ export default {
 
         this.questions = questions;
 
+        // Uppdatera poäng baserat på svårighetsgrad
+        switch (this.chosenDiffi) {
+          case "jediknight":
+            this.pointPerCorrectAnswer = 20;
+            break;
+          case "grandmaster":
+            this.pointPerCorrectAnswer = 30;
+            break;
+          default:
+            this.pointPerCorrectAnswer = 10; // Standardpoäng
+            break;
+        }
+
         // data variabel, vars värde startade med null, är en array med det första frågan i ledet.
 
         this.currentQuest = this.questions[0];
@@ -38,6 +51,17 @@ export default {
   // den får däremot tillgång till vue instanser (data, methods, computed etc..)
   // Då kan det vara bra att fetch:a API data med. Det är först när vi når mounted() vi
   // får tillgång till element som vi kan manipulera.
+
+
+
+  mounted() {
+
+    const returnScore = localStorage.getItem("score");
+    this.score = parseInt(returnScore);
+    if (isNaN(this.score)) {
+      this.score = 0;
+    }
+  },
 
 
   methods: {
@@ -87,9 +111,14 @@ export default {
       if (!this.selected) {
         this.selected = true;
         if (choice === correctAnswer) {
+
           this.score = this.score + 10;
           this.saveScore(this.score);
           // localStorage.setItem("score", this.score.toString());
+
+          // this.score += 10;
+          // localStorage.setItem("score", this.score.toString());
+
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
           setTimeout(() => {
@@ -145,10 +174,10 @@ export default {
         this.currentQuestIndex++;
         this.currentQuest = this.questions[this.currentQuestIndex];
         this.selected = false;
-        console.log(bgColor);
       }
     },
   },
+
 
   clearScore() {
     this.score = 0;
@@ -217,7 +246,7 @@ export default {
 #box {
   /* border: 2px solid black; */
   border-radius: 20px;
-  width: 400px !important;
+  width: 380px !important;
   height: 400px;
   margin-bottom: 3000px;
   text-align: center;
@@ -246,6 +275,21 @@ button {
 
 .btn-answer:disabled {
   color: black;
+}
+
+@media screen and (max-width: 700px) {
+  #box {
+    box-sizing: content-box;
+    border-radius: 20px;
+    width: 340px !important;
+    height: 345px;
+    text-align: center;
+    background-color: #151313;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
 }
 
 @media screen and (max-width: 450px) {
