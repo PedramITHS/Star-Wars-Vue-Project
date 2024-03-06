@@ -11,8 +11,9 @@ export default {
       rotate: false,
       offCanvas: false,
       songSrc: songSrc,
-      isPlaying: false, // musiken spelas öppning sida
+      isPlaying: true, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
+      firstLoad: true, // Flagga för att hålla reda på om sidan laddades första gången
     };
   },
   methods: {
@@ -32,23 +33,15 @@ export default {
       this.rotate = false;
     },
 
-    // pauseAudio() {
-    //   console.log("pauseAudio method called");
-    //   this.isPlaying = false; // Sätt isPlaying till false för att dölja spelaren och visa bilden
-    //   this.$refs.audioPlayer.pause(); // Pausa ljudet när bilden klickas
-    // },
-    // showPlayer() {
-    //   this.playerVisible = true;
-    // },
-
     toggleAudio() {
       const audioPlayer = this.$refs.audioPlayer;
-      if (this.isPlaying) {
-        audioPlayer.pause();
+      if (audioPlayer.paused) {
+        audioPlayer.play(); // Om ljudet är pausat, spela upp det
+        this.isPlaying = true; // Uppdatera isPlaying-flaggan
       } else {
-        audioPlayer.play();
+        audioPlayer.pause(); // Annars pausa ljudet
+        this.isPlaying = false; // Uppdatera isPlaying-flaggan
       }
-      this.isPlaying = !this.isPlaying;
     },
 
     hidePlayer() {
@@ -59,7 +52,10 @@ export default {
   components: { BNav, songSrc },
   mounted() {
     const audioPlayer = this.$refs.audioPlayer;
-    audioPlayer.play();
+    if (this.firstLoad) {
+      audioPlayer.play(); // Spela upp ljudet vid sidans inladdning för första gången
+      this.firstLoad = false; // Uppdatera flaggan för att förhindra automatisk uppspelning igen
+    }
   },
 };
 </script>
@@ -178,7 +174,6 @@ a {
         title="Menu"
       />
     </BButton>
-
     <BOffcanvas
       @hide="unRotate()"
       title="Menu"

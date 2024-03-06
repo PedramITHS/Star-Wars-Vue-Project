@@ -206,6 +206,10 @@ export default {
           style="text-align: center"
           v-if="hidden"
           class="text mt-3 d-flex justify-content-center"
+          :style="{
+            color: timer <= 60 ? 'PaleGreen' : 'white',
+            'text-shadow': '0 0 5px black',
+          }"
         >
           {{ this.timer + " seconds remaining" }}
         </h1>

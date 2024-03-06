@@ -27,6 +27,19 @@ export default {
 
         this.questions = questions;
 
+        // Uppdatera poäng baserat på svårighetsgrad
+        switch (this.chosenDiffi) {
+          case "jediknight":
+            this.pointPerCorrectAnswer = 20;
+            break;
+          case "grandmaster":
+            this.pointPerCorrectAnswer = 30;
+            break;
+          default:
+            this.pointPerCorrectAnswer = 10; // Standardpoäng
+            break;
+        }
+
         // data variabel, vars värde startade med null, är en array med det första frågan i ledet.
 
         this.currentQuest = this.questions[0];

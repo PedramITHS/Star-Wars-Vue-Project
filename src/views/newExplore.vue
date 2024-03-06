@@ -120,6 +120,50 @@ export default {
 
         <!-- Knapp för att visa filmer -->
         <b-button
+  <div class="showItems">
+    <div class="d-flex justify-content-center">
+      <b-button-group>
+        <!-- Knapp för att visa karaktärer -->
+
+        <b-button
+          class="x-btn"
+          size="lg"
+          @click="fetchCharacters"
+          style="background-color: #222226"
+        >
+          Show characters</b-button
+        >
+        <!-- Knapp för att visa planeter -->
+
+        <b-button
+          class="x-btn"
+          size="lg"
+          @click="fetchPlanets"
+          style="background-color: #222226"
+          >Show Planets
+        </b-button>
+
+        <!-- Knapp för att visa starships -->
+        <b-button
+          class="x-btn"
+          size="lg"
+          @click="fetchStarships"
+          style="background-color: #222226"
+          >Show Starships
+        </b-button>
+
+        <!-- Knapp för att visa arter -->
+        <b-button
+          class="x-btn"
+          size="lg"
+          @click="fetchSpecies"
+          style="background-color: #222226"
+          >Show Species
+        </b-button>
+
+        <!-- Knapp för att visa filmer -->
+        <b-button
+          class="x-btn"
           size="lg"
           @click="fetchFilms"
           style="background-color: #222226"
@@ -127,7 +171,6 @@ export default {
         </b-button>
       </b-button-group>
     </div>
-
     <div class="allCards">
       <!-- Visa karaktärer -->
       <b-row v-if="show === 'characters'">
@@ -149,13 +192,13 @@ export default {
               <p>{{ character.name }}</p>
             </b-card-text>
             <div>
+              <!-- Modal -->
               <b-button
                 @click="modals[character.name] = !modals[character.name]"
                 >Learn More</b-button
               >
               <b-modal v-model="modals[character.name]" title="BootstrapVue">
                 <h5 class="my-4">{{ character.name }}</h5>
-
                 <p class="my-4">{{ "Height: " + character.height + " cm" }}</p>
                 <p class="my-4">{{ "Hair color: " + character.hair_color }}</p>
                 <p class="my-4">{{ "Gender: " + character.gender }}</p>
@@ -186,6 +229,7 @@ export default {
               <p>{{ planet.name }}</p>
             </b-card-text>
             <div>
+              <!-- Modal -->
               <b-button @click="modals[planet.name] = !modals[planet.name]"
                 >Learn More</b-button
               >
@@ -220,6 +264,7 @@ export default {
               <p>{{ starship.name }}</p>
             </b-card-text>
             <div>
+              <!-- Modal -->
               <b-button @click="modals[starship.name] = !modals[starship.name]"
                 >Learn More</b-button
               >
@@ -254,6 +299,7 @@ export default {
               <p>{{ species.name }}</p>
             </b-card-text>
             <div>
+              <!-- Modal -->
               <b-button @click="modals[species.name] = !modals[species.name]"
                 >Learn More</b-button
               >
@@ -291,6 +337,7 @@ export default {
               <p>{{ film.title }}</p>
             </b-card-text>
             <div>
+              <!-- Modal -->
               <b-button @click="modals[film.name] = !modals[film.name]"
                 >Learn More</b-button
               >
@@ -304,7 +351,7 @@ export default {
         ></b-row
       >
     </div>
-  </BContainer>
+  </div>
 </template>
 <style>
 #app {
@@ -312,12 +359,14 @@ export default {
 }
 
 .showItems {
-  background-color: #222226;
-  height: 100%;
-}
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(13, 13, 13, 1)),
+    url("assets/explore-background2.webp");
 
-.allCards {
-  background-color: #222226;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  height: 700px;
+  color: #ffff;
 }
 
 .d-flex.justify-content-center {
@@ -339,5 +388,16 @@ export default {
   #mobDisp {
     display: none;
   }
+}
+.x-btn:active,
+.x-btn:focus {
+  background-color: white;
+  color: white;
+  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
+}
+.x-btn:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 1);
 }
 </style>

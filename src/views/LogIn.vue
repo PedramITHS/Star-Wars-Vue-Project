@@ -27,7 +27,7 @@ export default {
         localStorage.getItem("accounts");
         console.log(JSON.parse(localStorage.getItem("accounts")));
 
-        alert("success");
+        alert("You have created a new user and are logged in!");
         // Detta ser till att man kan registrera sig
       } else if (choose === "login") {
         const storedPassword = localStorage.getItem(this.username);
