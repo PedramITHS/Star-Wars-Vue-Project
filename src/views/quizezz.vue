@@ -111,19 +111,18 @@ export default {
       if (!this.selected) {
         this.selected = true;
         if (choice === correctAnswer) {
-<<<<<<< HEAD
+
           this.score += this.pointPerCorrectAnswer;
           localStorage.setItem("score", this.score.toString());
-=======
 
-          this.score = this.score + 10;
+
+          // this.score = this.score + 10;
           this.saveScore(this.score);
           // localStorage.setItem("score", this.score.toString());
 
           // this.score += 10;
           // localStorage.setItem("score", this.score.toString());
 
->>>>>>> f419524d2cdb362c25f0ccdae13071fa9a0069d5
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
           setTimeout(() => {
