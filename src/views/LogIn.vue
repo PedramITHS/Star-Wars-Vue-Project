@@ -6,10 +6,21 @@ export default {
 
       accounts: [],
       username: '',
-      password: ''
+      password: '',
+      loggedInUserName: ''
     }
   },
+  created() {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    this.loggedInUserName = loggedInUser ? loggedInUser.username : '';
+    console.log(this.loggedInUserName);
+  },
   methods: {
+
+    clearUsers() {
+    this.users = []
+    localStorage.setItem('accounts', JSON.stringify(this.users));
+  },
     buttonUser(choose) {
 
       if (!this.username.trim() || !this.password.trim()) {
@@ -17,10 +28,10 @@ export default {
         return;
       }
       if (choose === 'register') {
-        this.accounts = JSON.parse(localStorage.getItem('accounts'))
+        this.accounts = JSON.parse(localStorage.getItem('accounts'));
         console.log(this.accounts)
 
-        this.accounts.push({ username: this.username, password: this.password, name: this.username })
+        this.accounts.push({username: this.username, password: this.password, name: this.username , score: 0})
         console.log(this.accounts)
         localStorage.setItem('accounts', JSON.stringify(this.accounts));
         localStorage.getItem('accounts')
@@ -30,18 +41,24 @@ export default {
         alert('success')
         // Detta ser till att man kan registrera sig
       } else if (choose === 'login') {
-        const storedPassword = localStorage.getItem(this.username);
+        const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+        const user = accounts.find(account => account.username === this.username && account.password === this.password);
+        localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
 
-        if (storedPassword === this.password) {
-          alert('Welcome: ' + this.username)
-          // detta tar fram det man sparade när man registerar sig och kollar om det är samma samt gör en alert om det stämmer.
+        if (user) {
+          localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
+          alert('Welcome: ' + this.username);
         } else {
-          alert('Login fail')
-          // om det inte stämmer
+          alert('Login fail');
         }
+
       }
+
+
       this.username = '';
       this.password = '';
+
+
     }
   }
 
@@ -77,6 +94,7 @@ export default {
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
                         <button class="btn mt-4" @click="buttonUser('login')">Log In</button> <!--Logga in-->
+                        <button  class="btn mt-4" @click="clearUsers">Rensa listan</button>
                       </div>
                     </div>
                   </div>
@@ -95,6 +113,7 @@ export default {
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
                         <button class="btn mt-4" @click="buttonUser('register')">Sign Up</button> <!--Sign in-->
+
                       </div>
                     </div>
                   </div>
@@ -386,6 +405,7 @@ h6 span {
   background-color: #2e67f8;
   color: white;
   box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 0.5);
+  margin-right: 10px;
 }
 
 .btn:active,

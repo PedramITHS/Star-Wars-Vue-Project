@@ -13,8 +13,14 @@ export default {
       songSrc: songSrc,
       isPlaying: false, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
+      accounts: ''
     };
   },
+  created() {
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  this.accounts = loggedInUser ? loggedInUser.username : '';
+  console.log(this.accounts);
+},
   methods: {
     toggle() {
       this.button = !this.button;
@@ -186,7 +192,9 @@ a {
         this.offCanvas = false;
       this.rotate = false;
       " class="navitem" to="Contact">Contact</BNavItem>
+
     </BOffcanvas>
+
 
     <router-link to="/LogIn" class="d-flex align-self-end"
       style="margin-left: auto; margin-bottom: auto; margin-top: auto">
@@ -225,6 +233,7 @@ a {
       style="margin-left: auto; margin-bottom: auto; margin-top: auto">
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
+<h4 style="color: white; font-family: Blanka, sans-serif; font-size: medium; margin-top: 25px; margin-left: 10px; margin-right: 10px;">{{accounts}}</h4>
 
     <div id="music-player">
       <img v-if="!isPlaying" @click="toggleAudio" src="/assets/can_play.jpg"

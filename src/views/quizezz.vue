@@ -39,16 +39,34 @@ export default {
   // Då kan det vara bra att fetch:a API data med. Det är först när vi når mounted() vi
   // får tillgång till element som vi kan manipulera.
 
-  mounted() {
-    // localStorage förvara allt i strängar,
-    // eftersom det är en siffra vi vill ha tillbaka,
-    // då kallar vi på "parseInt"
-
-    const returnScore = localStorage.getItem("score");
-    this.score = parseInt(returnScore);
-  },
 
   methods: {
+
+    saveUserScore() {
+      const currentScore = parseInt(localStorage.getItem('score'), 10)
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      if (!loggedInUser) {
+        return;
+      }
+
+      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+
+      for (let i = 0; i < accounts.length; i++) {
+        if (accounts[i].username === loggedInUser.username) {
+          accounts[i].score = currentScore;
+          localStorage.setItem('accounts', JSON.stringify(accounts));
+          break;
+        }
+      }
+    },
+
+
+
+
+
+
+
+
     // Fisher-Yates shuffle, array blandare. Parametern är då i detta fall en array.
 
     shuffle(arr) {
@@ -70,7 +88,8 @@ export default {
         this.selected = true;
         if (choice === correctAnswer) {
           this.score = this.score + 10;
-          localStorage.setItem("score", this.score.toString());
+          this.saveScore(this.score);
+          // localStorage.setItem("score", this.score.toString());
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
           setTimeout(() => {
@@ -91,6 +110,32 @@ export default {
       }
     },
 
+    saveScore(newScore) {
+      localStorage.setItem("score", newScore.toString())
+      // localStorage.setItem("score", this.score.toString())
+      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      if (!loggedInUser) {
+        return;
+      }
+
+      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+
+      for (let i = 0; i < accounts.length; i++) {
+        if (accounts[i].username === loggedInUser.username) {
+          accounts[i].score = newScore;
+          localStorage.setItem('accounts', JSON.stringify(accounts));
+          break;
+        }
+      }
+
+      // const userIndex = accounts.findIndex(account => account.username === loggedInUser.username)
+
+      // if (userIndex !== -1) {
+      //   accounts[userIndex].score = newScore
+      //   localStorage.setItem('accounts', JSON.stringify(accounts));
+      // }
+    },
+
     // Det blev lite för komplext med att flera frågor visades upp, att enbart ha en åt gången var lättare att hantera och personligen något jag tyckte passade ett quiz spel bättre.
 
     // En variabel med en siffra som startar på 0, som jämförs med längden med alla frågor i ledet, när jag vill ladda nästa fråga, öka denna siffra med increment, ta denna siffra och placera det inne i this.question, för nästa fråga i ledet. "selected" blev true tidigare, gör om det till false (gör det redo för nästa fråga att kunna välja med svar som sedan blir true på nytt)
@@ -107,7 +152,6 @@ export default {
 
   clearScore() {
     this.score = 0;
-    localStorage.setItem("score", this.score.toString());
   },
 
   // Prop:en i fråga, den förväntar sig en sträng, denna stränga ändras mellan tre olika värden, i och med att det är en objekt, vi kallar på dess värde dynamiskt med [].
@@ -134,10 +178,7 @@ export default {
 <template>
   <div v-if="currentQuest !== null">
     <BContainer>
-      <h1
-        style="text-align: center"
-        class="text mt-3 d-flex justify-content-center"
-      >
+      <h1 style="text-align: center" class="text mt-3 d-flex justify-content-center">
         {{
           "Current score: " +
           this.score +
@@ -147,23 +188,15 @@ export default {
           this.questions.length
         }}
       </h1>
-      <BCol
-        id="box"
-        class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
-        :style="{ border: '5px outset ' + this.bgColor }"
-      >
+      <BCol id="box" class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
+        :style="{ border: '5px outset ' + this.bgColor }">
         <div id="content">
           <h4>{{ currentQuest.question }}</h4>
-          <button
-            v-for="a in currentQuest.allAnswers"
-            @click="check(a, currentQuest.correctAnswer)"
-            :disabled="selected"
+          <button v-for="a in currentQuest.allAnswers" @click="check(a, currentQuest.correctAnswer)" :disabled="selected"
             :class="{
               'btn-correct': selected && a === currentQuest.correctAnswer,
               'btn-incorrect': selected && a !== currentQuest.correctAnswer,
-            }"
-            class="btn-answer"
-          >
+            }" class="btn-answer">
             {{ a }}
           </button>
           <h4>{{ "Your answer: " + this.chosen }}</h4>
