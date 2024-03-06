@@ -52,10 +52,7 @@ export default {
   // Då kan det vara bra att fetch:a API data med. Det är först när vi når mounted() vi
   // får tillgång till element som vi kan manipulera.
 
-
-
   mounted() {
-
     const returnScore = sessionStorage.getItem("score");
     this.score = parseInt(returnScore);
     if (isNaN(this.score)) {
@@ -63,33 +60,24 @@ export default {
     }
   },
 
-
   methods: {
-
     saveUserScore() {
-      const currentScore = parseInt(localStorage.getItem('score'), 10)
-      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      const currentScore = parseInt(localStorage.getItem("score"), 10);
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
       }
 
-      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
       for (let i = 0; i < accounts.length; i++) {
         if (accounts[i].username === loggedInUser.username) {
           accounts[i].score = currentScore;
-          localStorage.setItem('accounts', JSON.stringify(accounts));
+          localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
         }
       }
     },
-
-
-
-
-
-
-
 
     // Fisher-Yates shuffle, array blandare. Parametern är då i detta fall en array.
 
@@ -112,16 +100,23 @@ export default {
         this.selected = true;
         if (choice === correctAnswer) {
 
+
           this.score += this.pointPerCorrectAnswer;
           localStorage.setItem("score", this.score.toString());
 
 
           // this.score = this.score + 10;
-          this.saveScore(this.score);
+
+          // this.score += this.pointPerCorrectAnswer;
           // localStorage.setItem("score", this.score.toString());
+
+
+          this.saveScore(this.score);
+
 
           // this.score += 10;
           // localStorage.setItem("score", this.score.toString());
+
 
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
@@ -144,19 +139,19 @@ export default {
     },
 
     saveScore(newScore) {
-      localStorage.setItem("score", newScore.toString())
+      localStorage.setItem("score", newScore.toString());
       // localStorage.setItem("score", this.score.toString())
-      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
       }
 
-      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
       for (let i = 0; i < accounts.length; i++) {
         if (accounts[i].username === loggedInUser.username) {
           accounts[i].score = newScore;
-          localStorage.setItem('accounts', JSON.stringify(accounts));
+          localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
         }
       }
@@ -181,7 +176,6 @@ export default {
       }
     },
   },
-
 
   clearScore() {
     this.score = 0;
