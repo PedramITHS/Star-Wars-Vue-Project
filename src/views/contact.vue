@@ -90,19 +90,20 @@ export default {
   },
   methods: {
     sendEmail(e) {
-      //Kontrollerar så det är i rätt email format
+      //Kontrollerar så det är i rätt email format.
       if (!this.isValidEmail(this.email)) {
         alert("Please enter a valid E-mail address.");
         return;
       }
 
-      // Kontrollerar om alla fält är ifyllda
+      // Kontrollerar om alla fält är ifyllda.
       if (!this.name || !this.email || !this.message) {
         alert("Please fill in all fields.");
         return;
       }
 
       try {
+        //Detta är funktionen som skickar och hänvisar till rätt fält. Jag använder mig av v-model för att kunna lägga in variablerna i min template.
         console.log(this.name, this.email, this.message);
         emailjs
           .send(
@@ -116,6 +117,7 @@ export default {
             "JEMOJH_JYUPKffVMc"
           )
           .then(() => {
+            //Nollställer fälten efter man har skickat.
             alert("Your E-mail has been sent\n\n" + this.message);
             this.name = "";
             this.email = "";
@@ -130,6 +132,7 @@ export default {
       }
     },
     isValidEmail(email) {
+      //Kontrollerar så det är i rätt emailformat.
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     },
