@@ -7,21 +7,16 @@ export default {
       password: '',
       loggedInUserName: ''
     }
-
   },
-
-
   created() {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     this.loggedInUserName = loggedInUser ? loggedInUser.username : '';
-    console.log(this.loggedInUserName);
+    this.accounts = JSON.parse(localStorage.getItem('accounts')) || [];
   },
-
   methods: {
-
     clearUsers() {
-      this.users = []
-      localStorage.setItem('accounts', JSON.stringify(this.users));
+      this.accounts = [];
+      localStorage.setItem('accounts', JSON.stringify(this.accounts));
     },
     buttonUser(choose) {
       if (!this.username.trim() || !this.password.trim()) {
@@ -30,50 +25,18 @@ export default {
       }
 
       if (choose === 'register') {
-        this.accounts.push({ username: this.username, password: this.password, name: this.username, score: 0 })
+        this.accounts.push({ username: this.username, password: this.password, name: this.username, score: 0 });
         localStorage.setItem('accounts', JSON.stringify(this.accounts));
-        alert('You have created a new user!')
-        // localStorage.getItem('accounts')
-        // console.log(JSON.parse(localStorage.getItem('accounts')))
+        alert('You have created a new user: ' + this.username+'!');
       } else if (choose === 'login') {
-        const user = accounts.find(account => account.username === this.username && account.password === this.password);
+        const user = this.accounts.find(account => account.username === this.username && account.password === this.password);
         if (user) {
           localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
-
+          alert('Welcome: ' + this.username);
         } else {
-          alert('Login fail')
+          alert('Login fail');
         }
       }
-
-
-      //   alert("You have created a new user and are logged in!");
-      //   // Detta ser till att man kan registrera sig
-
-      // } else if (choose === 'login') {
-      //   const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-      //   const user = accounts.find(account => account.username === this.username && account.password === this.password);
-      //   localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
-
-      //   if (user) {
-      //     localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
-      //     alert('Welcome: ' + this.username);
-      //   } else {
-      //     alert('Login fail');
-
-      //   }else (choose === "login") {
-      //     const storedPassword = localStorage.getItem(this.username);}
-
-      //     if (storedPassword === this.password) {
-      //       alert("Welcome: " + this.username);
-      //       // detta tar fram det man sparade när man registerar sig och kollar om det är samma samt gör en alert om det stämmer.
-      //     } else {
-      //       alert("Login fail");
-      //       // om det inte stämmer
-
-      //     }
-
-
-      //   }
 
       this.username = "";
       this.password = "";
