@@ -3,24 +3,23 @@
 export default {
 
   created() {
-
-    // fetch('/users.json')
-    // .then(resp => resp.json())
-    // .then(data =>
-    // {
-    //   this.users = data.Users
-    //   console.log(this.users)
-    // })
-   this.users = JSON.parse(localStorage.getItem('accounts'))
+    this.users = JSON.parse(localStorage.getItem('accounts'))
     console.log(this.users)
+    this.loadUsers();
+
   },
 
   data() {
     return {
       users: []
     }
+  },
+  methods: {
+    loadUsers() {
+      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      this.users = accounts.sort((a, b) => b.score - a.score)
+    }
   }
-
 
 
 
@@ -58,21 +57,22 @@ img {
 <template>
   <div class="bgtop">
     <BContainer id="box">
-      <BRow align-h="between" v-for="user in users">
-        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <h3>{{ user.placement }}</h3>
-        </BCol>
+      <BRow align-h="between" v-for="(user, index) in users" :key="index">
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
           <img src="/assets/user-icon3.webp" alt="icon">
+        </BCol>
+        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
+          <h3>{{ index + 1 }} </h3>
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
           <h4>{{ user.name }}</h4>
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <h4>{{ user.score }}</h4>
+          <h4>{{ user.score }} p</h4>
         </BCol>
       </BRow>
     </BContainer>
+
 
   </div>
 </template>
