@@ -7,8 +7,6 @@ export default {
     questions,
   },
 
-  computed() {},
-
   data() {
     return {
       bgColor: "",
@@ -19,7 +17,7 @@ export default {
       interval: null,
       chosenDiffi: "",
       BGcolor: "",
-      timer: 1200,
+      timer: 120,
       gameOver: "Times up !",
       myKey: 0,
       score: 0,
@@ -33,9 +31,10 @@ export default {
   mounted() {
     const returnScore = localStorage.getItem("score");
     this.score = parseInt(returnScore);
-    if (this.score === NaN) {
+    if (isNaN(this.score)) {
       this.score = 0;
     }
+    console.log(this.score);
   },
 
   methods: {
@@ -46,7 +45,7 @@ export default {
     // "diffi" är vår parameter, en sträng som ändras vi knapp tryck efter vald svårighetsgrad. Variabeln "chosenDiffi" värde blir strängen som valt vid knapptryck. Och denna är sedan tillgänglig som en prop till en annan komponent (quizezz) som i sin tur ändrar värdet och placeras dynamiskt med [] inuti en fetch.
 
     gameStart(diffi, color) {
-      this.timer = 1200;
+      this.timer = 120;
       (this.chosenDiffi = diffi), (this.bgColor = color), (this.hidden = true);
       this.myKey += 1;
       this.cancel = false;
@@ -57,6 +56,8 @@ export default {
       this.hidden = false;
       this.cancel = true;
       this.timer = 0;
+      const returnScore = localStorage.getItem("score");
+      this.score = parseInt(returnScore);
     },
 
     // Våran nedräknings funktion. "runOnce" är false så "!runOnce" blir true, "interval" blir en setInterval. så länge timern är större än 0, fortsätt räkna ned. När den når noll, dölj frågorna (får ändra på detta). Jag tror det är här problemet uppstår, runOnce förblir 'true' vilket leder till att nedräkningen inte startar om på nytt när det väl har nått 0.
@@ -230,7 +231,6 @@ export default {
             id="box"
             class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
           >
-            <h1>{{ this.result }}</h1>
             <div id="content">
               <h1>
                 Final score: <br />
@@ -239,25 +239,19 @@ export default {
             </div>
           </BCol>
         </BContainer>
-
-        <!-- <results /> -->
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <style scoped>
-.difficulty {
-  text-align: center;
-}
-
 .bg-block-one {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(13, 13, 13, 1)),
     url("assets/darth.jpeg");
 
   background-repeat: no-repeat;
   background-position: top;
-  height: 700px;
+  height: 100vh;
 }
 .bg-block-two {
   color: #ffff;
@@ -291,6 +285,12 @@ export default {
   margin: auto;
 }
 
+@media screen and (max-width: 700px) and (min-width: 450px) {
+  .bg-block-one {
+    height: fit-content;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .bg-block-one {
     height: fit-content;
@@ -301,7 +301,6 @@ export default {
     border-radius: 20px;
     min-width: 300px !important;
     height: 200px;
-    margin-bottom: 3000px;
     text-align: center;
     background-color: #151313;
     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");

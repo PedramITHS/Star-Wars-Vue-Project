@@ -46,10 +46,9 @@ export default {
 
     const returnScore = localStorage.getItem("score");
     this.score = parseInt(returnScore);
-    if (this.score === NaN) {
+    if (isNaN(this.score)) {
       this.score = 0;
     }
-    console.log(this.score);
   },
 
   methods: {
@@ -73,7 +72,7 @@ export default {
       if (!this.selected) {
         this.selected = true;
         if (choice === correctAnswer) {
-          this.score = this.score + 10;
+          this.score += 10;
           localStorage.setItem("score", this.score.toString());
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
@@ -104,14 +103,8 @@ export default {
         this.currentQuestIndex++;
         this.currentQuest = this.questions[this.currentQuestIndex];
         this.selected = false;
-        console.log(bgColor);
       }
     },
-  },
-
-  clearScore() {
-    this.score = 0;
-    localStorage.setItem("score", this.score.toString());
   },
 
   // Prop:en i fråga, den förväntar sig en sträng, denna stränga ändras mellan tre olika värden, i och med att det är en objekt, vi kallar på dess värde dynamiskt med [].
@@ -217,6 +210,21 @@ button {
 
 .btn-answer:disabled {
   color: black;
+}
+
+@media screen and (max-width: 700px) {
+  #box {
+    box-sizing: content-box;
+    border-radius: 20px;
+    width: 340px !important;
+    height: 345px;
+    text-align: center;
+    background-color: #151313;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+  }
 }
 
 @media screen and (max-width: 450px) {

@@ -10,8 +10,6 @@ import contact from "./views/contact.vue";
 import newExplore from "./views/newExplore.vue";
 import LogIn from "./views/LogIn.vue";
 
-
-
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -54,6 +52,8 @@ export default createRouter({
       component: LogIn,
       path: "/LogIn",
     },
-
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
 });

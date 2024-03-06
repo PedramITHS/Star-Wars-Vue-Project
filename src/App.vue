@@ -55,7 +55,6 @@ img {
 
 footer {
   margin-top: auto;
-  height: 40px;
   background-color: black;
   color: antiquewhite;
   text-align: center;
@@ -76,6 +75,6 @@ footer {
   </main>
 
   <footer>
-    <p>©2023 The Force Academy Inc. All Rights Reserved</p>
+    <p>©2024 The Force Academy Inc. All Rights Reserved</p>
   </footer>
 </template>

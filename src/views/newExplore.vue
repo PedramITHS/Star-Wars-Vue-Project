@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-  <div class="showItems">
+  <BContainer class="showItems">
     <b-button-group id="mobDisp">
       <b-dropdown center text="Choose your category">
         <b-dropdown-item @click="fetchCharacters">
@@ -127,6 +127,7 @@ export default {
         </b-button>
       </b-button-group>
     </div>
+
     <div class="allCards">
       <!-- Visa karaktärer -->
       <b-row v-if="show === 'characters'">
@@ -303,7 +304,7 @@ export default {
         ></b-row
       >
     </div>
-  </div>
+  </BContainer>
 </template>
 <style>
 #app {
@@ -328,13 +329,13 @@ export default {
   justify-content: center;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 520px) {
   #deskDisp {
     display: none;
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 520px) {
   #mobDisp {
     display: none;
   }

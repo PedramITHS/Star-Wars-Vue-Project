@@ -147,13 +147,13 @@ a {
     opacity: 1;
 } */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 729px) {
   #desk_menu {
     display: none;
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 728px) {
   #canvas_menu {
     display: none;
   }
