@@ -52,10 +52,7 @@ export default {
   // Då kan det vara bra att fetch:a API data med. Det är först när vi når mounted() vi
   // får tillgång till element som vi kan manipulera.
 
-
-
   mounted() {
-
     const returnScore = sessionStorage.getItem("score");
     this.score = parseInt(returnScore);
     if (isNaN(this.score)) {
@@ -63,33 +60,24 @@ export default {
     }
   },
 
-
   methods: {
-
     saveUserScore() {
-      const currentScore = parseInt(localStorage.getItem('score'), 10)
-      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      const currentScore = parseInt(localStorage.getItem("score"), 10);
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
       }
 
-      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
       for (let i = 0; i < accounts.length; i++) {
         if (accounts[i].username === loggedInUser.username) {
           accounts[i].score = currentScore;
-          localStorage.setItem('accounts', JSON.stringify(accounts));
+          localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
         }
       }
     },
-
-
-
-
-
-
-
 
     // Fisher-Yates shuffle, array blandare. Parametern är då i detta fall en array.
 
@@ -111,19 +99,11 @@ export default {
       if (!this.selected) {
         this.selected = true;
         if (choice === correctAnswer) {
-<<<<<<< HEAD
           this.score += this.pointPerCorrectAnswer;
           localStorage.setItem("score", this.score.toString());
-=======
 
-          this.score = this.score + 10;
           this.saveScore(this.score);
-          // localStorage.setItem("score", this.score.toString());
 
-          // this.score += 10;
-          // localStorage.setItem("score", this.score.toString());
-
->>>>>>> f419524d2cdb362c25f0ccdae13071fa9a0069d5
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
           setTimeout(() => {
@@ -145,19 +125,19 @@ export default {
     },
 
     saveScore(newScore) {
-      localStorage.setItem("score", newScore.toString())
+      localStorage.setItem("score", newScore.toString());
       // localStorage.setItem("score", this.score.toString())
-      const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
       }
 
-      const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+      const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
       for (let i = 0; i < accounts.length; i++) {
         if (accounts[i].username === loggedInUser.username) {
           accounts[i].score = newScore;
-          localStorage.setItem('accounts', JSON.stringify(accounts));
+          localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
         }
       }
@@ -182,7 +162,6 @@ export default {
       }
     },
   },
-
 
   clearScore() {
     this.score = 0;
@@ -212,7 +191,10 @@ export default {
 <template>
   <div v-if="currentQuest !== null">
     <BContainer>
-      <h1 style="text-align: center" class="text mt-3 d-flex justify-content-center">
+      <h1
+        style="text-align: center"
+        class="text mt-3 d-flex justify-content-center"
+      >
         {{
           "Current score: " +
           this.score +
@@ -222,15 +204,23 @@ export default {
           this.questions.length
         }}
       </h1>
-      <BCol id="box" class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
-        :style="{ border: '5px outset ' + this.bgColor }">
+      <BCol
+        id="box"
+        class="d-flex flex-column mt-2 align-items-center w-50 mx-auto mb-5 mt-5"
+        :style="{ border: '5px outset ' + this.bgColor }"
+      >
         <div id="content">
           <h4>{{ currentQuest.question }}</h4>
-          <button v-for="a in currentQuest.allAnswers" @click="check(a, currentQuest.correctAnswer)" :disabled="selected"
+          <button
+            v-for="a in currentQuest.allAnswers"
+            @click="check(a, currentQuest.correctAnswer)"
+            :disabled="selected"
             :class="{
               'btn-correct': selected && a === currentQuest.correctAnswer,
               'btn-incorrect': selected && a !== currentQuest.correctAnswer,
-            }" class="btn-answer">
+            }"
+            class="btn-answer"
+          >
             {{ a }}
           </button>
           <h4>{{ "Your answer: " + this.chosen }}</h4>
