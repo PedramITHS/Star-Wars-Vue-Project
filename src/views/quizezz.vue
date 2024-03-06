@@ -29,14 +29,14 @@ export default {
 
         // Uppdatera poäng baserat på svårighetsgrad
         switch (this.chosenDiffi) {
-          case "jediknight":
+          case "JediKnight":
             this.pointPerCorrectAnswer = 20;
             break;
-          case "grandmaster":
+          case "Grandmaster":
             this.pointPerCorrectAnswer = 30;
             break;
-          default:
-            this.pointPerCorrectAnswer = 10; // Standardpoäng
+          case "Padawan":
+            this.pointPerCorrectAnswer = 10;
             break;
         }
 
@@ -57,7 +57,7 @@ export default {
     // eftersom det är en siffra vi vill ha tillbaka,
     // då kallar vi på "parseInt"
 
-    const returnScore = localStorage.getItem("score");
+    const returnScore = sessionStorage.getItem("score");
     this.score = parseInt(returnScore);
     if (isNaN(this.score)) {
       this.score = 0;
@@ -85,7 +85,7 @@ export default {
       if (!this.selected) {
         this.selected = true;
         if (choice === correctAnswer) {
-          this.score += 10;
+          this.score += this.pointPerCorrectAnswer;
           localStorage.setItem("score", this.score.toString());
           console.log("You have chosen wisely");
           this.chosen = "Correct!";
