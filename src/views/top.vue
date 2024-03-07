@@ -36,14 +36,12 @@ export default {
   width: 50%;
   margin: auto;
 
+
   background-color: rgba(119, 136, 153, 0.781);
   text-decoration: underline;
 }
 
-img {
-  width: 60px;
-  height: 60px;
-}
+
 
 .bgtop {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
@@ -51,6 +49,8 @@ img {
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
+  height: 100vh;
+
 }
 </style>
 
@@ -59,7 +59,7 @@ img {
     <BContainer id="box">
       <BRow align-h="between" v-for="(user, index) in users" :key="index">
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <img src="/assets/user-icon3.webp" alt="icon">
+          <img  src="/assets/user-icon3.webp" alt="icon">
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
           <h3>{{ index + 1 }} </h3>
