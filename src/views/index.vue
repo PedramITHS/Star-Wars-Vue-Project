@@ -365,15 +365,15 @@ h1 {
     <b-col class="bg-block-three" cols="8" sm="5">
       <h1 class="stage3h1">About Us</h1>
       <p>
-        Four frontend students unite their skills to construct an immersive Star
-        Wars website. Armed with HTML, CSS, and JavaScript proficiency, they
-        sculpt a digital masterpiece. Their collaborative efforts yield a
-        visually stunning platform that transports users into the heart of the
-        Star Wars galaxy. Through meticulous design and innovative
-        functionalities, they deliver an engaging experience that resonates with
-        fans far and wide. Their passion for frontend development fuels their
-        endeavor, resulting in a website that captures the essence of the iconic
-        saga.
+        Four Frontend/JavaScript students unite their skills to construct an
+        immersive Star Wars website. Armed with HTML, CSS, and JavaScript
+        proficiency, they sculpt a digital masterpiece. Their collaborative
+        efforts yield a visually stunning platform that transports users into
+        the heart of the Star Wars galaxy. Through meticulous design and
+        innovative functionalities, they deliver an engaging experience that
+        resonates with fans far and wide. Their passion for frontend development
+        fuels their endeavor, resulting in a website that captures the essence
+        of the iconic saga.
       </p>
       <b-button to="Contact" id="quiz-button" size="lg">More About Us</b-button>
     </b-col>
