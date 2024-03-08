@@ -58,4 +58,7 @@ export default createRouter({
       path: "/LogIn",
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // return desired position
+  },
 });

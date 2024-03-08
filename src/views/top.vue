@@ -17,6 +17,12 @@ export default {
       users: [],
     };
   },
+  methods: {
+    loadUsers() {
+      const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+      this.users = accounts.sort((a, b) => b.score - a.score);
+    },
+  },
 };
 </script>
 
@@ -31,33 +37,29 @@ export default {
   text-decoration: underline;
 }
 
-img {
-  width: 60px;
-  height: 60px;
-}
-
 .bgtop {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
     url("assets/luke1.png");
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
+  height: 100vh;
 }
 </style>
 
 <template>
   <div class="bgtop">
     <BContainer id="box">
-      <BRow align-h="between" v-for="user in users">
-        <BCol
-          class="d-flex flex-direction-row justify-content-center align-items-center"
-        >
-          <h3>{{ user.placement }}</h3>
-        </BCol>
+      <BRow align-h="between" v-for="(user, index) in users" :key="index">
         <BCol
           class="d-flex flex-direction-row justify-content-center align-items-center"
         >
           <img src="/assets/user-icon3.webp" alt="icon" />
+        </BCol>
+        <BCol
+          class="d-flex flex-direction-row justify-content-center align-items-center"
+        >
+          <h3>{{ index + 1 }}</h3>
         </BCol>
         <BCol
           class="d-flex flex-direction-row justify-content-center align-items-center"

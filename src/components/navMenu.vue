@@ -13,8 +13,14 @@ export default {
       songSrc: songSrc,
       isPlaying: true, // musiken spelas öppning sida
       playerVisible: false, //spelaren icke synlig
+      accounts: "",
       firstLoad: true, // Flagga för att hålla reda på om sidan laddades första gången
     };
+  },
+  created() {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    this.accounts = loggedInUser ? loggedInUser.username : "";
+    console.log(this.accounts);
   },
   methods: {
     toggle() {
@@ -61,6 +67,16 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: "Blanka";
+  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
+    format("opentype");
+}
+
+.offcanvas-header {
+  color: green !important;
+}
+
 #desk_menu {
   background-color: #0d0d0d;
   display: flex;
@@ -139,13 +155,13 @@ a {
     opacity: 1;
 } */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
   #desk_menu {
     display: none;
   }
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 768px) {
   #canvas_menu {
     display: none;
   }
@@ -170,10 +186,17 @@ a {
         title="Menu"
       />
     </BButton>
+
     <BOffcanvas
       @hide="unRotate()"
       title="Menu"
-      style="width: 250px; margin-top: 90px; background-color: #0d0d0d"
+      style="
+        font-family: Blanka;
+        width: 250px;
+        margin-top: 90px;
+        color: red;
+        background-color: #0d0d0d;
+      "
       v-model="offCanvas"
       variant="dark"
     >
@@ -223,6 +246,12 @@ a {
         >Contact</BNavItem
       >
     </BOffcanvas>
+
+    <router-link
+      to="/LogIn"
+      class="d-flex align-self-end"
+      style="margin-left: auto; margin-bottom: auto; margin-top: auto"
+    ></router-link>
 
     <router-link
       to="/LogIn"
@@ -285,6 +314,18 @@ a {
     >
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
+    <h4
+      style="
+        color: white;
+        font-family: Blanka, sans-serif;
+        font-size: medium;
+        margin-top: 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+      "
+    >
+      {{ accounts }}
+    </h4>
 
     <div id="music-player">
       <img

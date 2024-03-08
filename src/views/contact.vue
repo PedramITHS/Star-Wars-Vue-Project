@@ -1,7 +1,10 @@
 <template>
   <div id="page" class="bg-black flex-column align-items-center">
     <b-container id="main" fluid class="gradient-background">
-      <h1 style="text-align: center" class="contact-header mt-0 mb-3">
+      <h1
+        style="text-align: center; padding-top: 20px"
+        class="contact-header mt-0 mb-3"
+      >
         Contact Us:
       </h1>
       <div style="font-family: Blanka, sans-serif" class="section">
@@ -68,7 +71,7 @@
           </div>
         </div>
       </div>
-      <h1 style="text-align: center">Creators:</h1>
+      <h1 style="text-align: center; margin-top: -150px">Creators:</h1>
       <p style="text-align: center; font-size: 25px">
         Oliver Käll, Elly Olivebring, Pedram Hejazi Kenari, Jonas Hultberg
       </p>
@@ -90,19 +93,20 @@ export default {
   },
   methods: {
     sendEmail(e) {
-      //Kontrollerar så det är i rätt email format
+      //Kontrollerar så det är i rätt email format.
       if (!this.isValidEmail(this.email)) {
         alert("Please enter a valid E-mail address.");
         return;
       }
 
-      // Kontrollerar om alla fält är ifyllda
+      // Kontrollerar om alla fält är ifyllda.
       if (!this.name || !this.email || !this.message) {
         alert("Please fill in all fields.");
         return;
       }
 
       try {
+        //Detta är funktionen som skickar och hänvisar till rätt fält. Jag använder mig av v-model för att kunna lägga in variablerna i min template.
         console.log(this.name, this.email, this.message);
         emailjs
           .send(
@@ -116,6 +120,7 @@ export default {
             "JEMOJH_JYUPKffVMc"
           )
           .then(() => {
+            //Nollställer fälten efter man har skickat.
             alert("Your E-mail has been sent\n\n" + this.message);
             this.name = "";
             this.email = "";
@@ -130,6 +135,7 @@ export default {
       }
     },
     isValidEmail(email) {
+      //Kontrollerar så det är i rätt emailformat.
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     },
@@ -268,6 +274,7 @@ h6 span {
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: -100px !important;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: all 600ms ease-out;

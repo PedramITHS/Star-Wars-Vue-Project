@@ -3,48 +3,47 @@ export default {
   data() {
     return {
       accounts: [],
-      username: "",
-      password: "",
-    };
+      username: '',
+      password: '',
+      loggedInUserName: ''
+    }
+  },
+  created() {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    this.loggedInUserName = loggedInUser ? loggedInUser.username : '';
+    this.accounts = JSON.parse(localStorage.getItem('accounts')) || [];
   },
   methods: {
+    clearUsers() {
+      this.accounts = [];
+      localStorage.setItem('accounts', JSON.stringify(this.accounts));
+    },
     buttonUser(choose) {
       if (!this.username.trim() || !this.password.trim()) {
         alert("Username and password are required");
         return;
       }
-      if (choose === "register") {
-        this.accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-        console.log(this.accounts);
 
-        this.accounts.push({
-          username: this.username,
-          password: this.password,
-          name: this.username,
-        });
-        console.log(this.accounts);
-        localStorage.setItem("accounts", JSON.stringify(this.accounts));
-        localStorage.getItem("accounts");
-        console.log(JSON.parse(localStorage.getItem("accounts")));
-
-        alert("You have created a new user and are logged in!");
-        // Detta ser till att man kan registrera sig
-      } else if (choose === "login") {
-        const storedPassword = localStorage.getItem(this.username);
-
-        if (storedPassword === this.password) {
-          alert("Welcome: " + this.username);
-          // detta tar fram det man sparade när man registerar sig och kollar om det är samma samt gör en alert om det stämmer.
+      if (choose === 'register') {
+        this.accounts.push({ username: this.username, password: this.password, name: this.username, score: 0 });
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+        alert('You have created a new user: ' + this.username+'!');
+      } else if (choose === 'login') {
+        const user = this.accounts.find(account => account.username === this.username && account.password === this.password);
+        if (user) {
+          localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
+          alert('Welcome: ' + this.username);
         } else {
-          alert("Login fail");
-          // om det inte stämmer
+          alert('Login fail');
         }
       }
+
       this.username = "";
       this.password = "";
     },
-  },
+  }
 };
+
 </script>
 
 <template>
@@ -53,19 +52,11 @@ export default {
       <div class="container">
         <div class="row full-height justify-content-center">
           <div class="col-12 text-center align-self-center py-5">
-            <div
-              style="margin-bottom: 100px"
-              class="section pb-5 pt-5 pt-sm-2 text-center"
-            >
+            <div style="margin-bottom: 100px" class="section pb-5 pt-5 pt-sm-2 text-center">
               <h6 style="font-size: 24px; color: white" class="mb-0 pb-3">
                 <span>Log In</span><span>Sign Up</span>
               </h6>
-              <input
-                class="checkbox"
-                type="checkbox"
-                id="reg-log"
-                name="reg-log"
-              />
+              <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
               <label for="reg-log"></label>
               <div class="card-3d-wrap mx-auto">
                 <div class="card-3d-wrapper">
@@ -74,33 +65,19 @@ export default {
                       <div class="section text-center">
                         <h4 style="color: white" class="mb-4 pb-3">Log In</h4>
                         <div class="form-group">
-                          <input
-                            type="username"
-                            name="username"
-                            class="form-style"
-                            placeholder="Username"
-                            id="logemail"
-                            v-model="username"
-                            autocomplete="off"
-                          />
+                          <input type="username" name="username" class="form-style" placeholder="Username" id="logemail"
+                            v-model="username" autocomplete="off" />
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Password"
-                            id="logpass"
-                            v-model="password"
-                            autocomplete="off"
-                          />
+                          <input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass"
+                            v-model="password" autocomplete="off" />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <button class="btn mt-4" @click="buttonUser('login')">
-                          Log In
-                        </button>
-                        <!--Logga in-->
+
+                        <button class="btn mt-4" @click="buttonUser('login')">Log In</button> <!--Logga in-->
+                        <button class="btn mt-4" @click="clearUsers">Rensa listan</button>
+
                       </div>
                     </div>
                   </div>
@@ -109,36 +86,19 @@ export default {
                       <div class="section text-center">
                         <h4 style="color: white" class="mb-4 pb-3">Sign Up</h4>
                         <div class="form-group mt-2">
-                          <input
-                            type="username"
-                            name="username"
-                            class="form-style"
-                            placeholder="Username"
-                            id="logemail2"
-                            v-model="username"
-                            autocomplete="off"
-                          />
+                          <input type="username" name="username" class="form-style" placeholder="Username" id="logemail2"
+                            v-model="username" autocomplete="off" />
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
-                          <input
-                            type="password"
-                            name="logpass"
-                            class="form-style"
-                            placeholder="Password"
-                            id="logpass2"
-                            autocomplete="off"
-                            v-model="password"
-                          />
+                          <input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass2"
+                            autocomplete="off" v-model="password" />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <button
-                          class="btn mt-4"
-                          @click="buttonUser('register')"
-                        >
-                          Sign Up
-                        </button>
-                        <!--Sign in-->
+
+                        <button class="btn mt-4" @click="buttonUser('register')">Sign Up</button> <!--Sign in-->
+
+
                       </div>
                     </div>
                   </div>
@@ -161,8 +121,7 @@ export default {
 
 @font-face {
   font-family: "Blanka";
-  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf")
-    format("opentype");
+  src: url("assets/Fonts/blanka-free-for-commercial-use/Blanka.otf") format("opentype");
 }
 
 body {
@@ -206,8 +165,8 @@ h6 span {
   left: -9999px;
 }
 
-.checkbox:checked + label,
-.checkbox:not(:checked) + label {
+.checkbox:checked+label,
+.checkbox:not(:checked)+label {
   position: relative;
   display: block;
   text-align: center;
@@ -220,8 +179,8 @@ h6 span {
   background-color: #2e67f8;
 }
 
-.checkbox:checked + label:before,
-.checkbox:not(:checked) + label:before {
+.checkbox:checked+label:before,
+.checkbox:not(:checked)+label:before {
   position: absolute;
   display: block;
   width: 36px;
@@ -240,7 +199,7 @@ h6 span {
   transition: all 0.5s ease;
 }
 
-.checkbox:checked + label:before {
+.checkbox:checked+label:before {
   transform: translateX(44px) rotate(-270deg);
 }
 
@@ -291,7 +250,7 @@ h6 span {
   transform: rotateY(180deg);
 }
 
-.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
   transform: rotateY(180deg);
 }
 
@@ -431,6 +390,7 @@ h6 span {
   background-color: #2e67f8;
   color: white;
   box-shadow: 10px 10px 50px 0 rgba(46, 103, 248, 0.5);
+  margin-right: 10px;
 }
 
 .btn:active,
