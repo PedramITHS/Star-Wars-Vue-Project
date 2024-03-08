@@ -1,9 +1,6 @@
 <script>
-
 export default {
-
   created() {
-
     // fetch('/users.json')
     // .then(resp => resp.json())
     // .then(data =>
@@ -11,23 +8,16 @@ export default {
     //   this.users = data.Users
     //   console.log(this.users)
     // })
-   this.users = JSON.parse(localStorage.getItem('accounts'))
-    console.log(this.users)
+    this.users = JSON.parse(localStorage.getItem("accounts"));
+    console.log(this.users);
   },
 
   data() {
     return {
-      users: []
-    }
-  }
-
-
-
-
-}
-
-
-
+      users: [],
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -59,20 +49,30 @@ img {
   <div class="bgtop">
     <BContainer id="box">
       <BRow align-h="between" v-for="user in users">
-        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
+        <BCol
+          class="d-flex flex-direction-row justify-content-center align-items-center"
+        >
           <h3>{{ user.placement }}</h3>
         </BCol>
-        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <img src="/assets/user-icon3.webp" alt="icon">
+        <BCol
+          class="d-flex flex-direction-row justify-content-center align-items-center"
+        >
+          <img src="/assets/user-icon3.webp" alt="icon" />
         </BCol>
-        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
-          <h4>{{ user.name }}</h4>
+        <BCol
+          class="d-flex flex-direction-row justify-content-center align-items-center"
+        >
+          <BNavItem to="/stats"
+            ><h4>{{ user.name }}</h4></BNavItem
+          >
+          >
         </BCol>
-        <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
+        <BCol
+          class="d-flex flex-direction-row justify-content-center align-items-center"
+        >
           <h4>{{ user.score }}</h4>
         </BCol>
       </BRow>
     </BContainer>
-
   </div>
 </template>
