@@ -18,9 +18,10 @@ export default {
     };
   },
   created() {
+    //Här hämtas användaren som lggat in och visar den i navbaren.
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    this.accounts = loggedInUser ? loggedInUser.username : "";
-    console.log(this.accounts);
+    this.player = loggedInUser ? loggedInUser.username : "";
+    console.log(this.player);
   },
   methods: {
     toggle() {
@@ -314,6 +315,8 @@ a {
     >
       <img id="user-logo" src="/assets/user-icon3.webp" alt="Users" />
     </router-link>
+
+    <!-- Användaren visas i navbaren -->
     <h4
       style="
         color: white;
@@ -324,7 +327,7 @@ a {
         margin-right: 10px;
       "
     >
-      {{ accounts }}
+      {{ player }}
     </h4>
 
     <div id="music-player">

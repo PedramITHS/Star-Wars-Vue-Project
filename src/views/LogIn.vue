@@ -3,43 +3,57 @@ export default {
   data() {
     return {
       accounts: [],
+      //accounts innehåller alla andvändare.
       username: '',
       password: '',
       loggedInUserName: ''
+      //loggedInUserName sparar vem som är innloggad.
     }
   },
   created() {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     this.loggedInUserName = loggedInUser ? loggedInUser.username : '';
     this.accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+    //Läser in alla accounts och loggedInUserName.
   },
   methods: {
     clearUsers() {
       this.accounts = [];
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
+      // Här rensas listan.
     },
     buttonUser(choose) {
       if (!this.username.trim() || !this.password.trim()) {
         alert("Username and password are required");
         return;
+        // kollar att det inte är tomt efter att tagit bort onödiga mellanslag.
       }
 
       if (choose === 'register') {
         this.accounts.push({ username: this.username, password: this.password, name: this.username, score: 0 });
         localStorage.setItem('accounts', JSON.stringify(this.accounts));
-        alert('You have created a new user: ' + this.username+'!');
-      } else if (choose === 'login') {
+        alert('You have created a new user: ' + this.username + '!');
+        /* om "choose" är lika med register läggs det till ett användarnamn, lösenord och poäng. Poängen är även förinställt till 0.*/
+      }
+      else if (choose === 'login') {
         const user = this.accounts.find(account => account.username === this.username && account.password === this.password);
+        /* Om det istället är login letar den efter ett konto som matchar både lösenord och användarnamn.*/
+
         if (user) {
           localStorage.setItem('loggedInUser', JSON.stringify({ username: this.username }));
           alert('Welcome: ' + this.username);
-        } else {
+          /*Om användaren finns loggas den nu in och sparas som inloggad användare i  loggedInUser.*/
+        }
+        else {
           alert('Login fail');
+          /* Om något går snett*/
         }
       }
 
       this.username = "";
       this.password = "";
+      /* Rensas*/
+
     },
   }
 };

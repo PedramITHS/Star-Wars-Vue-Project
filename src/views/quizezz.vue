@@ -66,15 +66,17 @@ export default {
       const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
+        //Hämtar den inloggade användarens poäng.
       }
 
       const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
-
+       // Hämtar alla accounts.
       for (let i = 0; i < accounts.length; i++) {
         if (accounts[i].username === loggedInUser.username) {
           accounts[i].score = currentScore;
           localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
+          /*Loopar igenom alla accounts för atta hitta den använadren som matchar den inloggade användaren. Om spelaren hittas kommer poängen uppdateras. Sen avbryts loopen.*/
         }
       }
     },
@@ -140,7 +142,7 @@ export default {
 
     saveScore(newScore) {
       localStorage.setItem("score", newScore.toString());
-      // localStorage.setItem("score", this.score.toString())
+      //sparar den nya poängen i newScore.
       const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
       if (!loggedInUser) {
         return;
@@ -153,15 +155,9 @@ export default {
           accounts[i].score = newScore;
           localStorage.setItem("accounts", JSON.stringify(accounts));
           break;
+
         }
-      }
-
-      // const userIndex = accounts.findIndex(account => account.username === loggedInUser.username)
-
-      // if (userIndex !== -1) {
-      //   accounts[userIndex].score = newScore
-      //   localStorage.setItem('accounts', JSON.stringify(accounts));
-      // }
+    }
     },
 
     // Det blev lite för komplext med att flera frågor visades upp, att enbart ha en åt gången var lättare att hantera och personligen något jag tyckte passade ett quiz spel bättre.
