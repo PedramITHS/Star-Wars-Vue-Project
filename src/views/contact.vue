@@ -1,7 +1,10 @@
 <template>
   <div id="page" class="bg-black flex-column align-items-center">
     <b-container id="main" fluid class="gradient-background">
-      <h1 style="text-align: center" class="contact-header mt-0 mb-3">
+      <h1
+        style="text-align: center; padding-top: 20px"
+        class="contact-header mt-0 mb-3"
+      >
         Contact Us:
       </h1>
       <div style="font-family: Blanka, sans-serif" class="section">
@@ -68,7 +71,7 @@
           </div>
         </div>
       </div>
-      <h1 style="text-align: center">Creators:</h1>
+      <h1 style="text-align: center; margin-top: -150px">Creators:</h1>
       <p style="text-align: center; font-size: 25px">
         Oliver Käll, Elly Olivebring, Pedram Hejazi Kenari, Jonas Hultberg
       </p>
@@ -271,6 +274,7 @@ h6 span {
   position: absolute;
   top: 0;
   left: 0;
+  margin-top: -100px !important;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: all 600ms ease-out;

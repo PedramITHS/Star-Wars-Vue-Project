@@ -52,6 +52,23 @@ export default {
       this.countdown();
     },
 
+    saveQuizResult() {
+      const quizResult = {
+        difficulty: this.chosenDiffi,
+        userName: "user name",
+        score: "user score",
+      };
+
+      let quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+      quizHistory.push(quizResult);
+
+      localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
+    },
+    clearScore() {
+      this.$emit("clear-score");
+    },
+
     quit() {
       this.hidden = false;
       this.cancel = true;

@@ -1,8 +1,7 @@
 <script>
-
 export default {
-
   created() {
+
     this.users = JSON.parse(localStorage.getItem('accounts'))
     console.log(this.users)
     this.loadUsers();
@@ -12,6 +11,7 @@ export default {
 
   data() {
     return {
+
       users: []
       // Här kommer användare synas.
     }
@@ -26,7 +26,11 @@ export default {
 
 
 
-}
+};
+
+
+
+
 
 
 
@@ -39,12 +43,9 @@ export default {
   width: 50%;
   margin: auto;
 
-
   background-color: rgba(119, 136, 153, 0.781);
   text-decoration: underline;
 }
-
-
 
 .bgtop {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(13, 13, 13, 1)),
@@ -72,10 +73,9 @@ export default {
         </BCol>
         <BCol class="d-flex flex-direction-row justify-content-center align-items-center">
           <h4>{{ user.score }} p <!--Poäng--></h4>
+
         </BCol>
       </BRow>
     </BContainer>
-
-
   </div>
 </template>
